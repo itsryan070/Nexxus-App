@@ -9,11 +9,17 @@ xhr.onreadystatechange = function() {
         console.log(typeof(user));
         console.log(user["name"]);
 
-        $("#userName").html();
-        document.getElementById("userName").innerHTML = user['name'];
+        $("#userName").html(user["name"]);
     }
 }
 
 xhr.open("GET", "http://localhost:8000/json/get/user", true, "testadmin", "test123");
 xhr.send();
 
+function connectJson() {
+
+}
+
+function getUserInfo() {
+
+}
