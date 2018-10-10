@@ -7,6 +7,7 @@ function getUserInfo() {
             var user = JSON.parse(xhr.response);
             console.log(user);
             $("#userName").html(user['name']);
+            $("#userEmail").html(user['email']);
         }
     }
 
