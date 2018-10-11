@@ -1,12 +1,16 @@
-function getUserCred() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() 
-    {
-        if(this.readyState == 4 && this.status == 200) 
-        {
-        }
-    }
+$(document).ready(function(){
+    var result;
 
-    xhr.open("GET", "http://localhost:8000/jsonlogin", true, "testadmin", "test123");
-    xhr.send();
-}
+    $.post(url + "/json/get/user",
+    {
+        name: user,
+        pass: pass,
+    },
+    function(data, status) {
+        console.log(data);
+        result = data;
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+    
+    console.log(result);
+});

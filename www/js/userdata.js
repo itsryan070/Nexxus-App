@@ -11,7 +11,7 @@ function getUserInfo() {
         }
     }
 
-    xhr.open("GET", "http://localhost:8000/json/get/user", true, "testadmin", "test123");
+    xhr.open("GET", url + "/json/get/user", true, "testadmin", "test123");
     xhr.send();
 }
 
