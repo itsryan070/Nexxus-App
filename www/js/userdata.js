@@ -15,4 +15,5 @@ function getUserInfo() {
     xhr.send();
 }
 
+
 getUserInfo();
