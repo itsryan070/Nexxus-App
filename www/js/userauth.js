@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var result;
 
-    $.post(url + "/json/get/user",
+    $.post(url + "/json/auth/user",
     {
         name: user,
         pass: pass,
