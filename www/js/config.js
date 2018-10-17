@@ -1,3 +1,3 @@
-const url = "http://localhost:8000"; 
-const user = "testadmin";
-const pass = "test123";
+const SERVER_URL = "http://localhost:8000"; 
+const SERVER_USER = "testadmin";
+const SERVER_PASS = "test123";

@@ -1,16 +1,22 @@
 $(document).ready(function(){
-    var result;
+    var result = null;
+
+    $.ajaxSetup({async:false});
 
     $.post(url + "/json/auth/user",
     {
-        name: user,
-        pass: pass,
+        name: SERVER_USER,
+        pass: SERVER_PASS,
     },
     function(data, status) {
-        console.log(data);
+        //console.log(data);
         result = data;
-        console.log("Data: " + data + "\nStatus: " + status);
     });
-    
+    $.ajaxSetup({async:true});
+
+
+    $("#userName").html(result.name);
+    $("#userEmail").html(result.email);
     console.log(result);
 });
+
