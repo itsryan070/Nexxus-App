@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     $.ajaxSetup({async:false});
 
-    $.post(url + "/json/auth/user",
+    $.post(SERVER_URL + "/json/auth/user",
     {
         name: SERVER_USER,
         pass: SERVER_PASS,
