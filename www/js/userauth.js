@@ -25,7 +25,16 @@ $(document).ready(function(){
                 pass: LOCAL_PASS,
             },
             function(data, status) {
-                console.log(data);
+                var table = "";
+                console.log(data.orders);
+                $.each(data.orders, function(index, value) {
+                    table += "<tr>";
+                    table += "<td>"+value.orderNr+"</td>";
+                    table += "<td>"+value.location+"</td>";
+                    table += "<td>"+value.pickUpDate+" "+ value.pickUpTime+"</td>";
+                    console.log(index +": "+value.orderNr);
+                    $(".orderList").html(table);
+                });
             });
         }
     });
