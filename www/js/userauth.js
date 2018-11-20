@@ -8,10 +8,14 @@ $(document).ready(function(){
         pass: LOCAL_PASS,
     },
     function(data, status) {
-        console.log(status);
+        console.log("test");
+
         if(status=='success') {
             result = data;
             logged_in = true;
+        } else {
+            console.log(status);
+            //window.location.href = "loginprocess.html";
         }
 
         $("#userName").html(result.username);
@@ -26,14 +30,8 @@ $(document).ready(function(){
             },
             function(data, status) {
                 var table = "";
-                console.log(data.orders);
-                $.each(data.orders, function(index, value) {
-                    table += "<tr>";
-                    table += "<td>"+value.orderNr+"</td>";
-                    table += "<td>"+value.location+"</td>";
-                    table += "<td>"+value.pickUpDate+" "+ value.pickUpTime+"</td>";
-                    console.log(index +": "+value.orderNr);
-                    $(".orderList").html(table);
+                $.each(data, function(index, value) {
+                    console.log(index +": "+value);
                 });
             });
         }
