@@ -1,1 +1,1 @@
-../../node_modules/jquery-mobile/js/jquery.mobile.js
+../../../node_modules/jquery-mobile/js/jquery.mobile.js
