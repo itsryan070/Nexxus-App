@@ -31,9 +31,4 @@ class View
         + "</div>");
     }
 
-    showTest()
-    {
-        console.log("test");
-    }
-
 }

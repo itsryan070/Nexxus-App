@@ -8,7 +8,7 @@ class Controller
 
     renderLoginForm()
     {
-        this.v.showLoginForm(".body");
+        this.v.showLoginForm("#body");
     }
 
     getCredentials()
@@ -25,5 +25,3 @@ class Controller
 
 
 
-c = new Controller();
-c.renderLoginForm();
