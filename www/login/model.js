@@ -2,8 +2,8 @@ class Model
 {
     constructor() 
     {
-        let url = "http://copiatek.com/application/api";
-        let login = "/login_check";
+        this.url = "http://copiatek.com/application/api";
+        this.login = "/login_check";
     }
 
 }
