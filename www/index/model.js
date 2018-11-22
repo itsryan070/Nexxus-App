@@ -5,4 +5,13 @@ class Model
 
     }
 
+    /**
+     * Check for API token, returns true if found
+     *
+     */
+    checkLoginToken()
+    {
+
+    }
+
 }

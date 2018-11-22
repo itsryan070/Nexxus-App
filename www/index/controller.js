@@ -6,5 +6,8 @@ class Controller
         this.v = new View();
     }
     
-    checkLogin
+    redirectLogin()
+    {
+        window.open('login.html', '_self');
+    }
 }

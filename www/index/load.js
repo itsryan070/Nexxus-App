@@ -1,1 +1,3 @@
-window.open("login.html");
+c = new Controller();
+
+c.redirectLogin();
