@@ -39,9 +39,7 @@ class Model
             success: function(data){
                 sessionStorage.setItem("token", data);
                 console.log("Success!"+data);
-                //console.log(sessionStorage.getItem("token"));
-
-                //window.open('test.html', '_self');
+                window.open('test.html', '_self');
             },
             error: function() {
 
