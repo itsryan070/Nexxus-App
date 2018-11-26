@@ -29,6 +29,8 @@ class Controller
         }
 
         console.log("handle request");
+        console.log("user:"+form.user);
+        console.log("pass:"+form.pass);
 
         this.m.getLoginToken(form.user, form.pass);
     }

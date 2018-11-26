@@ -31,6 +31,8 @@ class Model
             sessionStorage.setItem("token", response);
             console.log("Token set!");
             console.log(sessionStorage.getItem("token"));
+
+            window.open('test.html', '_self');
         });
     }
 }
