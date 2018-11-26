@@ -15,7 +15,7 @@ class View
         + "<div class='container'>"
             + "<h2>Welcome to Nexxus</h2>"
             + "<hr>"
-            + "<form action='loginprocess.html' method='POST' name='login'>"
+            + "<form id='loginform' name='loginform'>"
                 + "<div class='form-group'>"
                     + "<label for='username'>Username</label>"
                     + "<input type='text' id='username' class='form-control' placeholder='Username'>"
