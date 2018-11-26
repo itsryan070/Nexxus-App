@@ -26,13 +26,26 @@ class Model
 
         console.log("before ajax call");
 
-        $.ajax(settings).done(function (response) {
-            console.log(response);
-            sessionStorage.setItem("token", response);
-            console.log("Token set!");
-            console.log(sessionStorage.getItem("token"));
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "url": this.url + this.login,
+            "method": "POST",
+            "headers": {},
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form,
+            success: function(data){
+                sessionStorage.setItem("token", data);
+                console.log("Success!"+data);
+                //console.log(sessionStorage.getItem("token"));
 
-            window.open('test.html', '_self');
+                //window.open('test.html', '_self');
+            },
+            error: function() {
+
+            }
         });
     }
 }
