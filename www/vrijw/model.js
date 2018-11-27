@@ -24,7 +24,7 @@ class Model
             "mimeType": "multipart/form-data",
             success: function(data){
                 console.log(this.model);
-                this.model.c.retrieveTasks(data);
+                this.model.c.retrieveTasks(JSON.parse(data));
             },
             error: function() {
 
