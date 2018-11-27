@@ -23,8 +23,8 @@ class Model
             "mimeType": "multipart/form-data",
             "data": form,
             success: function(data){
-                let token = JSON.parse(data);
-                sessionStorage.setItem("token", token);
+                let result = JSON.parse(data);
+                sessionStorage.setItem("token", result.token);
                 window.open('vrijw.html', '_self');
             },
             error: function() {
