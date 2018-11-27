@@ -16,7 +16,7 @@ class Controller
 
     retrieveTasks(tasks)
     {
-        alert("tasks are ready!");
+        console.log("tasks are ready!");
         console.log(tasks);
     }
 }

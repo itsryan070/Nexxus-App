@@ -11,7 +11,6 @@ class Model
 
     getTasksFromLoc()
     {
-        console.log(this.c);
         // get orders
         $.ajax({
             "async": true,
