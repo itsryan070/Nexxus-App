@@ -14,6 +14,7 @@ class View
     showOfferedTasks(div, tasks)
     {
         var html = "";
+        console.log(tasks[0]);
         /* body */
         html  += "<div class='ui-resize' data-role='content' data-theme='a'>"
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";

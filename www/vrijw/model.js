@@ -23,12 +23,38 @@ class Model
             "contentType": false,
             "mimeType": "multipart/form-data",
             success: function(data){
-                this.model.c.retrieveTasks(JSON.parse(data));
+                this.model.setTasks(JSON.parse(data));
+                this.model.c.retrieveTasks();
             },
             error: function() {
 
             }
         });
+
+    }
+
+    setTasks(array)
+    {
+        sessionStorage.setItem("tasks", JSON.stringify(array));
+
+        return 0;
+    }
+
+    getTasks()
+    {
+        return JSON.parse(sessionStorage.getItem("tasks"));
+    }
+
+    storeTaskSession(data)
+    {
+        var result = JSON.parse(data);
+
+        return result;
+
+    }
+
+    getTaskInfoFromSession()
+    {
 
     }
 

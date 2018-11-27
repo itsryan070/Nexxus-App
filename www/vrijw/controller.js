@@ -10,13 +10,13 @@ class Controller
     {
         this.v.showHeader("#body");
         this.m.getTasksFromLoc();
-        //this.v.showOfferedTasks("#body");
-
     }
 
-    retrieveTasks(tasks)
+    retrieveTasks()
     {
-        console.log("tasks are ready!");
+        var tasks = this.m.getTasks();
+
         this.v.showOfferedTasks("#body", tasks);
     }
+
 }
