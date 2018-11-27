@@ -13,7 +13,7 @@ class View
             + "<br><br>"
         + "</div>"
         + "<div class='container'>"
-            + "<h2>Welcome to Nexxus</h2>"
+            + "<h4>Welcome to Nexxus</h4>"
             + "<hr>"
             + "<form id='loginform' name='loginform'>"
                 + "<div class='form-group'>"

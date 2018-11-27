@@ -12,20 +12,6 @@ class Model
         form.append("_username", user);
         form.append("_password", pass);
 
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": this.url + this.login,
-            "method": "POST",
-            "headers": {},
-            "processData": false,
-            "contentType": false,
-            "mimeType": "multipart/form-data",
-            "data": form
-        }
-
-        console.log("before ajax call");
-
         $.ajax({
             "async": true,
             "crossDomain": true,
@@ -37,9 +23,9 @@ class Model
             "mimeType": "multipart/form-data",
             "data": form,
             success: function(data){
-                sessionStorage.setItem("token", data);
-                console.log("Success!"+data);
-                window.open('test.html', '_self');
+                let token = JSON.parse(data);
+                sessionStorage.setItem("token", token);
+                window.open('vrijw.html', '_self');
             },
             error: function() {
 
