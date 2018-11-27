@@ -23,7 +23,6 @@ class Model
             "contentType": false,
             "mimeType": "multipart/form-data",
             success: function(data){
-                console.log(this.model);
                 this.model.c.retrieveTasks(JSON.parse(data));
             },
             error: function() {
@@ -31,11 +30,6 @@ class Model
             }
         });
 
-        // get location
-
-        // remove those not from current location 
-
-    
     }
 
     getTasksAccepted()

@@ -17,7 +17,6 @@ class Controller
     retrieveTasks(tasks)
     {
         console.log("tasks are ready!");
-        console.log(tasks);
         this.v.showOfferedTasks("#body", tasks);
     }
 }

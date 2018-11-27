@@ -19,21 +19,40 @@ class View
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
 
         /* table */
-        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
-            + "<tbody id='title'><tr>"
-            +   "<td><b>Datum</b></td>"
-            +   "<td><b>Hoeveelheid</b></td>"
-            +   "<td><b>Stad</b></td>"
+        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>";
+            + "<tbody id='title'><tr>";
+            +   "<td><b>Datum</b></td>";
+            +   "<td><b>Hoeveelheid</b></td>";
+            +   "<td><b>Stad</b></td>";
             + "</tr>";
 
         /* table rows */
 		for(var i=0; i < tasks.length; i++) 
         {
-			html += "<tr onclick='' data-priority='1' id='title"+i+"'>"
-                +   "<td>" + tasks[i]['date'] + "</td>" 
-                +   "<td>" + tasks[i]['quantity'] + "</td>" 
-                +   "<td>" + tasks[i]['location']['name'] + "</td>" 
-                + "</tr>";
+            // parse date
+            var date = tasks[i]['order_date'];
+            date = date.substring(0,date.indexOf('T'));
+
+            // count products
+            var relations = tasks[i]['product_relations'];
+            var totalproducts = 0;
+
+            for(var pr=0; pr < relations.length; pr++)
+            {
+                totalproducts += relations[pr]['quantity'];
+            }
+
+            var location = tasks[i]['location']['name'];
+
+			html += "<tr onclick='' data-priority='1' id='title"+i+"'>";
+            html +=   "<td>" + date + "</td>";
+            if(totalproducts==1) {
+                html +=   "<td>" + totalproducts + " product</td>";
+            } else {
+                html +=   "<td>" + totalproducts + " producten</td>";
+            }
+            html +=   "<td>" + location + "</td>"; 
+            html +=  "</tr>";
             console.log(tasks[i]);
 		}	
         html += "</tbody>";
