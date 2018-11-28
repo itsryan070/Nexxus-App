@@ -24,7 +24,7 @@ class Controller
 
     renderPopupTask(id)
     {
-        var task = this.m.getTask(id);
+        var task = this.m.getTaskInfo(id);
 
         this.v.showPopupTask();
 

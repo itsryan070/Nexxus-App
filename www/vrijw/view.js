@@ -14,7 +14,7 @@ class View
     showOfferedTasks(div, tasks)
     {
         var html = "";
-        console.log(tasks[0]);
+
         /* body */
         html  += "<div class='ui-resize' data-role='content' data-theme='a'>"
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
@@ -45,7 +45,7 @@ class View
 
             var location = tasks[i]['location']['name'];
 
-			html += "<tr onclick='' data-priority='1' id='title"+i+"'>";
+			html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")' data-priority='1' id='title"+i+"'>";
             html +=   "<td>" + date + "</td>";
             if(totalproducts==1) {
                 html +=   "<td>" + totalproducts + " product</td>";
@@ -54,7 +54,6 @@ class View
             }
             html +=   "<td>" + location + "</td>"; 
             html +=  "</tr>";
-            console.log(tasks[i]);
 		}	
         html += "</tbody>";
 

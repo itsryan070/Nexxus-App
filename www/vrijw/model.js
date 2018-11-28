@@ -60,7 +60,9 @@ class Model
     {
         var tasks = this.getTasks();
 
-        console.log(tasks);
+        var task = tasks[id];
+
+        console.log(task);
 
     }
 
