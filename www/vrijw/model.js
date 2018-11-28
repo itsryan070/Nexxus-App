@@ -105,13 +105,5 @@ class Model
 
     }
 
-    parseDateFromTimestamp(ts)
-    {
-        return ts.substring(0,ts.indexOf('T'));
-    }
-
-    parseTimeFromTimestamp(ts)
-    {
-        return ts.substring(ts.indexOf('T'));
-    }
+    
 }
