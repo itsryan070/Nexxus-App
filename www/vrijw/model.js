@@ -22,24 +22,73 @@ class Model
             "processData": false,
             "contentType": false,
             "mimeType": "multipart/form-data",
-            success: function(data){
-                console.log(this.model);
-                this.model.c.retrieveTasks(JSON.parse(data));
+            success: function(data)
+            {
+
+                // store data
+                this.model.setTasks(JSON.parse(data));
+
+                // return
+                this.model.c.retrieveTasks();
             },
             error: function() {
 
             }
         });
 
-        // get location
+    }
 
-        // remove those not from current location 
+    setTasks(array)
+    {
+        sessionStorage.setItem("tasks", JSON.stringify(array));
 
+        return 0;
+    }
+
+    getTasks()
+    {
+        return JSON.parse(sessionStorage.getItem("tasks"));
+    }
+
+    storeTaskSession(data)
+    {
+        var result = JSON.parse(data);
+
+        return result;
+
+    }
     
+    /**
+     * Returns task by ID (array) 
+     */
+    getTaskInfo(id)
+    {
+        var tasks = this.getTasks();
+
+        var task = "";
+
+        for(var i=0; i < tasks.length; i++)
+        {
+            if(tasks[i]['id']==id)
+            {
+                 task = tasks[i];
+            }
+        }
+        return task;
     }
 
     getTasksAccepted()
     {
 
+    }
+
+    parseDateFromTimestamp(ts)
+    {
+        return ts.substring(0,ts.indexOf('T'));
+    }
+
+    parseTimeFromTimestamp(ts)
+    {
+        return ts.substring(ts.indexOf('T'));
     }
 }

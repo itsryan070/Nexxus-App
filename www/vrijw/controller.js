@@ -6,18 +6,27 @@ class Controller
         this.v = new View();
     }
     
+    /**
+     * Renders main page with tasks from current location
+     */
     renderMainPage()
     {
         this.v.showHeader("#body");
         this.m.getTasksFromLoc();
-        //this.v.showOfferedTasks("#body");
-
     }
 
-    retrieveTasks(tasks)
+    retrieveTasks()
     {
-        console.log("tasks are ready!");
-        console.log(tasks);
-        this.v.showOfferedTasks("#body", tasks);
+        var tasks = this.m.getTasks();
+
+        this.v.showTasklist("#body", tasks);
     }
+
+    renderPopupTask(id)
+    {
+        var task = this.m.getTaskInfo(id);
+
+        this.v.showPopupTask("#order-current", task);
+    }
+
 }
