@@ -52,9 +52,15 @@ class Model
         return result;
 
     }
-
-    getTaskInfoFromSession()
+    
+    /**
+     * Returns task by ID (array) 
+     */
+    getTaskInfo(id)
     {
+        var tasks = this.getTasks();
+
+        console.log(tasks);
 
     }
 

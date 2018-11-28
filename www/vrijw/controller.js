@@ -6,6 +6,9 @@ class Controller
         this.v = new View();
     }
     
+    /**
+     * Renders main page with tasks from current location
+     */
     renderMainPage()
     {
         this.v.showHeader("#body");
@@ -17,6 +20,14 @@ class Controller
         var tasks = this.m.getTasks();
 
         this.v.showOfferedTasks("#body", tasks);
+    }
+
+    renderPopupTask(id)
+    {
+        var task = this.m.getTask(id);
+
+        this.v.showPopupTask();
+
     }
 
 }

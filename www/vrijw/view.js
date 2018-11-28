@@ -66,8 +66,10 @@ class View
     
     }
 
-    showPopupTask()
+    showPopupTask(div, task)
     {
+        var html = "";
 
+        $(div).html(html);
     }
 }
