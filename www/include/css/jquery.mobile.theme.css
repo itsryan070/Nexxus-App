@@ -238,7 +238,7 @@ html .ui-alt-icon .ui-radio-off:after {
 .ui-radio-pop{color:black!important; margin-top: 50vh; }
 .ui-center{margin-left: 3vw;}
 .ui-popup-screen{background-color: black;}
-.ui-table-reflow.ui-responsive td, .ui-table-reflow.ui-responsive th{width: auto;min-width: 25vw;clear:none;}
+.ui-table-reflow.ui-responsive td, .ui-table-reflow.ui-responsive th{width: 33vw;min-width: 25vw;clear:none;}
 .ui-icon-delete:after{background-image: url("../themes/images/icons-png/delete-white.png");}
 .ui-mobile, .ui-mobile body{height: 100vh;}
 .ui-header, .ui-footer{border-width:0;}
