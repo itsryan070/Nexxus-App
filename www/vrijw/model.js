@@ -2,7 +2,7 @@ class Model
 {
     constructor(controller) 
     {
-        this.url        = "http://copiatek.com/application/api";
+        this.url        = config.api;
         this.getPorder  = "/purchaseorders/1?bearer=";
         this.token      = sessionStorage.getItem("token");
 
@@ -33,7 +33,32 @@ class Model
 
             }
         });
+    }
+    
+    /**
+     * Saves tasks in session upon success
+     */
+    getAcceptedTasksFromServer()
+    {
+        // get orders
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "model": this,
+            "url": this.url + this.getPorder + this.token,
+            "method": "GET",
+            "headers": {},
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            success: function(data)
+            {
 
+            },
+            error: function() {
+
+            }
+        });
     }
 
     setTasks(array)
