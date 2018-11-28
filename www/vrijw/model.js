@@ -60,10 +60,19 @@ class Model
     {
         var tasks = this.getTasks();
 
-        var task = tasks[id];
+        var task = "";
 
-        console.log(task);
-
+        for(var i=0; i < tasks.length; i++)
+        {
+            console.log("Iteration: "+i);
+            console.log("Requested task: "+id);
+            if(tasks[i]['id']==id)
+            {
+                 task = tasks[i];
+            }
+            console.log(task);
+        }
+        return task;
     }
 
     getTasksAccepted()

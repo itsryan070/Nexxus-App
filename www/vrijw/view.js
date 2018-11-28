@@ -11,7 +11,7 @@ class View
               + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>");
     }
 
-    showOfferedTasks(div, tasks)
+    showTasklist(div, tasks)
     {
         var html = "";
 
@@ -68,6 +68,7 @@ class View
     showPopupTask(div, task)
     {
         var html = "";
+        console.log(task);
 
         $(div).html(html);
     }

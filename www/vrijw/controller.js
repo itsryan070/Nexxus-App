@@ -19,15 +19,14 @@ class Controller
     {
         var tasks = this.m.getTasks();
 
-        this.v.showOfferedTasks("#body", tasks);
+        this.v.showTasklist("#body", tasks);
     }
 
     renderPopupTask(id)
     {
         var task = this.m.getTaskInfo(id);
 
-        this.v.showPopupTask();
-
+        this.v.showPopupTask("#order-current", task);
     }
 
 }
