@@ -22,8 +22,13 @@ class Model
             "processData": false,
             "contentType": false,
             "mimeType": "multipart/form-data",
-            success: function(data){
+            success: function(data)
+            {
+
+                // store data
                 this.model.setTasks(JSON.parse(data));
+
+                // return
                 this.model.c.retrieveTasks();
             },
             error: function() {
@@ -64,13 +69,10 @@ class Model
 
         for(var i=0; i < tasks.length; i++)
         {
-            console.log("Iteration: "+i);
-            console.log("Requested task: "+id);
             if(tasks[i]['id']==id)
             {
                  task = tasks[i];
             }
-            console.log(task);
         }
         return task;
     }
@@ -78,5 +80,15 @@ class Model
     getTasksAccepted()
     {
 
+    }
+
+    parseDateFromTimestamp(ts)
+    {
+        return ts.substring(0,ts.indexOf('T'));
+    }
+
+    parseTimeFromTimestamp(ts)
+    {
+        return ts.substring(ts.indexOf('T'));
     }
 }

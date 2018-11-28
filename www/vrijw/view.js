@@ -69,6 +69,11 @@ class View
     {
         var html = "";
         console.log(task);
+        var sup = task.supplier;
+        
+        html += "Stad: "   + sup.city;
+        html += "Straat: " + sup.street;
+        html += "Datum: "  + sup.date
 
         $(div).html(html);
     }
