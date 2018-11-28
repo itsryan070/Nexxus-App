@@ -4,6 +4,9 @@ class Controller
     {
         this.m = new Model(this);
         this.v = new View();
+
+        this.m.getTasksFromServer();
+        this.tasklist = this.m.getTasks();
     }
     
     /**
@@ -12,14 +15,13 @@ class Controller
     renderMainPage()
     {
         this.v.showHeader("#body");
-        this.m.getTasksFromLoc();
+
+        this.v.showTasklist("#body", this.tasklist);
     }
 
-    retrieveTasks()
+    retrieveOfferedTasks()
     {
-        var tasks = this.m.getTasks();
-
-        this.v.showTasklist("#body", tasks);
+        this.v.showTasklist("#body", this.tasklist);
     }
 
     renderPopupTask(id)

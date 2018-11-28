@@ -17,6 +17,8 @@ class View
 
         /* body */
         html  += "<div class='ui-resize' data-role='content' data-theme='a'>"
+                + "<button name='uitloggen'>Uitloggen</button>"
+                + "<button name='accepted-tasks'>Geaccepteerde Taken</button>"
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
 
         /* table */

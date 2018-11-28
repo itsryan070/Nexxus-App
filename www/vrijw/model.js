@@ -9,7 +9,10 @@ class Model
         this.c          = controller;
     }
 
-    getTasksFromLoc()
+    /**
+     * Saves tasks in session upon success
+     */
+    getTasksFromServer()
     {
         // get orders
         $.ajax({
@@ -24,12 +27,7 @@ class Model
             "mimeType": "multipart/form-data",
             success: function(data)
             {
-
-                // store data
                 this.model.setTasks(JSON.parse(data));
-
-                // return
-                this.model.c.retrieveTasks();
             },
             error: function() {
 
