@@ -20,12 +20,13 @@ class View
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
 
         /* table */
-        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>";
-            + "<tbody id='title'><tr>";
-            +   "<td><b>Datum</b></td>";
-            +   "<td><b>Hoeveelheid</b></td>";
-            +   "<td><b>Stad</b></td>";
-            + "</tr>";
+        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
+            + "<tbody id='title'>"
+            + "<tr>"
+            +   "<td><b>Datum</b></td>"
+            +   "<td><b>Hoeveelheid</b></td>"
+            +   "<td><b>Stad</b></td>"
+            + "</tr>"
 
         /* table rows */
 		for(var i=0; i < tasks.length; i++) 
