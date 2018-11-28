@@ -240,7 +240,7 @@ html .ui-alt-icon .ui-radio-off:after {
 .ui-popup-screen{background-color: black;}
 .ui-table-reflow.ui-responsive td, .ui-table-reflow.ui-responsive th{width: 33vw;min-width: 25vw;clear:none;}
 .ui-icon-delete:after{background-image: url("../themes/images/icons-png/delete-white.png");}
-.ui-mobile, .ui-mobile body{height: 100vh;}
+.ui-mobile, .ui-mobile body{height: auto;}
 .ui-header, .ui-footer{border-width:0;}
 .ui-fixed-hidden {position: fixed;}
 .ui-icon-search:after{background-image: url("../themes/images/icons-png/search-black.png");}
