@@ -30,5 +30,6 @@ class Controller
     }
     closingPopup(){
         this.v.closePopup();
+        
     }
 }

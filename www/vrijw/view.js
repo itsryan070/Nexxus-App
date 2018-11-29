@@ -26,7 +26,7 @@ class View
             +   "<td><b>Hoeveelheid</b></td>";
             +   "<td><b>Stad</b></td>";
             + "</tr>";
-
+ 
         /* table rows */
 		for(var i=0; i < tasks.length; i++) 
         {
@@ -71,6 +71,7 @@ class View
       
         var sup = task.supplier;
         console.log(sup.date);
+        
 
         text = '<div class="visability ui-content ui-body-a" id="data" data-role="content" data-theme="a" role="main">'
           + '<a onclick="c.closingPopup()" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
