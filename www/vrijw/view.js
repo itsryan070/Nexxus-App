@@ -7,28 +7,29 @@ class View
 
     showHeader(div)
     {
-        $(div).append("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
+        $(div).html("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
               + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>"
               + "</div>"
-              + "<div class='ui-resize' data-role='content' data-theme='a'>"
-              + "<button name='uitloggen'>Uitloggen</button>"
-              + "<button name='accepted-tasks'>Geaccepteerde Taken</button>"
-              + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>"
               );
     }
 
-    showTasklist(div, tasks)
+    showTasklist(div, title, tasks)
     {
         var html = "";
 
         /* table */
-        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
-            + "<tbody id='title'>"
-            + "<tr>"
-            +   "<td><b>Datum</b></td>"
-            +   "<td><b>Hoeveelheid</b></td>"
-            +   "<td><b>Stad</b></td>"
-            + "</tr>"
+        html += "<div class='ui-resize' data-role='content' data-theme='a'>"
+              + "<button name='uitloggen'>Uitloggen</button>"
+              + "<button onClick='c.renderOfferedTaskList()' name='offered-tasks'>Aangeboden Taken</button>"
+              + "<button onClick='c.renderAcceptedTaskList()' name='accepted-tasks'>Geaccepteerde Taken</button>"
+              + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>"+title+"</h3>"
+              + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
+              + "<tbody id='title'>"
+              + "<tr>"
+              +   "<td><b>Datum</b></td>"
+              +   "<td><b>Hoeveelheid</b></td>"
+              +   "<td><b>Stad</b></td>"
+              + "</tr>"
 
         /* table rows */
 		for(var i=0; i < tasks.length; i++) 
