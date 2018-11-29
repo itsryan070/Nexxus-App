@@ -33,7 +33,7 @@ class Model
                 { 
                     data = 0;
                 }
-                    this.model.ajaxCallTasks(true, data, item, 0)
+                    this.model.loadTasks(true, data, item, 0)
 
             },
             error: function() {
@@ -42,7 +42,7 @@ class Model
         });
     }
 
-    ajaxCallTasks(callback, data, item, status) 
+    loadTasks(callback, data, item, status) 
     {
         if(callback) {
             sessionStorage.setItem("offeredTasks", data);
@@ -54,8 +54,8 @@ class Model
     
     storeAllTasks()
     {
-        this.ajaxCallTasks(false, "offeredTasks", false,  2);
-        this.ajaxCallTasks(false, "acceptedTasks", false, 300);
+        this.loadTasks(false, "offeredTasks", false,  2);
+        this.loadTasks(false, "acceptedTasks", false, 300);
 
         return true;
     }
