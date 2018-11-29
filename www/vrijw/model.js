@@ -100,9 +100,34 @@ class Model
         return task;
     }
 
-    getTasksAccepted()
+    getOfferedTasks()
     {
+        var tasks = this.getTasks();
 
+        for(var i=0; i < tasks.length; i++)
+        {
+            if(tasks[i]['status']['id']!=1)
+            {
+                tasks.splice(tasks, 1);
+            }
+        }
+        
+        return tasks;
+    }
+
+    getAcceptedTasks()
+    {
+        var tasks = this.getTasks();
+
+        for(var i=0; i < tasks.length; i++)
+        {
+            if(tasks[i]['status']['id']!=9)
+            {
+                tasks.splice(tasks, 1);
+            }
+        }
+        
+        return tasks;
     }
 
     

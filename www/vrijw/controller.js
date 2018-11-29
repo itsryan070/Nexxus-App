@@ -6,20 +6,20 @@ class Controller
         this.v = new View();
 
         this.m.getTasksFromServer();
-        this.offeredTasks = this.m.getTasks();
-        this.acceptedTasks = this.m.getTasks();
+        this.offeredTasks = this.m.getOfferedTasks();
+        this.acceptedTasks = this.m.getAcceptedTasks();
     }
     
     /**
      * Renders main page with tasks from current location
      */
-    renderTaskList()
+    renderOfferedTaskList()
     {
         this.v.showHeader("#header");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", this.offeredTasks);
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.offeredTasks);
     }
     
     /**
@@ -31,7 +31,7 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", this.acceptedTasks);
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.acceptedTasks);
     }
 
     renderPopupTask(id)
