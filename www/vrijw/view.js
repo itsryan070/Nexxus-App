@@ -82,7 +82,7 @@ class View
 
                 html +=  "</tr>";
             }	
-        } else { html += "</tbody>Geen taken gevonden"; }
+        } else { html += "<tr><td colspan=3>Geen taken gevonden</td></tr>"; }
         html += "</tbody>";
 
         $(div).html(html);
