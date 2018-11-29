@@ -4,22 +4,35 @@ class Controller
     {
         this.m = new Model(this);
         this.v = new View();
+
+        this.m.getTasksFromServer();
+        this.offeredTasks = this.m.getOfferedTasks();
+        this.acceptedTasks = this.m.getAcceptedTasks();
     }
     
     /**
      * Renders main page with tasks from current location
      */
-    renderMainPage()
+    renderOfferedTaskList()
     {
-        this.v.showHeader("#body");
-        this.m.getTasksFromLoc();
+        this.v.showHeader("#header");
+        this.v.showFooter("#footer");
+
+        $("#content").html("");
+        $("#content").append("<div id='tasklist'>");
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.offeredTasks);
     }
-
-    retrieveTasks()
+    
+    /**
+     * Renders main page with tasks from current location
+     */
+    renderAcceptedTaskList()
     {
-        var tasks = this.m.getTasks();
+        this.v.showHeader("#header");
 
-        this.v.showTasklist("#body", tasks);
+        $("#content").html("");
+        $("#content").append("<div id='tasklist'>");
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.acceptedTasks);
     }
 
     renderPopupTask(id)

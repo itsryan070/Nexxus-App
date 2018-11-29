@@ -2,14 +2,43 @@ class Model
 {
     constructor(controller) 
     {
-        this.url        = "http://copiatek.com/application/api";
+        this.url        = config.api;
         this.getPorder  = "/purchaseorders/1?bearer=";
         this.token      = sessionStorage.getItem("token");
 
         this.c          = controller;
     }
 
-    getTasksFromLoc()
+    /**
+     * Saves tasks in session upon success
+     */
+    getTasksFromServer()
+    {
+        // get orders
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "model": this,
+            "url": this.url + this.getPorder + this.token,
+            "method": "GET",
+            "headers": {},
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            success: function(data)
+            {
+                this.model.setTasks(JSON.parse(data));
+            },
+            error: function() {
+
+            }
+        });
+    }
+    
+    /**
+     * Saves tasks in session upon success
+     */
+    getAcceptedTasksFromServer()
     {
         // get orders
         $.ajax({
@@ -25,17 +54,11 @@ class Model
             success: function(data)
             {
 
-                // store data
-                this.model.setTasks(JSON.parse(data));
-
-                // return
-                this.model.c.retrieveTasks();
             },
             error: function() {
 
             }
         });
-
     }
 
     setTasks(array)
@@ -77,18 +100,35 @@ class Model
         return task;
     }
 
-    getTasksAccepted()
+    getOfferedTasks()
     {
+        var tasks = this.getTasks();
 
+        for(var i=0; i < tasks.length; i++)
+        {
+            if(tasks[i]['status']['id']!=1)
+            {
+                tasks.splice(tasks, 1);
+            }
+        }
+        
+        return tasks;
     }
 
-    parseDateFromTimestamp(ts)
+    getAcceptedTasks()
     {
-        return ts.substring(0,ts.indexOf('T'));
+        var tasks = this.getTasks();
+
+        for(var i=0; i < tasks.length; i++)
+        {
+            if(tasks[i]['status']['id']!=9)
+            {
+                tasks.splice(tasks, 1);
+            }
+        }
+        
+        return tasks;
     }
 
-    parseTimeFromTimestamp(ts)
-    {
-        return ts.substring(ts.indexOf('T'));
-    }
+    
 }
