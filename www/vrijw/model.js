@@ -57,6 +57,14 @@ class Model
         this.loadTasks(false, "offeredTasks", false,  2);
         this.loadTasks(false, "acceptedTasks", false, 300);
 
+        var allTasks = [];
+        allTasks = allTasks.concat(
+            this.getSessionData("offeredTasks"),
+            this.getSessionData("offeredTasks")
+        );
+
+        sessionStorage.setItem("allTasks", JSON.stringify(allTasks));
+
         return true;
     }
 
@@ -77,7 +85,7 @@ class Model
      */
     getTaskInfo(id)
     {
-        var tasks = this.getTasks();
+        var tasks = this.getAllTasks();
 
         var task = "";
 
@@ -107,4 +115,11 @@ class Model
 
     }
 
+    getAllTasks()
+    {
+        var tasks = this.getSessionData("allTasks");
+
+        return tasks;
+
+    }
 }
