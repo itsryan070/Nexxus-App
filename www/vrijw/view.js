@@ -7,34 +7,32 @@ class View
 
     showHeader(div)
     {
-        $(div).append("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
-              + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>");
+        $(div).html("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
+              + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>"
+              + "</div>"
+              );
     }
 
-    showTasklist(div, tasks)
+    showTasklist(div, title, tasks)
     {
         var html = "";
 
-        /* body */
-        html  += "<div class='ui-resize' data-role='content' data-theme='a'>"
-                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
-
         /* table */
-        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
-            + "<tbody id='title'>"
-            + "<tr>"
-            +   "<td><b>Datum</b></td>"
-            +   "<td><b>Hoeveelheid</b></td>"
-            +   "<td><b>Stad</b></td>"
-            + "</tr>"
+        html += "<div class='ui-resize' data-role='content' data-theme='a'>"
+              + "<button name='uitloggen'>Uitloggen</button>"
+              + "<button onClick='c.renderOfferedTaskList()' name='offered-tasks'>Aangeboden Taken</button>"
+              + "<button onClick='c.renderAcceptedTaskList()' name='accepted-tasks'>Geaccepteerde Taken</button>"
+              + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
+              + "<tbody id='title'>"
+              + "<tr>"
+              +   "<td><b>Datum</b></td>"
+              +   "<td><b>Hoeveelheid</b></td>"
+              +   "<td><b>Stad</b></td>"
+              + "</tr>"
 
         /* table rows */
 		for(var i=0; i < tasks.length; i++) 
         {
-            // parse date
-            var date = tasks[i]['order_date'];
-            date = date.substring(0,date.indexOf('T'));
-
             // count products
             var relations = tasks[i]['product_relations'];
             var totalproducts = 0;
@@ -46,24 +44,25 @@ class View
 
             var location = tasks[i]['location']['name'];
 
-			html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")' data-priority='1' id='title"+i+"'>";
-            html +=   "<td>" + date + "</td>";
-            if(totalproducts==1) {
-                html +=   "<td>" + totalproducts + " product</td>";
+			html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
+                        + "data-priority='1' id='title"+i+"'>";
+
+                html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
+
+            if(totalproducts == 1) 
+            {
+                html += "<td>" + totalproducts + " product</td>";
             } else {
-                html +=   "<td>" + totalproducts + " producten</td>";
+                html += "<td>" + totalproducts + " producten</td>";
             }
+
             html +=   "<td>" + location + "</td>"; 
+
             html +=  "</tr>";
 		}	
         html += "</tbody>";
 
-        $(div).append(html);
-    }
-
-    showAcceptedTasks()
-    {
-    
+        $(div).html(html);
     }
 
     showPopupTask(div, task)
@@ -74,8 +73,24 @@ class View
         
         html += "Stad: "   + sup.city;
         html += "Straat: " + sup.street;
-        html += "Datum: "  + sup.date
+        html += "Datum: "  + this.parseTSDate(task.order_date);
+
+        /* buttons */
+        html += "<br>";
+        html += "<button onClick='c.renderAcceptedTaskList()' name='accept-task'>Accepteren</button>";
+        html += "<button onClick='c.renderAcceptedTaskList()' name='weigeren-task'>Weigeren</button>";
+
 
         $(div).html(html);
+    }
+    
+    parseTSDate(ts)
+    {
+        return ts.substring(0,ts.indexOf('T'));
+    }
+
+    parseTSTime(ts)
+    {
+        return ts.substring(ts.indexOf('T'));
     }
 }
