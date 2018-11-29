@@ -113,7 +113,7 @@ class View
                         + '<tr>' 
                             + '<td id="wat"><b class="ui-table-cell-label"  style="width: 30vw;"> Hoeveelheid: </b> </td><td style="max-width:40vw">'+ totalproducts + '</td>'
                         +'</tr>'
-                            +'<tr><td id="tijd"><b class="ui-table-cell-label"  style="width: 30vw;"> Tijd: </b></td><td style="max-width:40vw">'+ 'tijd' +'</td>'
+                            +'<tr><td id="tijd"><b class="ui-table-cell-label"  style="width: 30vw;"> Tijd: </b></td><td style="max-width:40vw">'+ this.parseTSTime(task.order_date) +'</td>'
                         +'</tr>'
                         +'<tr>'
                             +'<td id="contact"><b class="ui-table-cell-label"  style="width: 30vw;"> Contact: </b></td><td style="max-width:40vw">'+ 'contact' +' </td>'
@@ -149,6 +149,6 @@ class View
 
     parseTSTime(ts)
     {
-        return ts.substring(ts.indexOf('T'));
+        return ts.substring(ts.indexOf('T')+1,ts.indexOf('+')-3);
     }
 }
