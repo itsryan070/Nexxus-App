@@ -87,6 +87,7 @@ class View
         var html = "";
       
         var sup = task.supplier;
+        console.log(sup);
 
         var relations = task['product_relations'];
         var totalproducts = 0;
@@ -116,10 +117,10 @@ class View
                             +'<tr><td id="tijd"><b class="ui-table-cell-label"  style="width: 30vw;"> Tijd: </b></td><td style="max-width:40vw">'+ this.parseTSTime(task.order_date) +'</td>'
                         +'</tr>'
                         +'<tr>'
-                            +'<td id="contact"><b class="ui-table-cell-label"  style="width: 30vw;"> Contact: </b></td><td style="max-width:40vw">'+ 'contact' +' </td>'
+                            +'<td id="contact"><b class="ui-table-cell-label"  style="width: 30vw;"> Contact: </b></td><td style="max-width:40vw">'+ sup.name +' </td>'
                         +'</tr>'
                         +'<tr>'
-                            +'<td id="tel"><b class="ui-table-cell-label" style="width: 30vw;"> Telefoon: </b></td><td style="max-width:40vw">'+ 'tel' +' </td>'
+                            +'<td id="tel"><b class="ui-table-cell-label" style="width: 30vw;"> Telefoon: </b></td><td style="max-width:40vw">'+ sup.phone +' </td>'
                         + '</tr>'
                     +'</tbody>'; 
                 +'</table> '
