@@ -88,6 +88,14 @@ class View
       
         var sup = task.supplier;
 
+        var relations = task['product_relations'];
+        var totalproducts = 0;
+
+        for(var pr=0; pr < relations.length; pr++)
+        {
+            totalproducts += relations[pr]['quantity'];
+        }
+
         html += '<div class="visability ui-content ui-body-a" id="data" data-role="content" data-theme="a" role="main">'
           + '<a onclick="c.closingPopup()" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
                +'<h3 style="margin:0;margin-left:2vw; margin-top:1vh;"> Info</h3>'
@@ -103,7 +111,7 @@ class View
                             +'<td id="datum"><b class="ui-table-cell-label" style="width: 30vw;"> Datum: </b></td><td style="max-width:40vw">' + this.parseTSDate(task.order_date) + '</td>'
                         +'</tr>'
                         + '<tr>' 
-                            + '<td id="wat"><b class="ui-table-cell-label"  style="width: 30vw;"> Hoeveelheid: </b> </td><td style="max-width:40vw">'+ 'wat' + '</td>'
+                            + '<td id="wat"><b class="ui-table-cell-label"  style="width: 30vw;"> Hoeveelheid: </b> </td><td style="max-width:40vw">'+ totalproducts + '</td>'
                         +'</tr>'
                             +'<tr><td id="tijd"><b class="ui-table-cell-label"  style="width: 30vw;"> Tijd: </b></td><td style="max-width:40vw">'+ 'tijd' +'</td>'
                         +'</tr>'
