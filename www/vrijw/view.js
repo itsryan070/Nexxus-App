@@ -10,7 +10,7 @@ class View
         $(div).html("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
               + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>"
               + "</div>"
-              );
+        );
     }
 
     showTasklist(div, title, tasks)
@@ -19,6 +19,7 @@ class View
 
         /* table */
         html += "<div class='ui-resize' data-role='content' data-theme='a'>"
+              + "<h3>"+title+"</h3>"
               + "<button name='uitloggen'>Uitloggen</button>"
               + "<button onClick='c.renderOfferedTaskList()' name='offered-tasks'>Aangeboden Taken</button>"
               + "<button onClick='c.renderAcceptedTaskList()' name='accepted-tasks'>Geaccepteerde Taken</button>"
@@ -31,7 +32,7 @@ class View
               + "</tr>"
 
         /* table rows */
-        if(tasks!=0)
+        if(Array.isArray(tasks))
         {
             for(var i=0; i < tasks.length; i++) 
             {
@@ -86,7 +87,6 @@ class View
         html += "<br>";
         html += "<button onClick='c.renderAcceptedTaskList()' name='accept-task'>Accepteren</button>";
         html += "<button onClick='c.renderAcceptedTaskList()' name='weigeren-task'>Weigeren</button>";
-
 
         $(div).html(html);
     }

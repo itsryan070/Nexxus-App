@@ -5,13 +5,15 @@ class Model
         this.url        = config.api;
         this.token      = sessionStorage.getItem("token");
 
+        this.storeAllTasks();
+
         this.c          = controller;
     }
 
     /**
      * Saves tasks in session upon success
      */
-    getTasksFromServer(status)
+    requestTasks(status, item)
     {
         // get orders
         $.ajax({
@@ -24,26 +26,50 @@ class Model
             "processData": false,
             "contentType": false,
             "mimeType": "multipart/form-data",
+            "data":{"item":item},
             success: function(data)
             {
-                this.model.setTasks(JSON.parse(data));
+                if(data==undefined)
+                { 
+                    data = 0;
+                }
+                    this.model.ajaxCallTasks(true, data, item, 0)
+
             },
             error: function() {
 
             }
         });
     }
-    
-    setTasks(array)
-    {
-        sessionStorage.setItem("tasks", JSON.stringify(array));
 
-        return 0;
+    ajaxCallTasks(callback, data, item, status) 
+    {
+        if(callback) {
+            sessionStorage.setItem("offeredTasks", data);
+        } else {
+            this.requestTasks(status, item);
+
+        }
+    }
+    
+    storeAllTasks()
+    {
+        this.ajaxCallTasks(false, "offeredTasks", false,  2);
+        this.ajaxCallTasks(false, "acceptedTasks", false, 300);
+
+        return true;
     }
 
-    getTasks()
+    getSessionData(item)
     {
-        return JSON.parse(sessionStorage.getItem("tasks"));
+        var item = sessionStorage.getItem(item);
+        if(item != "undefined") 
+        {
+            return JSON.parse(item);
+        }
+        else {
+            return 0;
+        }
     }
 
     /**
@@ -67,20 +93,18 @@ class Model
 
     getOfferedTasks()
     {
-        this.getTasksFromServer(2)
-
-        var tasks = this.getTasks();
+        var tasks = this.getSessionData("offeredTasks");
 
         return tasks;
+
     }
 
     getAcceptedTasks()
     {
-        this.getTasksFromServer(300)
-
-        var tasks = this.getTasks();
+        var tasks = this.getSessionData("acceptedTasks");
 
         return tasks;
+
     }
 
 }

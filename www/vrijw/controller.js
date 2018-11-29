@@ -5,7 +5,6 @@ class Controller
         this.m = new Model(this);
         this.v = new View();
 
-        this.m.getTasksFromServer();
         this.offeredTasks = this.m.getOfferedTasks();
         this.acceptedTasks = this.m.getAcceptedTasks();
     }
