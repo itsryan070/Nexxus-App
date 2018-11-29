@@ -106,7 +106,8 @@ class Model
 
         for(var i=0; i < tasks.length; i++)
         {
-            if(tasks[i]['status']['id']!=1)
+            // Status 2 = Order ingepland
+            if(tasks[i]['status']['id']!=2)
             {
                 tasks.splice(tasks, 1);
             }
@@ -119,9 +120,10 @@ class Model
     {
         var tasks = this.getTasks();
 
+        // Status 300 = To plan and Pickup 
         for(var i=0; i < tasks.length; i++)
         {
-            if(tasks[i]['status']['id']!=9)
+            if(tasks[i]['status']['id']!=300)
             {
                 tasks.splice(tasks, 1);
             }
