@@ -3,7 +3,6 @@ class Model
     constructor(controller) 
     {
         this.url        = config.api;
-        this.getPorder  = "/purchaseorders/1?bearer=";
         this.token      = sessionStorage.getItem("token");
 
         this.c          = controller;
@@ -12,14 +11,14 @@ class Model
     /**
      * Saves tasks in session upon success
      */
-    getTasksFromServer()
+    getTasksFromServer(status)
     {
         // get orders
         $.ajax({
             "async": true,
             "crossDomain": true,
             "model": this,
-            "url": this.url + this.getPorder + this.token,
+            "url": this.url + "/purchaseorders/" + status + "?bearer=" +this.token,
             "method": "GET",
             "headers": {},
             "processData": false,
@@ -35,32 +34,6 @@ class Model
         });
     }
     
-    /**
-     * Saves tasks in session upon success
-     */
-    getAcceptedTasksFromServer()
-    {
-        // get orders
-        $.ajax({
-            "async": true,
-            "crossDomain": true,
-            "model": this,
-            "url": this.url + this.getPorder + this.token,
-            "method": "GET",
-            "headers": {},
-            "processData": false,
-            "contentType": false,
-            "mimeType": "multipart/form-data",
-            success: function(data)
-            {
-
-            },
-            error: function() {
-
-            }
-        });
-    }
-
     setTasks(array)
     {
         sessionStorage.setItem("tasks", JSON.stringify(array));
@@ -73,14 +46,6 @@ class Model
         return JSON.parse(sessionStorage.getItem("tasks"));
     }
 
-    storeTaskSession(data)
-    {
-        var result = JSON.parse(data);
-
-        return result;
-
-    }
-    
     /**
      * Returns task by ID (array) 
      */
@@ -102,35 +67,20 @@ class Model
 
     getOfferedTasks()
     {
+        this.getTasksFromServer(2)
+
         var tasks = this.getTasks();
 
-        for(var i=0; i < tasks.length; i++)
-        {
-            // Status 2 = Order ingepland
-            if(tasks[i]['status']['id']!=2)
-            {
-                tasks.splice(tasks, 1);
-            }
-        }
-        
         return tasks;
     }
 
     getAcceptedTasks()
     {
+        this.getTasksFromServer(300)
+
         var tasks = this.getTasks();
 
-        // Status 300 = Order accepted by Location 
-        for(var i=0; i < tasks.length; i++)
-        {
-            if(tasks[i]['status']['id']!=300)
-            {
-                tasks.splice(tasks, 1);
-            }
-        }
-        
         return tasks;
     }
 
-    
 }

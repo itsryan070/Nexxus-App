@@ -31,35 +31,38 @@ class View
               + "</tr>"
 
         /* table rows */
-		for(var i=0; i < tasks.length; i++) 
+        if(tasks!=0)
         {
-            // count products
-            var relations = tasks[i]['product_relations'];
-            var totalproducts = 0;
-
-            for(var pr=0; pr < relations.length; pr++)
+            for(var i=0; i < tasks.length; i++) 
             {
-                totalproducts += relations[pr]['quantity'];
-            }
+                // count products
+                var relations = tasks[i]['product_relations'];
+                var totalproducts = 0;
 
-            var location = tasks[i]['location']['name'];
+                for(var pr=0; pr < relations.length; pr++)
+                {
+                    totalproducts += relations[pr]['quantity'];
+                }
 
-			html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
-                        + "data-priority='1' id='title"+i+"'>";
+                var location = tasks[i]['location']['name'];
 
-                html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
+                html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
+                            + "data-priority='1' id='title"+i+"'>";
 
-            if(totalproducts == 1) 
-            {
-                html += "<td>" + totalproducts + " product</td>";
-            } else {
-                html += "<td>" + totalproducts + " producten</td>";
-            }
+                    html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
 
-            html +=   "<td>" + location + "</td>"; 
+                if(totalproducts == 1) 
+                {
+                    html += "<td>" + totalproducts + " product</td>";
+                } else {
+                    html += "<td>" + totalproducts + " producten</td>";
+                }
 
-            html +=  "</tr>";
-		}	
+                html +=   "<td>" + location + "</td>"; 
+
+                html +=  "</tr>";
+            }	
+        } else { html += "</tbody>Geen taken gevonden"; }
         html += "</tbody>";
 
         $(div).html(html);
@@ -70,7 +73,11 @@ class View
         var html = "";
         console.log(task);
         var sup = task.supplier;
-        
+
+        // in case not set, show n/a instead of undefined
+        sup.city = sup.city || "n/a";
+        sup.street = sup.street || "n/a";
+
         html += "Stad: "   + sup.city;
         html += "Straat: " + sup.street;
         html += "Datum: "  + this.parseTSDate(task.order_date);

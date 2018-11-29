@@ -19,7 +19,7 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.offeredTasks);
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.m.getOfferedTasks());
     }
     
     /**
@@ -31,7 +31,7 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.acceptedTasks);
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
     }
 
     renderPopupTask(id)
