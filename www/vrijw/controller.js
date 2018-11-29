@@ -16,6 +16,7 @@ class Controller
     renderOfferedTaskList()
     {
         this.v.showHeader("#header");
+        this.v.showFooter("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
@@ -40,5 +41,8 @@ class Controller
 
         this.v.showPopupTask("#order-current", task);
     }
-
+    closingPopup(){
+        this.v.closePopup();
+        
+    }
 }

@@ -2,7 +2,7 @@ class View
 {
     constructor() 
     {
-
+      
     }
 
     showHeader(div)
@@ -12,16 +12,30 @@ class View
               + "</div>"
               );
     }
+    showFooter(div){
+         $(div).html("<a id='btn-submit'id='btn-submit' class='ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>"
+            + '<a onClick="c.renderAcceptedTaskList()" name="accepted-tasks"; class="ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all" data-role="button" role="button"><img src="include/css/images/icons-png/bullets-white.png"> Geaccepteerde Taken</a>');
+    }
 
     showTasklist(div, title, tasks)
     {
         var html = "";
 
+        /* body */
+        html  += "<div class='ui-resize ui-content' data-role='content' data-theme='a'>"
+                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
+
         /* table */
-        html += "<div class='ui-resize' data-role='content' data-theme='a'>"
-              + "<button name='uitloggen'>Uitloggen</button>"
-              + "<button onClick='c.renderOfferedTaskList()' name='offered-tasks'>Aangeboden Taken</button>"
-              + "<button onClick='c.renderAcceptedTaskList()' name='accepted-tasks'>Geaccepteerde Taken</button>"
+        html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>";
+            + "<tbody id='title'><tr>";
+            +   "<td><b>Datum</b></td>";
+            +   "<td><b>Hoeveelheid</b></td>";
+            +   "<td><b>Stad</b></td>";
+            + "</tr>";
+ 
+
+        /* table */
+        html += "<div  data-role='content' data-theme='a'>"
               + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
               + "<tbody id='title'>"
               + "<tr>"
@@ -53,7 +67,7 @@ class View
             {
                 html += "<td>" + totalproducts + " product</td>";
             } else {
-                html += "<td>" + totalproducts + " producten</td>";
+                html += "<td>" + totalproducts + " product</td>";
             }
 
             html +=   "<td>" + location + "</td>"; 
@@ -64,26 +78,56 @@ class View
 
         $(div).html(html);
     }
-
+    
     showPopupTask(div, task)
     {
         var html = "";
-        console.log(task);
+      
         var sup = task.supplier;
-        
-        html += "Stad: "   + sup.city;
-        html += "Straat: " + sup.street;
-        html += "Datum: "  + this.parseTSDate(task.order_date);
 
-        /* buttons */
-        html += "<br>";
-        html += "<button onClick='c.renderAcceptedTaskList()' name='accept-task'>Accepteren</button>";
-        html += "<button onClick='c.renderAcceptedTaskList()' name='weigeren-task'>Weigeren</button>";
+        html += '<div class="visability ui-content ui-body-a" id="data" data-role="content" data-theme="a" role="main">'
+          + '<a onclick="c.closingPopup()" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
+               +'<h3 style="margin:0;margin-left:2vw; margin-top:1vh;"> Info</h3>'
+               +' <table id="info" data-role="table" class="ui-responsive table-stroke ui-table ui-table-reflow">'
+                    + '<tbody >'
+                        + '<tr>'  
+                            + '<td id="stad" ><b class="ui-table-cell-label" style="width: 30vw;"> Stad: </b></td><td style="max-width:40vw">' + sup.city + '</td>'
+                        + '</tr>'
+                        + '<tr>' 
+                            +' <td id="straat"><b class="ui-table-cell-label"  style="width: 20vw;"> Straat: </b></td><td style="width:50vw">' + sup.street + '</td>'
+                        +'</tr>'
+                        +'<tr> '
+                            +'<td id="datum"><b class="ui-table-cell-label" style="width: 30vw;"> Datum: </b></td><td style="max-width:40vw">' + this.parseTSDate(task.order_date) + '</td>'
+                        +'</tr>'
+                        + '<tr>' 
+                            + '<td id="wat"><b class="ui-table-cell-label"  style="width: 30vw;"> Hoeveelheid: </b> </td><td style="max-width:40vw">'+ 'wat' + '</td>'
+                        +'</tr>'
+                            +'<tr><td id="tijd"><b class="ui-table-cell-label"  style="width: 30vw;"> Tijd: </b></td><td style="max-width:40vw">'+ 'tijd' +'</td>'
+                        +'</tr>'
+                        +'<tr>'
+                            +'<td id="contact"><b class="ui-table-cell-label"  style="width: 30vw;"> Contact: </b></td><td style="max-width:40vw">'+ 'contact' +' </td>'
+                        +'</tr>'
+                        +'<tr>'
+                            +'<td id="tel"><b class="ui-table-cell-label" style="width: 30vw;"> Telefoon: </b></td><td style="max-width:40vw">'+ 'tel' +' </td>'
+                        + '</tr>'
+                    +'</tbody>'; 
+                +'</table> '
+        +'</div>';
+ 
+        var keuze = '';
+        keuze += "<br><div class='ui-center'>"
+        keuze += '<a onClick="c.renderAcceptedTaskList()" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-options ui-rood">Weigeren  <img src="include/css/images/icons-png/delete-white.png"></a>'
+        keuze += '<a  onClick="c.renderAcceptedTaskList()" id="btn-submit" class="ui-btn ui-options ui-green">Accepteren <img src="include/css/images/icons-png/check-white.png"></a>';
 
 
-        $(div).html(html);
+        $( ".visability").remove();
+        $(".ui-resize").after(html);
+        $("#info").after(keuze);
+        this.switch = true;
     }
-    
+    closePopup(){
+        $( '.visability' ).remove();
+    }
     parseTSDate(ts)
     {
         return ts.substring(0,ts.indexOf('T'));
