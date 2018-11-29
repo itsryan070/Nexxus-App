@@ -2,7 +2,7 @@ class View
 {
     constructor() 
     {
-
+      
     }
 
     showHeader(div)
@@ -16,7 +16,7 @@ class View
         var html = "";
 
         /* body */
-        html  += "<div class='ui-resize' data-role='content' data-theme='a'>"
+        html  += "<div class='ui-resize ui-content' data-role='content' data-theme='a'>"
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
 
         /* table */
@@ -64,17 +64,50 @@ class View
     {
     
     }
-
+    
     showPopupTask(div, task)
     {
-        var html = "";
-        console.log(task);
+        var text = "";
+      
         var sup = task.supplier;
-        
-        html += "Stad: "   + sup.city;
-        html += "Straat: " + sup.street;
-        html += "Datum: "  + sup.date
+        console.log(sup.date);
 
-        $(div).html(html);
+        text = '<div class="visability ui-content ui-body-a" id="data" data-role="content" data-theme="a" role="main">'
+          + '<a onclick="c.closingPopup()" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
+               +'<h3 style="margin:0;margin-left:2vw; margin-top:1vh;"> Info</h3>'
+               +' <table data-role="table" class="ui-responsive table-stroke ui-table ui-table-reflow">'
+                    + '<tbody id="info">'
+                        + '<tr>'  
+                            + '<td id="stad" ><b class="ui-table-cell-label" style="width: 30vw;"> Stad: </b></td><td style="max-width:40vw">' + sup.city + '</td>'
+                        + '</tr>'
+                        + '<tr>' 
+                            +' <td id="straat"><b class="ui-table-cell-label"  style="width: 20vw;"> Straat: </b></td><td style="width:50vw">' + sup.street + '</td>'
+                        +'</tr>'
+                        +'<tr> '
+                            +'<td id="datum"><b class="ui-table-cell-label" style="width: 30vw;"> Datum: </b></td><td style="max-width:40vw">' + sup.date + '</td>'
+                        +'</tr>'
+                        + '<tr>' 
+                            + '<td id="wat"><b class="ui-table-cell-label"  style="width: 30vw;"> Hoeveelheid: </b> </td><td style="max-width:40vw">'+ 'wat' + '</td>'
+                        +'</tr>'
+                            +'<tr><td id="tijd"><b class="ui-table-cell-label"  style="width: 30vw;"> Tijd: </b></td><td style="max-width:40vw">'+ 'tijd' +'</td>'
+                        +'</tr>'
+                        +'<tr>'
+                            +'<td id="contact"><b class="ui-table-cell-label"  style="width: 30vw;"> Contact: </b></td><td style="max-width:40vw">'+ 'contact' +' </td>'
+                        +'</tr>'
+                        +'<tr>'
+                            +'<td id="tel"><b class="ui-table-cell-label" style="width: 30vw;"> Telefoon: </b></td><td style="max-width:40vw">'+ 'tel' +' </td>'
+                        + ' </tr>'
+                    +'</tbody>'; 
+                +'</table> '
+        +'</div>';
+
+        $( ".visability").remove();
+        $(".ui-resize").after(text);
+        $('.ui-resize').animate({height:'30vh'});
+        this.switch = true;
+    }
+    closePopup(){
+        $( '.visability' ).remove();
+        $('.ui-resize').animate({height:'70vh'});
     }
 }

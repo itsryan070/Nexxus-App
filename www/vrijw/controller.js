@@ -28,5 +28,7 @@ class Controller
 
         this.v.showPopupTask("#order-current", task);
     }
-
+    closingPopup(){
+        this.v.closePopup();
+    }
 }
