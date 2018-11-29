@@ -10,9 +10,11 @@ class View
         $(div).html("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
               + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>"
               + "</div>"
-              );
+        );
     }
-    showFooter(div){
+    
+    showFooter(div)
+    {
          $(div).html("<a id='btn-submit'id='btn-submit' class='ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>"
             + '<a onClick="c.renderAcceptedTaskList()" name="accepted-tasks"; class="ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all" data-role="button" role="button"><img src="include/css/images/icons-png/bullets-white.png"> Geaccepteerde Taken</a>');
     }
@@ -45,35 +47,36 @@ class View
               + "</tr>"
 
         /* table rows */
-		for(var i=0; i < tasks.length; i++) 
+        if(Array.isArray(tasks))
         {
-            // count products
-            var relations = tasks[i]['product_relations'];
-            var totalproducts = 0;
-
-            for(var pr=0; pr < relations.length; pr++)
+            for(var i=0; i < tasks.length; i++) 
             {
-                totalproducts += relations[pr]['quantity'];
-            }
+                // count products
+                var relations = tasks[i]['product_relations'];
+                var totalproducts = 0;
 
-            var location = tasks[i]['location']['name'];
+                for(var pr=0; pr < relations.length; pr++)
+                {
+                    totalproducts += relations[pr]['quantity'];
+                }
 
-			html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
-                        + "data-priority='1' id='title"+i+"'>";
+                var location = tasks[i]['location']['name'];
 
-                html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
+                html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
+                            + "data-priority='1' id='title"+i+"'>";
 
-            if(totalproducts == 1) 
-            {
-                html += "<td>" + totalproducts + " product</td>";
-            } else {
-                html += "<td>" + totalproducts + " product</td>";
-            }
+                if(totalproducts == 1) 
+                {
+                    html += "<td>" + totalproducts + " product</td>";
+                } else {
+                    html += "<td>" + totalproducts + " producten</td>";
+                }
 
-            html +=   "<td>" + location + "</td>"; 
+                html +=   "<td>" + location + "</td>"; 
 
-            html +=  "</tr>";
-		}	
+                html +=  "</tr>";
+            }	
+        } else { html += "</tbody>Geen taken gevonden"; }
         html += "</tbody>";
 
         $(div).html(html);
@@ -117,17 +120,20 @@ class View
         var keuze = '';
         keuze += "<br><div class='ui-center'>"
         keuze += '<a onClick="c.renderAcceptedTaskList()" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-options ui-rood">Weigeren  <img src="include/css/images/icons-png/delete-white.png"></a>'
-        keuze += '<a  onClick="c.renderAcceptedTaskList()" id="btn-submit" class="ui-btn ui-options ui-green">Accepteren <img src="include/css/images/icons-png/check-white.png"></a>';
+        keuze += '<a onClick="c.renderAcceptedTaskList()" id="btn-submit" class="ui-btn ui-options ui-green">Accepteren <img src="include/css/images/icons-png/check-white.png"></a>';
 
 
-        $( ".visability").remove();
+        $(".visability").remove();
         $(".ui-resize").after(html);
         $("#info").after(keuze);
         this.switch = true;
     }
-    closePopup(){
+  
+    closePopup()
+    {
         $( '.visability' ).remove();
     }
+    
     parseTSDate(ts)
     {
         return ts.substring(0,ts.indexOf('T'));

@@ -5,7 +5,6 @@ class Controller
         this.m = new Model(this);
         this.v = new View();
 
-        this.m.getTasksFromServer();
         this.offeredTasks = this.m.getOfferedTasks();
         this.acceptedTasks = this.m.getAcceptedTasks();
     }
@@ -20,7 +19,7 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.offeredTasks);
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.m.getOfferedTasks());
     }
     
     /**
@@ -32,7 +31,7 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.acceptedTasks);
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
     }
 
     renderPopupTask(id)
@@ -41,8 +40,9 @@ class Controller
 
         this.v.showPopupTask("#order-current", task);
     }
-    closingPopup(){
-        this.v.closePopup();
-        
+  
+    closingPopup()
+    {
+        this.v.closePopup();   
     }
 }
