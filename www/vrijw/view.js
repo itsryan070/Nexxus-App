@@ -22,7 +22,6 @@ class View
               + "<button name='uitloggen'>Uitloggen</button>"
               + "<button onClick='c.renderOfferedTaskList()' name='offered-tasks'>Aangeboden Taken</button>"
               + "<button onClick='c.renderAcceptedTaskList()' name='accepted-tasks'>Geaccepteerde Taken</button>"
-              + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>"+title+"</h3>"
               + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
               + "<tbody id='title'>"
               + "<tr>"
@@ -48,7 +47,7 @@ class View
 			html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
                         + "data-priority='1' id='title"+i+"'>";
 
-                html += "<td>" + this.parseDateFromTimestamp(tasks[i]['order_date']) + "</td>";
+                html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
 
             if(totalproducts == 1) 
             {
@@ -74,17 +73,23 @@ class View
         
         html += "Stad: "   + sup.city;
         html += "Straat: " + sup.street;
-        html += "Datum: "  + sup.date
+        html += "Datum: "  + this.parseTSDate(task.order_date);
+
+        /* buttons */
+        html += "<br>";
+        html += "<button onClick='c.renderAcceptedTaskList()' name='accept-task'>Accepteren</button>";
+        html += "<button onClick='c.renderAcceptedTaskList()' name='weigeren-task'>Weigeren</button>";
+
 
         $(div).html(html);
     }
     
-    parseDateFromTimestamp(ts)
+    parseTSDate(ts)
     {
         return ts.substring(0,ts.indexOf('T'));
     }
 
-    parseTimeFromTimestamp(ts)
+    parseTSTime(ts)
     {
         return ts.substring(ts.indexOf('T'));
     }
