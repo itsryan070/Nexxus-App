@@ -120,7 +120,7 @@ class Model
     {
         var tasks = this.getTasks();
 
-        // Status 300 = To plan and Pickup 
+        // Status 300 = Order accepted by Location 
         for(var i=0; i < tasks.length; i++)
         {
             if(tasks[i]['status']['id']!=300)

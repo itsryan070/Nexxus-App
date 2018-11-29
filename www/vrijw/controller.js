@@ -41,4 +41,9 @@ class Controller
         this.v.showPopupTask("#order-current", task);
     }
 
+    acceptTask(id)
+    {
+
+    }
+
 }
