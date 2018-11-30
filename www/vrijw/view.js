@@ -95,6 +95,12 @@ class View
         var sup = task.supplier;
         console.log(sup);
 
+        // undo nulls
+        sup.city = this.checkNullValue(sup.city, "n/a");
+        sup.street = this.checkNullValue(sup.street, "n/a");
+        sup.name = this.checkNullValue(sup.name, "n/a");
+        sup.phone = this.checkNullValue(sup.phone, "n/a");
+
         var relations = task['product_relations'];
         var totalproducts = 0;
 
@@ -157,5 +163,16 @@ class View
     parseTSTime(ts)
     {
         return ts.substring(ts.indexOf('T')+1,ts.indexOf('+')-3);
+    }
+
+    checkNullValue(value, replacement)
+    {
+        if(typeof(value) == 'undefined')
+        {
+            console.log("Null value replaced");
+            value = replacement
+        }
+
+        return value
     }
 }
