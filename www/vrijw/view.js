@@ -31,7 +31,7 @@ class View
 
         /* body */
         html  += "<div class='ui-resize ui-content' data-role='content' data-theme='a'>"
-                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Aangeboden taken </h3>";
+                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
 
         /* table */
         html += "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>";
