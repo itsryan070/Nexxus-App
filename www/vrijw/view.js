@@ -169,7 +169,6 @@ class View
     {
         if(typeof(value) == 'undefined')
         {
-            console.log("Null value replaced");
             value = replacement
         }
 
