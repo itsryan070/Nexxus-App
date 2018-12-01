@@ -33,8 +33,6 @@ class Model
                 { 
                     data = 0;
                 }
-                console.log(status);
-                console.log(data);
                 this.model.loadTasks(true, data, item, 0)
 
             },
