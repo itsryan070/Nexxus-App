@@ -141,8 +141,7 @@ class View
         var keuze = "";
         keuze += "<br><div class='ui-center'>";
         keuze += "<a onClick='c.renderAcceptedTaskList()' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
-        keuze += "<a onClick='c.renderAcceptedTaskList()' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
-
+        keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
 
         $(".visability").remove();
         $(".ui-resize").after(html);

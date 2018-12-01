@@ -33,7 +33,9 @@ class Model
                 { 
                     data = 0;
                 }
-                    this.model.loadTasks(true, data, item, 0)
+                console.log(status);
+                console.log(data);
+                this.model.loadTasks(true, data, item, 0)
 
             },
             error: function() {
@@ -42,30 +44,54 @@ class Model
         });
     }
 
+
     loadTasks(callback, data, item, status) 
     {
         if(callback) {
-            sessionStorage.setItem("offeredTasks", data);
+            sessionStorage.setItem(item, data);
         } else {
             this.requestTasks(status, item);
-
         }
     }
     
     storeAllTasks()
     {
-        this.loadTasks(false, "offeredTasks", false,  2);
-        this.loadTasks(false, "acceptedTasks", false, 300);
+        this.loadTasks(false, false, "offeredTasks",  2);
+        this.loadTasks(false, false, "acceptedTasks", 300);
 
         var allTasks = [];
         allTasks = allTasks.concat(
             this.getSessionData("offeredTasks"),
-            this.getSessionData("offeredTasks")
+            this.getSessionData("acceptedTasks")
         );
 
         sessionStorage.setItem("allTasks", JSON.stringify(allTasks));
 
         return true;
+    }
+
+    sendAcceptTask(id)
+    {
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "model": this,
+            "url": this.url + "/purchaseorderstatus?bearer=" +this.token
+                    + "&purchaseOrderId=" + id 
+                    + "&statusId=300",
+            "method": "PUT",
+            "headers": {},
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            success: function(data)
+            {
+                this.model.c.postAcceptedTask(0, true);
+            },
+            error: function() {
+
+            }
+        });
     }
 
     getSessionData(item)
@@ -79,6 +105,7 @@ class Model
             return 0;
         }
     }
+
 
     /**
      * Returns task by ID (array) 

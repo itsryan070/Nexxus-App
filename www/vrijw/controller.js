@@ -35,6 +35,18 @@ class Controller
         this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
     }
 
+    postAcceptedTask(id, callback)
+    {
+        if(!callback)
+        {
+            this.m.sendAcceptTask(id)
+        } else 
+        {
+            this.renderAcceptedTaskList();
+        }
+
+    }
+
     renderPopupTask(id)
     {
         var task = this.m.getTaskInfo(id);
