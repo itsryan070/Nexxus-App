@@ -52,7 +52,7 @@ class LoginModel
 
     logoutUser()
     {
-        sessionStorage.removeItem("token");
+        sessionStorage.clear();
         window.location.reload();
     }
 }

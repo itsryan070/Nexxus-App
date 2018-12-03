@@ -47,6 +47,7 @@ class VrijModel
     {
         if(callback) {
             sessionStorage.setItem(item, data);
+            this.storeAllTasks();
         } else {
             this.requestTasks(status, item);
         }
