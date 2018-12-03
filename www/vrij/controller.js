@@ -53,9 +53,25 @@ class VrijController
 
         this.v.showPopupTask("#order-current", task);
     }
-  
-    closingPopup()
+
+    closingPopup() 
     {
-        this.v.closePopup();   
+        this.v.closePopup();
     }
+
+    renderRefuse()
+    {
+        this.v.renderRefuse()
+    }
+
+    renderCancel()
+    {
+
+    }
+
+    renderAccept()
+    {
+        this.renderAcceptedTaskList();
+    }
+
 }
