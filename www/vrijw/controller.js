@@ -56,13 +56,17 @@ class Controller
     closingPopup(){
         this.v.closePopup();
     }
-    
+
     renderRefuse(){
-        this.v.showPopupRe()
+        this.v.renderRefuse()
+    }
+
+    renderCancel(){
+
     }
 
     renderAccept(){
-        this. renderAcceptedTaskList();
+        this.renderAcceptedTaskList();
     }
 
 }
