@@ -19,7 +19,8 @@ class VrijController
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.m.getOfferedTasks());
+        var tasks = this.m.getOfferedTasks()
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", tasks);
     }
     
     /**
@@ -32,7 +33,8 @@ class VrijController
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
+        var tasks = this.m.getAcceptedTasks();
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
     }
 
     postAcceptedTask(id, callback)
@@ -54,6 +56,12 @@ class VrijController
         this.v.showPopupTask("#order-current", task);
     }
 
+    sendToFinalForm(id)
+    {
+        sessionStorage.setItem("finalitem", id);
+        window.open('vrij_finalize.html', '_self');
+    }
+  
     closingPopup() 
     {
         this.v.closePopup();

@@ -1,6 +1,6 @@
 class VrijModel
 {
-    constructor(controller) 
+    constructor(controller, config) 
     {
         this.url        = userConfig.api;
         this.token      = sessionStorage.getItem("token");
@@ -47,6 +47,7 @@ class VrijModel
     {
         if(callback) {
             sessionStorage.setItem(item, data);
+            this.storeAllTasks();
         } else {
             this.requestTasks(status, item);
         }
