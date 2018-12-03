@@ -8,6 +8,8 @@ class FinalizeView
     showFinalForm(div, id)
     {
         var html = "";
-        $(div).html("Final #" + id);
+        html += "Final #" + id;
+            
+        $(div).html(html);
     }
 }
