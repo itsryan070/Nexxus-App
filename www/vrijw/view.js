@@ -85,7 +85,7 @@ class View
       
         var sup = task.supplier;
 
-        html += '<div class="visability ui-content ui-body-a" id="data" data-role="content" data-theme="a" role="main">'
+        html += '<div class="visibility ui-content ui-body-a" id="data" data-role="content" data-theme="a" role="main">'
           + '<a onclick="c.closingPopup()" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
                +'<h3 style="margin:0;margin-left:2vw; margin-top:1vh;"> Info</h3>'
                +' <table id="info" data-role="table" class="ui-responsive table-stroke ui-table ui-table-reflow">'
@@ -116,17 +116,69 @@ class View
  
         var keuze = '';
         keuze += "<br><div class='ui-center'>"
-        keuze += '<a onClick="c.renderAcceptedTaskList()" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-options ui-rood">Weigeren  <img src="include/css/images/icons-png/delete-white.png"></a>'
-        keuze += '<a  onClick="c.renderAcceptedTaskList()" id="btn-submit" class="ui-btn ui-options ui-green">Accepteren <img src="include/css/images/icons-png/check-white.png"></a>';
+        keuze += '<a onClick="c.renderRefuse()" href="#reden" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-options ui-rood">Weigeren  <img src="include/css/images/icons-png/delete-white.png"></a>'
+        keuze += '<a onClick="c.renderAccept()" id="btn-submit" class="ui-btn ui-options ui-green">Accepteren <img src="include/css/images/icons-png/check-white.png"></a>';
+        
+        var popup = "";
 
+        popup += '<div class="ui-popup-screen ui-overlay-inherit in" id="reden-screen"></div> '
+                + '<div data-role="popup" id="reden" data-dismissible="false" style="max-width:400px; min-width: 300px">'
+                + '<div role="main" class="ui-content">'
+                + '<a onclick="window.history.back();" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
+                + '<br>'
+                + '<h3 >Reden weigering</h3>'
+                + '<form>'
+                    + '<label class="ui-radio-pop">Ziek'
+                        + '<input class=" mc-text-center" type="radio"name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked"> '
+                    + '</label>'
+                    + '<label class="ui-radio-pop">'
+                        + '<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"> Tijdgebrek'
+                    + '</label>'
+                    + '<label class="ui-radio-pop mc-text-center">'
+                        + '<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"> Overig'
+                    + '</label>'
+                + '</form>'
+                + '<div onclick="controller.Geaccepteerd()" class="ui-green mc-text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" data-disabled="false">Bevestig</a></div>'
+            +'</div>'
+        + '</div>';
 
-        $( ".visability").remove();
+        $( ".visibility").remove();
         $(".ui-resize").after(html);
         $("#info").after(keuze);
         this.switch = true;
     }
+    showPopupRe(){
+         var popup = "";
+
+        popup += '<div class="ui-popup-screen ui-overlay-inherit in" id="reden-screen"></div> '
+                + '<div class="ui-popup-container pop in ui-popup-active ui-body-inherit" id="reden-popup" style="max-width: 330px; top: 171px; left: 29px;">'
+                    + '<div data-role="popup" id="reden" data-dismissible="false" style="max-width:400px; min-width: 300px">'
+                    + '<div role="main" class="ui-content">'
+                    + '<a onclick="window.history.back();" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
+                    + '<br>'
+                    + '<h3 >Reden weigering</h3>'
+                    + '<form>'
+                        +' <div class="ui-radio">'
+                        + '<label class=" ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-on">'
+                            + '<input class=" mc-text-center" type="radio"name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked"> Ziek'
+                        + '</label>'
+                        + '<label class=" ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-on">>'
+                            + '<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"> Tijdgebrek'
+                        + '</label>'
+                        + '<label class=" ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-on">>'
+                            + '<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"> Overig'
+                        + '</label>'
+                    + '</form>'
+                    + '<div onclick="controller.Geaccepteerd()" class="ui-green mc-text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" data-disabled="false">Bevestig</a></div>'
+                    +'</div>'
+                 + '</div>'
+            +'</div>'
+        + '</div>';
+
+           $(".ui-center").after(popup);
+    }
     closePopup(){
-        $( '.visability' ).remove();
+        $( '.visibility' ).remove();
     }
     parseTSDate(ts)
     {
