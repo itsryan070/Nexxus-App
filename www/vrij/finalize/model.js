@@ -4,4 +4,9 @@ class FinalizeModel
     {
 
     }
+
+    getFinalItem()
+    {
+        return sessionStorage.getItem("finalitem");
+    }
 }

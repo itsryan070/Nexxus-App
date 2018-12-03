@@ -4,4 +4,9 @@ class FinalizeView
     {
 
     }
+
+    showFinalForm(div, id)
+    {
+        $(div).html("Final #" + id);
+    }
 }

@@ -53,6 +53,12 @@ class VrijController
 
         this.v.showPopupTask("#order-current", task);
     }
+
+    sendToFinalForm(id)
+    {
+        sessionStorage.setItem("finalitem", id);
+        window.open('vrij_finalize.html', '_self');
+    }
   
     closingPopup()
     {
