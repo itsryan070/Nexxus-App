@@ -1,13 +1,17 @@
 config = new Config();
 
-c = new LoginController();
+c = new LoginController(this);
+
+if(c.checkForToken()) 
+{
+    window.open(c.m.getEnvironment(), '_self');
+}
+
 c.renderLoginForm();
 
-// handle form
-console.log("Checking for form..");
-$("#loginform").submit(function (e) {
-    e.preventDefault();
+$("#loginform").submit(function (e) 
+{
+    e.preventDefault(); // prevents normal form behavior
 
-    c.handleRequest();
-    console.log("Form has been submit");
+    c.handleLogin();
 });

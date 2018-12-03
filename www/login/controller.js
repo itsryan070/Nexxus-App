@@ -2,8 +2,29 @@ class LoginController
 {
     constructor() 
     {
-        this.m = new LoginModel();
+        this.m = new LoginModel(this);
         this.v = new LoginView();
+    }
+
+    // redirects if token was not found
+    checkForToken()
+    {
+        var token = this.m.getLoginToken();
+
+        if(token)
+        {
+            console.log("Token set!");
+            return true
+        }
+        else {
+            console.log("Token not set!");
+            return false
+        }
+    }
+
+    redirectToLogin()
+    {
+        window.open('login.html', '_self');
     }
 
     renderLoginForm()
@@ -21,18 +42,18 @@ class LoginController
         return form;
     }
 
-    // Handles request, stores token in session
-    handleRequest()
+    handleLogin()
     {
         if(typeof this.getCredentials() !== 'undefined') {
             var form = this.getCredentials();
         }
 
-        console.log("handle request");
-        console.log("user:"+form.user);
-        console.log("pass:"+form.pass);
+        this.m.storeLoginToken(form.user, form.pass);
+    }
 
-        this.m.getLoginToken(form.user, form.pass);
+    handleLogout()
+    {
+        this.m.logoutUser();
     }
 
 }
