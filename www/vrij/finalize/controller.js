@@ -8,6 +8,8 @@ class FinalizeController
 
     renderFinalForm()
     {
+        indexc.v.showHeader("#header");
+
         var id = this.m.getFinalItem();
         this.v.showFinalForm("#content", id);
     }
