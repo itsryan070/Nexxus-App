@@ -1,4 +1,4 @@
 config = new Config();
-c = new Controller();
+c = new VrijController();
 
 c.renderOfferedTaskList();

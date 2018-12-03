@@ -1,4 +1,4 @@
-class Controller
+class VrijController
 {
     constructor() 
     {

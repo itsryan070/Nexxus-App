@@ -1,4 +1,4 @@
-class View 
+class VrijView 
 {
     constructor() 
     {

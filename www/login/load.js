@@ -1,6 +1,6 @@
 config = new Config();
 
-c = new Controller();
+c = new LoginController();
 c.renderLoginForm();
 
 // handle form

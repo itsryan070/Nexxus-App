@@ -1,4 +1,4 @@
-class Controller
+class IndexController
 {
     constructor() 
     {
