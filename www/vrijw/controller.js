@@ -56,12 +56,7 @@ class Controller
     closingPopup(){
         this.v.closePopup();
     }
-  
-    closingPopup()
-    {
-        this.v.closePopup();   
-    }
-
+    
     renderRefuse(){
         this.v.showPopupRe()
     }
