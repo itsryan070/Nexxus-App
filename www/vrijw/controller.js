@@ -15,7 +15,7 @@ class Controller
     renderOfferedTaskList()
     {
         this.v.showHeader("#header");
-        this.v.showFooter("#footer");
+        this.v.showFooterOffered("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
@@ -28,10 +28,23 @@ class Controller
     renderAcceptedTaskList()
     {
         this.v.showHeader("#header");
+        this.v.showFooterAccepted("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
         this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
+    }
+
+    postAcceptedTask(id, callback)
+    {
+        if(!callback)
+        {
+            this.m.sendAcceptTask(id)
+        } else 
+        {
+            this.renderAcceptedTaskList();
+        }
+
     }
 
     renderPopupTask(id)
