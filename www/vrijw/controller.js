@@ -2,8 +2,8 @@ class VrijController
 {
     constructor() 
     {
-        this.m = new Model(this);
-        this.v = new View();
+        this.m = new VrijModel(this);
+        this.v = new VrijView();
 
         this.offeredTasks = this.m.getOfferedTasks();
         this.acceptedTasks = this.m.getAcceptedTasks();

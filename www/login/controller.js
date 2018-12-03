@@ -2,8 +2,8 @@ class LoginController
 {
     constructor() 
     {
-        this.m = new Model();
-        this.v = new View();
+        this.m = new LoginModel();
+        this.v = new LoginView();
     }
 
     renderLoginForm()

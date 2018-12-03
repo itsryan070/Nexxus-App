@@ -2,8 +2,8 @@ class IndexController
 {
     constructor() 
     {
-        this.m = new Model();
-        this.v = new View();
+        this.m = new IndexModel();
+        this.v = new IndexView();
     }
     
     redirectLogin()
