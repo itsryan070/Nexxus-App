@@ -201,7 +201,6 @@ class View
         $("#footer").after(popup);
 
     }
-
     closePopup()
     {
         $( ".visability" ).remove();
