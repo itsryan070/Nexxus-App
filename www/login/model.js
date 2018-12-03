@@ -25,7 +25,7 @@ class LoginModel
             success: function(data){
                 let result = JSON.parse(data);
                 sessionStorage.setItem("token", result.token);
-                window.open('vrijw.html', '_self');
+                window.open('vrij.html', '_self');
             },
             error: function() {
 
