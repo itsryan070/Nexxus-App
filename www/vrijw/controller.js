@@ -5,7 +5,6 @@ class Controller
         this.m = new Model(this);
         this.v = new View();
 
-        this.m.getTasksFromServer();
         this.offeredTasks = this.m.getOfferedTasks();
         this.acceptedTasks = this.m.getAcceptedTasks();
     }
@@ -16,11 +15,11 @@ class Controller
     renderOfferedTaskList()
     {
         this.v.showHeader("#header");
-        this.v.showFooter("#footer");
+        this.v.showFooterOffered("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.offeredTasks);
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.m.getOfferedTasks());
     }
     
     /**
@@ -29,10 +28,23 @@ class Controller
     renderAcceptedTaskList()
     {
         this.v.showHeader("#header");
+        this.v.showFooterAccepted("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.acceptedTasks);
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
+    }
+
+    postAcceptedTask(id, callback)
+    {
+        if(!callback)
+        {
+            this.m.sendAcceptTask(id)
+        } else 
+        {
+            this.renderAcceptedTaskList();
+        }
+
     }
 
     renderPopupTask(id)
@@ -41,8 +53,9 @@ class Controller
 
         this.v.showPopupTask("#order-current", task);
     }
-    closingPopup(){
-        this.v.closePopup();
-        
+  
+    closingPopup()
+    {
+        this.v.closePopup();   
     }
 }
