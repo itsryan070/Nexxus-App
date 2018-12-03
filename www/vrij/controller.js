@@ -60,8 +60,24 @@ class VrijController
         window.open('vrij_finalize.html', '_self');
     }
   
-    closingPopup()
+    closingPopup() 
     {
-        this.v.closePopup();   
+        this.v.closePopup();
     }
+
+    renderRefuse()
+    {
+        this.v.renderRefuse()
+    }
+
+    renderCancel()
+    {
+
+    }
+
+    renderAccept()
+    {
+        this.renderAcceptedTaskList();
+    }
+
 }
