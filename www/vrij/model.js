@@ -2,7 +2,7 @@ class VrijModel
 {
     constructor(controller) 
     {
-        this.url        = config.api;
+        this.url        = userConfig.api;
         this.token      = sessionStorage.getItem("token");
 
         this.storeAllTasks();

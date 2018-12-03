@@ -1,4 +1,4 @@
-config = new Config();
+userConfig = new UserConfig();
 
 loginc = new LoginController();
 
