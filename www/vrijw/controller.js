@@ -53,19 +53,24 @@ class Controller
 
         this.v.showPopupTask("#order-current", task);
     }
-    closingPopup(){
+
+    closingPopup() 
+    {
         this.v.closePopup();
     }
 
-    renderRefuse(){
+    renderRefuse()
+    {
         this.v.renderRefuse()
     }
 
-    renderCancel(){
+    renderCancel()
+    {
 
     }
 
-    renderAccept(){
+    renderAccept()
+    {
         this.renderAcceptedTaskList();
     }
 

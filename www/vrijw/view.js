@@ -165,7 +165,9 @@ class View
         $("#info").after(keuze);
         this.switch = true;
     }
-    renderRefuse(){
+
+    renderRefuse()
+    {
         var popup = "";
 
         popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
@@ -202,6 +204,7 @@ class View
         $("#footer").after(popup);
 
     }
+
     closePopup()
     {
         $( ".visability" ).remove();
