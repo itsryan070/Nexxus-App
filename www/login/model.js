@@ -1,12 +1,16 @@
-class Model
+class LoginModel
 {
-    constructor() 
+    constructor(controller) 
     {
         this.url = "http://copiatek.com/application/api";
         this.login = "/login_check";
+
+        this.env = "vrij.html";
+
+        this.c = controller;
     }
 
-    getLoginToken(user, pass)
+    storeLoginToken(user, pass)
     {
         var form = new FormData();
         form.append("_username", user);
@@ -22,14 +26,33 @@ class Model
             "contentType": false,
             "mimeType": "multipart/form-data",
             "data": form,
-            success: function(data){
+            success: function(data)
+            {
                 let result = JSON.parse(data);
                 sessionStorage.setItem("token", result.token);
-                window.open('vrijw.html', '_self');
+                window.location.reload();
             },
             error: function() {
 
             }
         });
+    }
+
+    getLoginToken()
+    {
+        var token = sessionStorage.getItem("token");
+
+        return token;
+    }
+
+    getEnvironment()
+    {
+        return this.env;
+    }
+
+    logoutUser()
+    {
+        sessionStorage.removeItem("token");
+        window.location.reload();
     }
 }
