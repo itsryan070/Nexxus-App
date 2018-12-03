@@ -249,3 +249,4 @@ html .ui-alt-icon .ui-radio-off:after {
 .ui-icon-search:after{background-image: url("images/icons-png/search-black.png");}
 #searchcontainer{width: 50vw; float: right; height: 1vh; }
 #head{margin: 2vw; margin-left: 8vw;}
+.ui-mobile label, div.ui-controlgroup-label{font-size:16px;}
