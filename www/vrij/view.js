@@ -91,25 +91,28 @@ class VrijView
         var popup = "";
 
         popup += '<div class="ui-popup-screen ui-overlay-inherit in" id="reden-screen"></div> '
-                + '<div data-role="popup" id="reden" data-dismissible="false" style="max-width:400px; min-width: 300px">'
-                + '<div role="main" class="ui-content">'
-                + '<a onclick="window.history.back();" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
-                + '<br>'
-                + '<h3 >Reden weigering</h3>'
-                + '<form>'
-                    + '<label class="ui-radio-pop">Ziek'
-                        + '<input class=" mc-text-center" type="radio"name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked"> '
-                    + '</label>'
-                    + '<label class="ui-radio-pop">'
-                        + '<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"> Tijdgebrek'
-                    + '</label>'
-                    + '<label class="ui-radio-pop mc-text-center">'
-                        + '<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"> Overig'
-                    + '</label>'
-                + '</form>'
-                + '<div onclick="controller.Geaccepteerd()" class="ui-green mc-text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" data-disabled="false">Bevestig</a></div>'
-            +'</div>'
-        + '</div>';
+
+        popup += "<div data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>";
+            popup += "<div role='main' class='ui-content'>";
+                popup += "<a onclick='window.history.back();' style='position:relative; float: right;margin:0' data-role='button'"
+                           + " class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>";
+                popup += "<br>";
+                popup += "<h3>Reden weigering</h3>";
+                popup += "<form>";
+                    popup += "<label class='ui-radio-pop'>Ziek";
+                        popup += "<input class=' mc-text-center' type='radio'name='radio-choice' id='radio-choice-1' value='choice-1' checked='checked'> ";
+                    popup += "</label>";
+                    popup += "<label class='ui-radio-pop'>";
+                        popup += "<input type='radio' name='radio-choice' id='radio-choice-2' value='choice-2'> Tijdgebrek";
+                    popup += "</label>";
+                    popup += "<label class='ui-radio-pop mc-text-center'>";
+                        popup += "<input type='radio' name='radio-choice' id='radio-choice-3' value='choice-3'> Overig";
+                    popup += "</label>";
+                popup += "</form>";
+                popup += "<div onclick='controller.Geaccepteerd()' class='ui-green mc-text-center'>";
+                popup += "<a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>";
+            popup += "</div>"
+        popup += "</div>";
 
         $( ".visibility").remove();
         // undo nulls
