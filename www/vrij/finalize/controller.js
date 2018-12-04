@@ -19,4 +19,9 @@ class FinalizeController
     {
         this.v.showFotoForm();
     }
+
+    goBack()
+    {
+        window.open('vrij.html', '_self');
+    }
 }

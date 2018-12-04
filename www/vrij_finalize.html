@@ -61,11 +61,26 @@
                 <div id="foto-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
                     <h3> Foto's </h3>
                     <label>Klik op de vakjes om foto's te maken van de producten.</label>
-                    <img onclick="camera.getPicture('successCallback, errorCallback, options');" src="include/img/plus.png" class="ui-plus">
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img src="include/img/plus.png" class="ui-plus"/>
+                        </label>
+
+                        <input id="file-input" type="file"/>
+                    </div>
+                    <!-- img onclick="camera.getPicture('successCallback, errorCallback, options');" src="include/img/plus.png" class="ui-plus" -->
                 </div>
             </div>
 
             <div id="footer">
+                <div data-role="footer" class="ui-footer ui-bar-inherit 
+                  ui-footer-fixed slideup" data-position="fixed" role="contentinfo">
+                    <a onclick="c.goBack()" data-role="button" 
+                        class="ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all" role="button">
+                        <img src="include/css/images/icons-png/arrow-l-white.png"> 
+                        Terug
+                    </a>
+                </div>
             </div>
 
         </div>
