@@ -1,8 +1,8 @@
 class VrijController
 {
-    constructor() 
+    constructor(loginc) 
     {
-        this.m = new VrijModel(this);
+        this.m = new VrijModel(this, loginc);
         this.v = new VrijView();
 
         this.offeredTasks = this.m.getOfferedTasks();

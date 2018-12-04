@@ -1,6 +1,6 @@
 class VrijModel
 {
-    constructor(controller, config) 
+    constructor(controller, loginc) 
     {
         this.url        = userConfig.api;
         this.token      = sessionStorage.getItem("token");
@@ -8,6 +8,7 @@ class VrijModel
         this.storeTasks();
 
         this.c          = controller;
+        this.loginc     = loginc;
     }
 
     /**
@@ -27,6 +28,12 @@ class VrijModel
             "contentType": false,
             "mimeType": "multipart/form-data",
             "data":{"item":item},
+            "statusCode": {
+                401: function (response) { // token expired
+                    this.model.loginc.handleLogout();
+                    this.model.loginc.redirectToLogin();
+                }
+            },
             success: function(data)
             {
                 if(data==undefined)

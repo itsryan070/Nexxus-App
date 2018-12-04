@@ -10,6 +10,9 @@ class FinalizeController
     {
         indexc.v.showHeader("#header");
 
+        $("#quantity-form").show();
+        $("#foto-form").hide();
+
         var id = this.m.getFinalItem();
     }
 }

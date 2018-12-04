@@ -7,7 +7,7 @@ if(!loginc.checkForToken())
     loginc.redirectToLogin();
 }
 
-c = new VrijController();
+c = new VrijController(loginc);
 
 c.renderOfferedTaskList();
 
