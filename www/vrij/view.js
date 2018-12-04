@@ -157,15 +157,25 @@ class VrijView
                     +"</tbody>"; 
                 +"</table> "
         +"</div>";
- 
-        var keuze = "";
-        keuze += "<br><div class='ui-center'>";
-        keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
-        keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
+
+        // customize buttons
+        var choice = "";
+        choice += "<br><div class='ui-center'>";
+        if(task['status']['id']==1) {
+            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+            choice += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
+        } else
+        if(task['status']['id']==300) 
+        {
+            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+            choice += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
+
+        }
+        choice += "</div>";
 
         $(".visibility").remove();
         $(".ui-resize").after(html);
-        $("#info").after(keuze);
+        $("#info").after(choice);
         this.switch = true;
     }
 
