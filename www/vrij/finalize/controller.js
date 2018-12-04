@@ -10,9 +10,13 @@ class FinalizeController
     {
         indexc.v.showHeader("#header");
 
-        $("#quantity-form").show();
-        $("#foto-form").hide();
+        this.v.showQuantityForm();
 
         var id = this.m.getFinalItem();
+    }
+
+    renderFotoForm()
+    {
+        this.v.showFotoForm();
     }
 }

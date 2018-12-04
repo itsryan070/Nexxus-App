@@ -7,7 +7,13 @@ class FinalizeView
 
     showQuantityForm()
     {
-        $(
+        $("#quantity-form") .show();
+        $("#foto-form")     .hide();
+    }
 
+    showFotoForm()
+    {
+        $("#quantity-form") .hide();
+        $("#foto-form")     .fadeIn();
     }
 }

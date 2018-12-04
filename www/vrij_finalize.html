@@ -47,12 +47,12 @@
                             <input class="inputnum" type="number" value="0">
                         </div>
                     </div> 
-                    <label> Heeft u de fietsen afgeleverd in [locatie]. </label>
+                    <label> Heeft u de fietsen afgeleverd op de afgesproken locatie? </label>
                     <div class="ui-center">
                         <a onclick="" id="btn-submit" class="ui-btn ui-options ui-rood"> 
                             Nee  <img src="include/css/images/icons-png/delete-white.png">
                         </a>
-                        <a onclick="" id="btn-submit" class="ui-btn ui-options ui-green "> 
+                        <a onclick="c.renderFotoForm()" id="btn-submit" class="ui-btn ui-options ui-green "> 
                             Ja <img src="include/css/images/icons-png/check-white.png">
                         </a>
                     </div>
@@ -60,6 +60,7 @@
 
                 <div id="foto-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
                     <h3> Foto's </h3>
+                    <label>Klik op de vakjes om foto's te maken van de producten.</label>
                     <img onclick="camera.getPicture('successCallback, errorCallback, options');" src="include/img/plus.png" class="ui-plus">
                 </div>
             </div>
