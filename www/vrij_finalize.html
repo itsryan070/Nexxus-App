@@ -29,6 +29,19 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="include/css/jquery.mobile.theme.css">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <style>
+            .image-upload
+            {
+
+            }
+
+            .image-upload > input
+            {
+                float:left;
+                display: none;
+            }
+
+        </style>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
         <title>Nexxus for Mobile Devices</title>
@@ -44,7 +57,7 @@
                     <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
                         <div class="ui-textinput ui-corner-all ui-shadow-inset 
                             ui-textinput-text ui-body-inherit">
-                            <input class="inputnum" type="number" value="0">
+                            <input id="itemQuantity" class="inputnum" type="number" value="1">
                         </div>
                     </div> 
                     <label> Heeft u de fietsen afgeleverd op de afgesproken locatie? </label>
@@ -61,14 +74,6 @@
                 <div id="foto-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
                     <h3> Foto's </h3>
                     <label>Klik op de vakjes om foto's te maken van de producten.</label>
-                    <div class="image-upload">
-                        <label for="file-input">
-                            <img src="include/img/plus.png" class="ui-plus"/>
-                        </label>
-
-                        <input id="file-input" type="file"/>
-                    </div>
-                    <!-- img onclick="camera.getPicture('successCallback, errorCallback, options');" src="include/img/plus.png" class="ui-plus" -->
                 </div>
             </div>
 
