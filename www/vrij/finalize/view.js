@@ -21,16 +21,15 @@ class FinalizeView
             imageOption += "<img src='include/img/plus.png' class='ui-plus'/>";
             imageOption += "</label>";
 
-            imageOption += "<input id='file-input' type='file'/>";
+            imageOption += "<input id='file-input' class='foto-input' type='file'/>";
         imageOption += "</div>";
 
         var quantity = $("#itemQuantity").val();
         for(var i=0;i<quantity;i++) 
         {
-            $("#foto-form").append(imageOption);
+            $("#foto-icons").append(imageOption);
         }
-        var html = "<br><br><input type='submit' name='submit'>";
-        $("#foto-form").append(html);
+
         $("#foto-form").fadeIn();
     }
 
