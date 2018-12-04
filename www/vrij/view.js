@@ -129,7 +129,7 @@ class VrijView
             totalproducts += relations[pr]['quantity'];
         }
 
-        html += "<div class='visability ui-content ui-body-a' id='data' data-role='content' data-theme='a' role='main'>"
+        html += "<div class='visibility ui-content ui-body-a' id='data' data-role='content' data-theme='a' role='main'>"
           + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>"
                +"<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Info</h3>"
                +" <table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
@@ -163,7 +163,7 @@ class VrijView
         keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
         keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
 
-        $(".visability").remove();
+        $(".visibility").remove();
         $(".ui-resize").after(html);
         $("#info").after(keuze);
         this.switch = true;
@@ -210,7 +210,7 @@ class VrijView
 
     closePopup()
     {
-        $( ".visability" ).remove();
+        $( ".visibility" ).remove();
         $( '#reden-screen' ).remove();
         $( '#reden-popup' ).remove();
     }
