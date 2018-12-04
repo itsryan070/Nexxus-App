@@ -38,7 +38,35 @@
             <div id="header">
             </div>
             <div id="content">
+                <div id="quantity-form" class="ui-resize ui-content ui-body-a" data-role="content" data-theme="a" role="main">
+                    <h3> Ophaal informatie </h3>
+                    <label> Noteer de hoeveelheid ontvangen fietsen. </label>
+                    <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
+                        <div class="ui-textinput ui-corner-all ui-shadow-inset 
+                            ui-textinput-text ui-body-inherit">
+                            <input class="inputnum" type="number" value="0">
+                        </div>
+                    </div> 
+                    <label> Heeft u de fietsen afgeleverd in [locatie]. </label>
+                    <div class="ui-center">
+                        <a onclick="" id="btn-submit" class="ui-btn ui-options ui-rood"> 
+                            Nee  <img src="include/css/images/icons-png/delete-white.png">
+                        </a>
+                        <a onclick="" id="btn-submit" class="ui-btn ui-options ui-green "> 
+                            Ja <img src="include/css/images/icons-png/check-white.png">
+                        </a>
+                    </div>
+                </div>
+
+                <div id="foto-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
+                    <h3> Foto's </h3>
+                    <img onclick="camera.getPicture('successCallback, errorCallback, options');" src="..\..\themes\images\plus.png" class="ui-plus">
+                    <img src="#" class="ui-plus">
+                    <img src="#" class="ui-plus">
+                    <img src="#" class="ui-plus">
+                </div>
             </div>
+
             <div id="footer">
             </div>
 

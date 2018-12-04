@@ -11,6 +11,5 @@ class FinalizeController
         indexc.v.showHeader("#header");
 
         var id = this.m.getFinalItem();
-        this.v.showQuantityForm("#content", id);
     }
 }
