@@ -44,7 +44,7 @@ class VrijView
               + "</tr>"
 
         /* table rows */
-        if(Array.isArray(tasks))
+        if(Array.isArray(tasks) && tasks.length > 0)
         {
             for(var i=0; i < tasks.length; i++) 
             {

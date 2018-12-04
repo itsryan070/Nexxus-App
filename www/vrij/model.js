@@ -62,6 +62,7 @@ class VrijModel
         return true;
     }
 
+    // combines both tasks into AllTasks if both are set
     concatTasks()
     {
         var offered  = this.getSessionData("offeredTasks");
