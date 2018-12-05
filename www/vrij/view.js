@@ -125,7 +125,7 @@ class VrijView
                             +"<td id='contact'><b class='ui-table-cell-label' > Contact: </b></td><td class='ui-width'>"+ sup.name +" </td>"
                         +"</tr>"
                         +"<tr>"
-                            +"<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td><td class='ui-width>"+ sup.phone +" </td>"
+                            +"<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td><td class='ui-width'>"+ sup.phone +" </td>"
                         + "</tr>"
                     +"</tbody>"; 
                 +"</table> "
@@ -163,7 +163,7 @@ class VrijView
     {
         var popup = "";
 
-                popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
+        popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
                 + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
                     + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
                     + "<div role='main' class='ui-content'>"
@@ -187,7 +187,7 @@ class VrijView
                     + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
                  + "</div>"
             +"</div>"
-        + "</div>"
+        + "</div>";
         $("#footer").after(popup);
 
     }
@@ -200,7 +200,8 @@ class VrijView
         $( '#reden-popup' ).remove();
     }
     
-    renderCancel(){
+    renderCancel()
+    {
         var popup = "";
 
         popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
