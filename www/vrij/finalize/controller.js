@@ -10,7 +10,18 @@ class FinalizeController
     {
         indexc.v.showHeader("#header");
 
+        this.v.showQuantityForm();
+
         var id = this.m.getFinalItem();
-        this.v.showFinalForm("#content", id);
+    }
+
+    renderFotoForm()
+    {
+        this.v.showFotoForm();
+    }
+
+    goBack()
+    {
+        window.open('vrij.html', '_self');
     }
 }

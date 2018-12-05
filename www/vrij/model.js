@@ -1,13 +1,14 @@
 class VrijModel
 {
-    constructor(controller, config) 
+    constructor(controller, loginc) 
     {
         this.url        = userConfig.api;
         this.token      = sessionStorage.getItem("token");
 
-        this.storeAllTasks();
+        this.storeTasks();
 
         this.c          = controller;
+        this.loginc     = loginc;
     }
 
     /**
@@ -27,6 +28,12 @@ class VrijModel
             "contentType": false,
             "mimeType": "multipart/form-data",
             "data":{"item":item},
+            "statusCode": {
+                401: function (response) { // token expired
+                    this.model.loginc.handleLogout();
+                    this.model.loginc.redirectToLogin();
+                }
+            },
             success: function(data)
             {
                 if(data==undefined)
@@ -47,26 +54,35 @@ class VrijModel
     {
         if(callback) {
             sessionStorage.setItem(item, data);
-            this.storeAllTasks();
+
+            this.concatTasks();
         } else {
             this.requestTasks(status, item);
         }
     }
     
-    storeAllTasks()
+    storeTasks()
     {
         this.loadTasks(false, false, "offeredTasks",  2);
         this.loadTasks(false, false, "acceptedTasks", 300);
+        
+        return true;
+    }
 
-        var allTasks = [];
-        allTasks = allTasks.concat(
-            this.getSessionData("offeredTasks"),
-            this.getSessionData("acceptedTasks")
-        );
+    // combines both tasks into AllTasks if both are set
+    concatTasks()
+    {
+        var offered  = this.getSessionData("offeredTasks");
+        var accepted = this.getSessionData("acceptedTasks");
+
+        if(offered!=null && accepted!=null)
+        {
+            var allTasks = [];
+            allTasks = allTasks.concat(offered, accepted);
+        }
+
 
         sessionStorage.setItem("allTasks", JSON.stringify(allTasks));
-
-        return true;
     }
 
     sendAcceptTask(id)
