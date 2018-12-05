@@ -74,7 +74,7 @@ class VrijController
 
     renderCancel()
     {
-
+        this.v.renderCancel();
     }
 
     renderAccept()
