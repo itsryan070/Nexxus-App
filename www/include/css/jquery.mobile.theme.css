@@ -251,3 +251,5 @@ html .ui-alt-icon .ui-radio-off:after {
 #searchcontainer{width: 50vw; float: right; height: 1vh; }
 #head{margin: 2vw; margin-left: 8vw;}
 .ui-mobile label, div.ui-controlgroup-label{font-size:16px;}
+.ui-resize{height: 70vh}
+.visability{padding:0;margin:1em;}

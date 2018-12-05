@@ -80,39 +80,12 @@ class VrijView
 
         $(div).html(html);
     }
-    
     showPopupTask(div, task)
     {
         var html = "";
       
         var sup = task.supplier;
         console.log(sup);
- 
-        var popup = "";
-
-        popup += '<div class="ui-popup-screen ui-overlay-inherit in" id="reden-screen"></div> '
-
-        popup += "<div data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>";
-            popup += "<div role='main' class='ui-content'>";
-                popup += "<a onclick='window.history.back();' style='position:relative; float: right;margin:0' data-role='button'"
-                           + " class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>";
-                popup += "<br>";
-                popup += "<h3>Reden weigering</h3>";
-                popup += "<form>";
-                    popup += "<label class='ui-radio-pop'>Ziek";
-                        popup += "<input class=' mc-text-center' type='radio'name='radio-choice' id='radio-choice-1' value='choice-1' checked='checked'> ";
-                    popup += "</label>";
-                    popup += "<label class='ui-radio-pop'>";
-                        popup += "<input type='radio' name='radio-choice' id='radio-choice-2' value='choice-2'> Tijdgebrek";
-                    popup += "</label>";
-                    popup += "<label class='ui-radio-pop mc-text-center'>";
-                        popup += "<input type='radio' name='radio-choice' id='radio-choice-3' value='choice-3'> Overig";
-                    popup += "</label>";
-                popup += "</form>";
-                popup += "<div onclick='controller.Geaccepteerd()' class='ui-green mc-text-center'>";
-                popup += "<a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>";
-            popup += "</div>"
-        popup += "</div>";
 
         $( ".visibility").remove();
         // undo nulls
@@ -158,6 +131,12 @@ class VrijView
                 +"</table> "
         +"</div>";
 
+        var keuze = "";
+
+        keuze += "<br><div class='ui-center'>";
+        keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+        keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
+
         // customize buttons
         var choice = "";
         choice += "<br><div class='ui-center'>";
@@ -167,7 +146,7 @@ class VrijView
         } else
         if(task['status']['id']==300) 
         {
-            choice += "<a onClick='#' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+            choice += "<a onClick='c.renderCancel()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
             choice += "<a onClick='c.sendToFinalForm(" + task['id'] + ")' id='btn-submit' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a>";
 
         }
@@ -175,6 +154,7 @@ class VrijView
 
         $(".visibility").remove();
         $(".ui-resize").after(html);
+        $(".ui-resize").animate({height:'22vh'});
         $("#info").after(choice);
         this.switch = true;
     }
@@ -189,42 +169,70 @@ class VrijView
                     + "<div role='main' class='ui-content'>"
                     + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>"
                     + "<br>"
-                    + "<h3 >Reden weigering</h3>"
+                    + "<h3 >Reden annulering</h3>"
                     + "<form>"
-                        +"<div class='ui-radio'>"
-                            +"<label class='ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
-                            + "Ziek"
-                            +"</label>"
-                            +"<input data-cacheval='false' class=' mc-text-center' type='radio' name='radio-choice' id='radio-choice-1' value='choice-1'>"
-                        +"</div>"
-                        +"<div class='ui-radio'>"
-                            +"<label class='ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
-                            +"Tijdgebrek"
-                            +"</label>"
-                            +"<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-2 value='choice-2'>"
-                        +"</div>"
-                        +"<div class='ui-radio'>"
-                            +"<label class='ui-radio-pop mc-text-center ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left '>"
-                            +"Overig"
-                            +"</label><input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-3' value='choice-3'>"
-                        +"</div>"
+                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
+                        + "Ziek"
+                        +"<input data-cacheval='false' class=' mc-text-center' type='radio' name='radio-choice' id='radio-choice-1' value='choice-1'>"
+                        +"</label>"
+                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
+                        +"Tijdgebrek"
+                        +"<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-2' value='choice-2'>"
+                        +"</label>"
+                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
+                        +"Overig"
+                        + "<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-3' value='choice-3'>"
+                        +"</label>"
                     +"</form>"
-                    + "<div onclick='controller.Geaccepteerd()'' class='ui-green mc-text-center'><a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
+                    + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
                  + "</div>"
             +"</div>"
-        + "</div>"
-
+        + "</div>";
         $("#footer").after(popup);
 
     }
 
     closePopup()
     {
+        $(".ui-resize").animate({height:'70vh'});
         $( ".visibility" ).remove();
         $( '#reden-screen' ).remove();
         $( '#reden-popup' ).remove();
     }
     
+    renderCancel()
+    {
+        var popup = "";
+
+        popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
+                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
+                    + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
+                    + "<div role='main' class='ui-content'>"
+                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>"
+                    + "<br>"
+                    + "<h3 >Reden weigering</h3>"
+                    + "<form>"
+                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
+                        + "Ziek"
+                        +"<input data-cacheval='false' class=' mc-text-center' type='radio' name='radio-choice' id='radio-choice-1' value='choice-1'>"
+                        +"</label>"
+                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
+                        +"Tijdgebrek"
+                        +"<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-2' value='choice-2'>"
+                        +"</label>"
+                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
+                        +"Overig"
+                        + "<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-3' value='choice-3'>"
+                        +"</label>"
+                    +"</form>"
+                    + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
+                 + "</div>"
+            +"</div>"
+        + "</div>"
+
+        $("#footer").after(popup);
+    }
+
     parseTSDate(ts)
     {
         return ts.substring(0,ts.indexOf('T'));
