@@ -1,9 +1,9 @@
-class Controller
+class VrijController
 {
-    constructor() 
+    constructor(loginc) 
     {
-        this.m = new Model(this);
-        this.v = new View();
+        this.m = new VrijModel(this, loginc);
+        this.v = new VrijView();
 
         this.offeredTasks = this.m.getOfferedTasks();
         this.acceptedTasks = this.m.getAcceptedTasks();
@@ -19,7 +19,8 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Aangeboden Taken", this.m.getOfferedTasks());
+        var tasks = this.m.getOfferedTasks()
+        this.v.showTasklist("#tasklist", "Aangeboden Taken", tasks);
     }
     
     /**
@@ -32,7 +33,8 @@ class Controller
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", this.m.getAcceptedTasks());
+        var tasks = this.m.getAcceptedTasks();
+        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
     }
 
     postAcceptedTask(id, callback)
@@ -54,19 +56,29 @@ class Controller
         this.v.showPopupTask("#order-current", task);
     }
 
-    closingPopup(){
+    sendToFinalForm(id)
+    {
+        sessionStorage.setItem("finalitem", id);
+        window.open('vrij_finalize.html', '_self');
+    }
+  
+    closingPopup() 
+    {
         this.v.closePopup();
     }
 
-    renderRefuse(){
+    renderRefuse()
+    {
         this.v.renderRefuse()
     }
 
-    renderCancel(){
-
+    renderCancel()
+    {
+        this.v.renderCancel();
     }
 
-    renderAccept(){
+    renderAccept()
+    {
         this.renderAcceptedTaskList();
     }
 

@@ -1,4 +1,5 @@
-config = new Config();
-c = new Controller();
+userconfig  = new UserConfig();
+loginc  = new LoginController();
 
-c.redirectLogin();
+loginc.redirectToLogin();
+
