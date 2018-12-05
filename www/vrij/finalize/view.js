@@ -25,6 +25,8 @@ class FinalizeView
         imageOption += "</div>";
 
         var quantity = $("#itemQuantity").val();
+
+        if(quantity>999) { quantity = 999; }
         for(var i=0;i<quantity;i++) 
         {
             $("#foto-icons").append(imageOption);
