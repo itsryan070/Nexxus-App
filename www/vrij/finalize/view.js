@@ -16,14 +16,6 @@ class FinalizeView
         $("#quantity-form") .hide();
 
         // add images according to amount
-        var imageOption = ""; 
-        imageOption += "<td><div class='image-upload'>";
-            imageOption += "<label for='file-input'>";
-            imageOption += "<img src='include/img/plus.png' class='ui-plus'/>";
-            imageOption += "</label>";
-
-            imageOption += "<input id='file-input' class='foto-input' type='file'/>";
-        imageOption += "</div></td>";
 
         var quantity = $("#itemQuantity").val();
 
@@ -33,17 +25,26 @@ class FinalizeView
 
         for(var i=0;i<quantity;i++) 
         {
-            var input = "";
+            var imageOption = ""; 
+            imageOption += "<td><div class='image-upload'>";
+                imageOption += "<label for='file-input'>";
+                imageOption += "<h4>Foto #" + i + "</h4>";
+                imageOption += "<img src='include/img/plus.png' class='ui-plus'/>";
+                imageOption += "</label>";
+
+                imageOption += "<input id='file-input' class='foto-input' type='file'/>";
+            imageOption += "</div></td>";
+            
             switch(i % 2) 
             {
                 case 0:
-                    input = "<tr>" + imageOption; 
+                    imageOption = "<tr>" + imageOption; 
                     break;
                 case 1:
-                    input = imageOption + "</tr>"; 
+                    imageOption = imageOption + "</tr>"; 
                     break;
             }
-            htmlfoto += input;
+            htmlfoto += imageOption;
         }
         $("#foto-icons").html(htmlfoto);
 

@@ -140,7 +140,7 @@ class VrijView
         // customize buttons
         var choice = "";
         choice += "<br><div class='ui-center'>";
-        if(task['status']['id']==1) {
+        if(task['status']['id']==2) {
             choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
             choice += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
         } else
