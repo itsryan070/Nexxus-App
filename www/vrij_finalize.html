@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <!--
+         - Nexxus for Mobile Devices
+         - Copyright (C) 2018 Copiatek Scan & Computer Solution BV
+         -
+         - This program is free software: you can redistribute it and/or modify
+         - it under the terms of the GNU General Public License as published by
+         - the Free Software Foundation, either version 3 of the License, or
+         - (at your option) any later version.
+         -
+         - This program is distributed in the hope that it will be useful,
+         - but WITHOUT ANY WARRANTY; without even the implied warranty of
+         - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+         - GNU General Public License for more details.
+         -
+         - You should have received a copy of the GNU General Public License
+         - along with this program. If not, see licenses.
+         -
+         - Copiatek – info@copiatek.nl – Postbus 547 2501 CM Den Haag
+        -->
+        <allow-navigation href="*"/>
+        <allow-intent href="*">
+        <access origin="*" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="include/css/jquery.mobile.theme.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <style>
+            .form
+            {
+                float: left;
+            }
+
+            .image-upload > input
+            {
+                float:left;
+                display: none;
+            }
+
+        </style>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+        <title>Nexxus for Mobile Devices</title>
+    </head>
+    <body>
+        <div id="body" data-role="page" data-theme="a" tabindex="0" class="ui-page ui-page-theme-a ui-page-header-fixed ui-page-footer-fixed ui-page-active" style="padding-bottom: 37px; padding-top: 32px; min-height: 538px;">
+            <div id="header">
+            </div>
+            <div id="content">
+                <div id="quantity-form" class="ui-resize ui-content ui-body-a" data-role="content" data-theme="a" role="main">
+                    <h3> Ophaal informatie </h3>
+                    <label> Noteer de hoeveelheid ontvangen fietsen. </label>
+                    <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
+                        <div class="ui-textinput ui-corner-all ui-shadow-inset 
+                            ui-textinput-text ui-body-inherit">
+                            <input id="itemQuantity" class="inputnum" type="number" value="1">
+                        </div>
+                    </div> 
+                    <label> Heeft u de fietsen afgeleverd op de afgesproken locatie? </label>
+                    <div class="ui-center">
+                        <a onclick="" id="btn-submit" class="ui-btn ui-options ui-rood"> 
+                            Nee  <img src="include/css/images/icons-png/delete-white.png">
+                        </a>
+                        <a onclick="c.renderFotoForm()" id="btn-submit" class="ui-btn ui-options ui-green "> 
+                            Ja <img src="include/css/images/icons-png/check-white.png">
+                        </a>
+                    </div>
+                </div>
+
+                <div id="foto-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
+                    <h3> Foto's </h3>
+                    <label>Klik op de vakjes om foto's te maken van de producten.</label>
+                    <div id="foto-icons" class="ui-center">
+
+                    </div>
+                    <div id="foto-submit" class="ui-center">
+                        <input type='submit' data-role="button" name='submit' value='Verstuur'>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <div data-role="footer" class="ui-footer ui-bar-inherit 
+                  ui-footer-fixed slideup" data-position="fixed" role="contentinfo">
+                    <a onclick="c.goBack()" data-role="button" 
+                        class="ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all" role="button">
+                        <img src="include/css/images/icons-png/arrow-l-white.png"> 
+                        Terug
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="include/config.js"></script>
+
+        <script type="text/javascript" src="login/model.js"></script>
+        <script type="text/javascript" src="login/view.js"></script>
+        <script type="text/javascript" src="login/controller.js"></script>
+
+        <script type="text/javascript" src="vrij/model.js"></script>
+        <script type="text/javascript" src="vrij/view.js"></script>
+        <script type="text/javascript" src="vrij/controller.js"></script>
+
+        <script type="text/javascript" src="vrij/finalize/model.js"></script>
+        <script type="text/javascript" src="vrij/finalize/view.js"></script>
+        <script type="text/javascript" src="vrij/finalize/controller.js"></script>
+        <script type="text/javascript" src="vrij/finalize/load.js"></script>
+    </body>
+</html>
