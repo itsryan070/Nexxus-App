@@ -80,36 +80,12 @@ class View
 
         $(div).html(html);
     }
-    
     showPopupTask(div, task)
     {
         var html = "";
       
         var sup = task.supplier;
         console.log(sup);
- 
-        var popup = "";
-
-        popup += '<div class="ui-popup-screen ui-overlay-inherit in" id="reden-screen"></div> '
-                + '<div data-role="popup" id="reden" data-dismissible="false" style="max-width:400px; min-width: 300px">'
-                + '<div role="main" class="ui-content">'
-                + '<a onclick="window.history.back();" style="position:relative; float: right;margin:0"  data-role="button"  class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood" ></a>'
-                + '<br>'
-                + '<h3 >Reden weigering</h3>'
-                + '<form>'
-                    + '<label class="ui-radio-pop">Ziek'
-                        + '<input class=" mc-text-center" type="radio"name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked"> '
-                    + '</label>'
-                    + '<label class="ui-radio-pop">'
-                        + '<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"> Tijdgebrek'
-                    + '</label>'
-                    + '<label class="ui-radio-pop mc-text-center">'
-                        + '<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"> Overig'
-                    + '</label>'
-                + '</form>'
-                + '<div onclick="controller.Geaccepteerd()" class="ui-green mc-text-center"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5" data-disabled="false">Bevestig</a></div>'
-            +'</div>'
-        + '</div>';
 
         $( ".visibility").remove();
         // undo nulls
@@ -149,13 +125,14 @@ class View
                             +"<td id='contact'><b class='ui-table-cell-label' > Contact: </b></td><td class='ui-width'>"+ sup.name +" </td>"
                         +"</tr>"
                         +"<tr>"
-                            +"<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td><td class='ui-width'>"+ sup.phone +" </td>"
+                            +"<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td><td class='ui-width>"+ sup.phone +" </td>"
                         + "</tr>"
                     +"</tbody>"; 
                 +"</table> "
         +"</div>";
- 
+
         var keuze = "";
+
         keuze += "<br><div class='ui-center'>";
         keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
         keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
@@ -163,9 +140,12 @@ class View
         $(".visability").remove();
         $(".ui-resize").after(html);
         $("#info").after(keuze);
+        $(".ui-resize").animate({height:'22vh'});
         this.switch = true;
     }
-    renderRefuse(){
+
+    renderRefuse()
+    {
         var popup = "";
 
         popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
@@ -205,6 +185,7 @@ class View
     closePopup()
     {
         $( ".visability" ).remove();
+        $(".ui-resize").animate({height:'70vh'});
         $( '#reden-screen' ).remove();
         $( '#reden-popup' ).remove();
     }
