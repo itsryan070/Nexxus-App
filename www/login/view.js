@@ -9,12 +9,12 @@ class LoginView
     {
         var content = "";
         content += "<div id='page1' data-role='page' data-theme='a'>"
-                    +'<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit slidedown">'
+                    +"<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit slidedown'>"
                         +"<h1 class='ui-title'>Nexxus</h1>"
                     +"</div>"
               
   
-                + '<div data-role="content" data-theme="a" class="ui-content ui-body-a" role="main">'
+                + "<div data-role='content' data-theme='a' class='ui-content ui-body-a' role='main'>"
                     + "<h2>Welcome to Nexxus</h2>"
                     + "<form id='loginform' name='loginform'>"
                     + "<label for='username'>Username</label>"
