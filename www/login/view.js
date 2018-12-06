@@ -7,28 +7,32 @@ class LoginView
 
     showLoginForm(div)
     {
-        $(div).html("<div class='container'>"
-            + "<br><br>"
-            + "<img src='include/img/nexxuslogo.jpg'>"
-            + "<br><br>"
-        + "</div>"
-        + "<div class='container'>"
-            + "<h4>Welcome to Nexxus</h4>"
-            + "<hr>"
-            + "<form id='loginform' name='loginform'>"
-                + "<div class='form-group'>"
+        var content = "";
+        content += "<div id='page1' data-role='page' data-theme='a'>"
+                    +"<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit slidedown'>"
+                        +"<h1 class='ui-title'>Nexxus</h1>"
+                    +"</div>"
+              
+  
+                + "<div data-role='content' data-theme='a' class='ui-content ui-body-a' role='main'>"
+                    + "<h2>Welcome to Nexxus</h2>"
+                    + "<form id='loginform' name='loginform'>"
                     + "<label for='username'>Username</label>"
-                    + "<input type='text' id='username' class='form-control' placeholder='Username'>"
+                        + "<div class='form-group ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset'>"       
+                            + "<input type='text' id='username' class='form-control' placeholder='Username'>"
+                        + "</div>"
+                         + "<label for='password'>Password</label>"
+                        + "<div class='form-group ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset'>"
+                            + "<input type='password' id='password' name='password' class='form-control' placeholder='********'>"
+                        + "</div>"
+                        + "<div class='form-group'>"
+                            + "<button type='submit' id='btn-submit' class='ui-btn-login ui-btn'>Login</button>"
+                        + "</div>"
+                    + "</form>"
                 + "</div>"
-                + "<div class='form-group'>"
-                    + "<label for='password'>Password</label>"
-                    + "<input type='password' id='password' name='password' class='form-control' placeholder='********'>"
-                + "</div>"
-                + "<div class='form-group'>"
-                    + "<button type='submit' class='btn btn-primary'>Login</button>"
-                + "</div>"
-            + "</form>"
-        + "</div>");
+            +"</div>";
+
+        $("body").html(content);
     }
 
 }
