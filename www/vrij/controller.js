@@ -12,14 +12,22 @@ class VrijController
     /**
      * Renders main page with tasks from current location
      */
-    renderOfferedTaskList()
+    renderOfferedTaskList(callback)
     {
+        var tasks = this.offeredTasks;
+
+        // if tasks haven't been defined, wait for them
+        if(tasks==null) 
+        {
+            var tasks = this.m.getOfferedTasks()
+        }
+
+        // gotten, print
         this.v.showHeader("#header");
         this.v.showFooterOffered("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        var tasks = this.m.getOfferedTasks()
         this.v.showTasklist("#tasklist", "Aangeboden Taken", tasks);
     }
     
