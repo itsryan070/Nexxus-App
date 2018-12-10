@@ -18,7 +18,7 @@ class VrijModel
     {
         // get orders
         $.ajax({
-            "async": true,
+            "async": false,
             "crossDomain": true,
             "model": this,
             "url": this.url + "/purchaseorders/" + status + "?bearer=" +this.token,
