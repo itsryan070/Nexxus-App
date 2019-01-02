@@ -15,9 +15,9 @@ class FinalizeController
         var id = this.m.getFinalItem();
     }
 
-    renderFotoForm()
+    renderPhotoForm()
     {
-        this.v.showFotoForm();
+        this.v.showPhotoForm();
     }
 
     submitForm()

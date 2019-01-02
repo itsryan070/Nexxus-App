@@ -8,10 +8,10 @@ class FinalizeView
     showQuantityForm()
     {
         $("#quantity-form") .show();
-        $("#foto-form")     .hide();
+        $("#photo-form")     .hide();
     }
 
-    showFotoForm()
+    showPhotoForm()
     {
         $("#quantity-form") .hide();
 
@@ -21,7 +21,7 @@ class FinalizeView
 
         if(quantity>999) { quantity = 999; }
 
-        var htmlfoto = "";
+        var htmlphoto = "";
 
         for(var i=0;i<quantity;i++) 
         {
@@ -32,7 +32,7 @@ class FinalizeView
                 imageOption += "<img src='include/img/plus.png' class='ui-plus'/>";
                 imageOption += "</label>";
 
-                imageOption += "<input id='file-input' class='foto-input' type='file'/>";
+                imageOption += "<input id='file-input' class='photo-input' type='file'/>";
             imageOption += "</div></td>";
             
             switch(i % 2) 
@@ -44,11 +44,11 @@ class FinalizeView
                     imageOption = imageOption + "</tr>"; 
                     break;
             }
-            htmlfoto += imageOption;
+            htmlphoto += imageOption;
         }
-        $("#foto-icons").html(htmlfoto);
+        $("#photo-icons").html(htmlphoto);
 
-        $("#foto-form").fadeIn();
+        $("#photo-form").fadeIn();
     }
 
 
