@@ -27,12 +27,12 @@ class FinalizeView
         {
             var imageOption = ""; 
             imageOption += "<td><div class='image-upload'>";
-                imageOption += "<label for='file-input'>";
+                imageOption += "<label for='file-input["+i+"]'>";
                 imageOption += "<h4>Foto #" + i + "</h4>";
-                imageOption += "<img src='include/img/plus.png' class='ui-plus'/>";
+                imageOption += "<img id='file-input-img["+i+"]' src='include/img/plus.png' class='ui-plus'/>";
                 imageOption += "</label>";
 
-                imageOption += "<input id='file-input' class='photo-input' type='file'/>";
+                imageOption += "<input id='file-input["+i+"]' class='photo-input' type='file' onChange=\"c.v.changePhotoIconToSolved('file-input-img["+i+"]')\" />";
             imageOption += "</div></td>";
             
             switch(i % 2) 
@@ -50,6 +50,13 @@ class FinalizeView
 
         $("#photo-form").fadeIn();
     }
+
+    changePhotoIconToSolved(img)
+    {
+        alert(window.location.pathname);
+        //$(img).attr("src", 
+    }
+
 
 
 }
