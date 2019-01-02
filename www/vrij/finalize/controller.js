@@ -20,6 +20,11 @@ class FinalizeController
         this.v.showFotoForm();
     }
 
+    submitForm()
+    {
+
+    }
+
     goBack()
     {
         window.open('vrij.html', '_self');
