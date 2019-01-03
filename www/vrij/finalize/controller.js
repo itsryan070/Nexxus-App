@@ -22,7 +22,10 @@ class FinalizeController
 
     submitForm()
     {
+        // fade out form, show loading
 
+        // send photos to handle 
+        this.m.submitFinalizeForm();
     }
 
     goBack()

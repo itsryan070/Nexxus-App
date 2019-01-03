@@ -3,7 +3,7 @@ loginc  = new LoginController();
 
 if(!loginc.checkForToken()) { loginc.redirectToLogin(); }
 
-indexc = new VrijController();
+indexc = new VrijController(loginc);
 
 c = new FinalizeController();
 

@@ -70,7 +70,6 @@ class FinalizeView
         } 
          else 
         {
-            alert('Uploaded file is not an image (jpg, jpeg or png)!);
             $("#file-input-img-" + i).attr("src", "include/img/crossmark.png"); 
         }
     }
