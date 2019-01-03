@@ -53,6 +53,25 @@ class FinalizeView
 
     changePhotoIconToSolved(i)
     {
-        $("#file-input-img-" + i).attr("src", "include/img/checkmark.png"); 
+        // check if file is an image
+        var allowed_types = [
+            "image/jpg",
+            "image/jpeg",
+            "image/png",
+            "image/bmp"
+        ];
+
+        var img = $("#file-input-" + i).prop('files');
+        var imgtype = img[0]['type']
+
+        if(allowed_types.indexOf(imgtype) >= 0)
+        {
+            $("#file-input-img-" + i).attr("src", "include/img/checkmark.png"); 
+        } 
+         else 
+        {
+            alert('Uploaded file is not an image (jpg, jpeg or png)!);
+            $("#file-input-img-" + i).attr("src", "include/img/crossmark.png"); 
+        }
     }
 }
