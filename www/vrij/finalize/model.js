@@ -21,34 +21,11 @@ class FinalizeModel
 
         switch(status)
         {
-            case 100:
-                // send images
-                var form = new FormData();
-                form.append("productId", 0);
-                form.append("attributeId", 0);
-                form.append("attachment", "");
-
-                $.ajax({
-                    "url": this.url + "/productattachment?bearer=" +this.token,
-                    "method": "POST",
-                    "headers": {},
-                    "processData": false,
-                    "contentType": false,
-                    "mimeType": "multipart/form-data",
-                    "model": this,
-                    "data": form,
-                    success: function(data)
-                    {
-                        this.submitFinalizeForm(200);
-                    },
-                    error: function() {
-
-                    }
-                });
+            case 'request':
+                // ...
                 break;
-            case 200: // on callback success, change order status
+            case 'done': // on callback success, redirect 
                 break;
-            case 404:
             default:
                 break;
         }
