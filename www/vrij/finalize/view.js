@@ -28,11 +28,11 @@ class FinalizeView
             var imageOption = ""; 
             imageOption += "<td><div class='image-upload'>";
                 imageOption += "<label for='file-input-"+i+"'>";
-                imageOption += "<h4>Foto #" + i + "</h4>";
+                imageOption += "<h4>Foto #" + (i+1) + "</h4>";
                 imageOption += "<img id='file-input-img-"+i+"' src='include/img/plus.png' class='ui-plus' max-width='50%' />";
                 imageOption += "</label>";
 
-                imageOption += "<input id='file-input-"+i+"' class='photo-input' type='file' onChange=\"c.v.changePhotoIconToSolved('#file-input-img-"+i+"')\" />";
+                imageOption += "<input id='file-input-"+i+"' class='photo-input' type='file' onChange='c.v.changePhotoIconToSolved("+i+")' />";
             imageOption += "</div></td>";
             
             switch(i % 2) 
@@ -51,9 +51,8 @@ class FinalizeView
         $("#photo-form").fadeIn();
     }
 
-    changePhotoIconToSolved(img)
+    changePhotoIconToSolved(i)
     {
-        //alert(window.location.pathname);
-        $(img).attr("src", "include/img/checkmark.png"); 
+        $("#file-input-img-" + i).attr("src", "include/img/checkmark.png"); 
     }
 }
