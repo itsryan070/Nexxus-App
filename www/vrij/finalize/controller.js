@@ -2,7 +2,7 @@ class FinalizeController
 {
     constructor() 
     {
-        this.m = new FinalizeModel();
+        this.m = new FinalizeModel(this);
         this.v = new FinalizeView();
     }
 
