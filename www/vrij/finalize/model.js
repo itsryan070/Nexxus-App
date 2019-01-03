@@ -21,7 +21,7 @@ class FinalizeModel
             "model": this,
             "url": this.url + "/purchaseorderstatus?bearer=" +this.token
                     + "&purchaseOrderId=" + id 
-                    + "&statusId=300",
+                    + "&statusId=3",
             "method": "PUT",
             "headers": {},
             "processData": false,
@@ -29,7 +29,8 @@ class FinalizeModel
             "mimeType": "multipart/form-data",
             success: function(data)
             {
-                this.model.c.postAcceptedTask(0, true);
+                console.log(this.model);
+                this.model.c.submitForm(true);
             },
             error: function() {
 
