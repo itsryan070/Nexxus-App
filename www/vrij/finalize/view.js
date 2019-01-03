@@ -8,10 +8,10 @@ class FinalizeView
     showQuantityForm()
     {
         $("#quantity-form") .show();
-        $("#foto-form")     .hide();
+        $("#photo-form")     .hide();
     }
 
-    showFotoForm()
+    showPhotoForm()
     {
         $("#quantity-form") .hide();
 
@@ -21,18 +21,18 @@ class FinalizeView
 
         if(quantity>999) { quantity = 999; }
 
-        var htmlfoto = "";
+        var htmlphoto = "";
 
         for(var i=0;i<quantity;i++) 
         {
             var imageOption = ""; 
             imageOption += "<td><div class='image-upload'>";
-                imageOption += "<label for='file-input'>";
-                imageOption += "<h4>Foto #" + i + "</h4>";
-                imageOption += "<img src='include/img/plus.png' class='ui-plus'/>";
+                imageOption += "<label for='file-input-"+i+"'>";
+                imageOption += "<h4>Foto #" + (i+1) + "</h4>";
+                imageOption += "<img id='file-input-img-"+i+"' src='include/img/plus.png' class='ui-plus' max-width='50%' />";
                 imageOption += "</label>";
 
-                imageOption += "<input id='file-input' class='foto-input' type='file'/>";
+                imageOption += "<input id='file-input-"+i+"' class='photo-input' type='file' onChange='c.v.changePhotoIconToSolved("+i+")' />";
             imageOption += "</div></td>";
             
             switch(i % 2) 
@@ -44,12 +44,33 @@ class FinalizeView
                     imageOption = imageOption + "</tr>"; 
                     break;
             }
-            htmlfoto += imageOption;
+            htmlphoto += imageOption;
         }
-        $("#foto-icons").html(htmlfoto);
+        $("#photo-icons").html(htmlphoto);
 
-        $("#foto-form").fadeIn();
+        $("#photo-form").fadeIn();
     }
 
+    changePhotoIconToSolved(i)
+    {
+        // check if file is an image
+        var allowed_types = [
+            "image/jpg",
+            "image/jpeg",
+            "image/png",
+            "image/bmp"
+        ];
 
+        var img = $("#file-input-" + i).prop('files');
+        var imgtype = img[0]['type']
+
+        if(allowed_types.indexOf(imgtype) >= 0)
+        {
+            $("#file-input-img-" + i).attr("src", "include/img/checkmark.png"); 
+        } 
+         else 
+        {
+            $("#file-input-img-" + i).attr("src", "include/img/crossmark.png"); 
+        }
+    }
 }

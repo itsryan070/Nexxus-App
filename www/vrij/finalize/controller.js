@@ -2,8 +2,10 @@ class FinalizeController
 {
     constructor() 
     {
-        this.m = new FinalizeModel();
+        this.m = new FinalizeModel(this);
         this.v = new FinalizeView();
+
+        this.id = this.m.getFinalItem();
     }
 
     renderFinalForm()
@@ -15,9 +17,27 @@ class FinalizeController
         var id = this.m.getFinalItem();
     }
 
-    renderFotoForm()
+    renderPhotoForm()
     {
-        this.v.showFotoForm();
+        this.v.showPhotoForm();
+    }
+
+    submitForm(callback)
+    {
+        // fade out form, show loading
+
+        // send photos to handle 
+        //this.m.submitFinalizeForm();
+
+        if(!callback)
+        {
+            this.m.setOrderStatusDone(this.id);
+        }
+        else 
+        {
+            alert("Ophaaldienst afgerond!");
+            this.goBack();
+        }
     }
 
     goBack()
