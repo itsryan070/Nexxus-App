@@ -22,7 +22,7 @@ class VrijView
     showFooterAccepted(div)
     {
          $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>"
-            + '<a onClick="c.renderOfferedTaskList()" name="accepted-tasks"; class="ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all" data-role="button" role="button"><img src="include/css/images/icons-png/bullets-white.png"> Aangeboden Taken</a>');
+            + "<a onClick='c.renderOfferedTaskList()' name='accepted-tasks'; class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'><img src='include/css/images/icons-png/bullets-white.png'> Aangeboden Taken</a>");
     }
 
     showTasklist(div, title, tasks)
@@ -34,7 +34,7 @@ class VrijView
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
 
         /* table */
-        html += "<div  data-role='content' data-theme='a'>"
+        html += "<div data-role='content' data-theme='a'>"
               + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
               + "<tbody id='title'>"
               + "<tr>"
@@ -87,7 +87,7 @@ class VrijView
         var sup = task.supplier;
         console.log(sup);
 
-        $( ".visibility").remove();
+        $(".visibility").remove();
         // undo nulls
         sup.city = this.checkNullValue(sup.city, "n/a");
         sup.street = this.checkNullValue(sup.street, "n/a");
@@ -196,9 +196,9 @@ class VrijView
     closePopup()
     {
         $(".ui-resize").animate({height:'70vh'});
-        $( ".visibility" ).remove();
-        $( '#reden-screen' ).remove();
-        $( '#reden-popup' ).remove();
+        $(".visibility" ).remove();
+        $("#reden-screen").remove();
+        $("#reden-popup").remove();
     }
     
     renderCancel()
