@@ -65,22 +65,22 @@
                         <a onclick="" id="btn-submit" class="ui-btn ui-options ui-rood"> 
                             Nee  <img src="include/css/images/icons-png/delete-white.png">
                         </a>
-                        <a onclick="c.renderFotoForm()" id="btn-submit" class="ui-btn ui-options ui-green "> 
+                        <a onclick="c.renderPhotoForm()" id="btn-submit" class="ui-btn ui-options ui-green "> 
                             Ja <img src="include/css/images/icons-png/check-white.png">
                         </a>
                     </div>
                 </div>
 
-                <div id="foto-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
+                <div id="photo-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
                     <h3> Foto's </h3>
                     <label>Klik op de vakjes om foto's te maken van de producten.</label>
                     <table>
-                    <div id="foto-icons" class="ui-center">
+                    <div id="photo-icons" class="ui-center">
 
                     </div>
                     </table>
-                    <div id="foto-submit" class="ui-center">
-                        <input type='submit' data-role="button" name='submit' value='Verstuur'>
+                    <div id="photo-submit" class="ui-center">
+                        <a id="btn-submit" class="ui-btn ui-options ui-green " role="button" name='submit' onClick='c.submitForm(false)'>Verstuur</a>
                     </div>
                 </div>
             </div>
