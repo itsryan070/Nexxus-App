@@ -114,7 +114,7 @@ class VrijView
                             +" <td id='straat'><b class='ui-table-cell-label' > Straat: </b></td><td class='ui-width'>" + sup.street + "</td>"
                         +"</tr>"
                         +"<tr> "
-                            +"<td id='datum'><b class='ui-table-cell-label' > Datum: </b></td><td class='ui-width'>" + this.parseTSDate(task.order_date) + "</td>"
+                            +"<td id='datum'><b class='ui-table-cell-label' > Uiterste Datum: </b></td><td class='ui-width'>" + this.parseTSDate(task.order_date) + "</td>"
                         +"</tr>"
                         + "<tr>" 
                             + "<td id='wat'><b class='ui-table-cell-label' > Hoeveelheid: </b> </td><td class='ui-width'>"+ totalproducts + "</td>"
