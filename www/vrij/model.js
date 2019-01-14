@@ -19,11 +19,11 @@ class VrijModel
         else if (callback && step==1)
         {
             this.requestTasklist(300);
-            console.log("Offered callback success");
+            console.log("Offered callback success,");
         }
         else if (callback && step==2)
         {
-            console.log("Accepted callback success, calling controller");
+            console.log("Accepted callback success, calling back to C");
             this.c.reloadTasklist(true);
         }
     }
@@ -57,11 +57,11 @@ class VrijModel
 
                 switch(status) {
                     case 2:   // offered
-                        this.model.c.offeredTasks = data;
+                        this.model.c.offeredTasks = JSON.parse(data);
                         this.model.loadTasks(true, 1);
                         break;
                     case 300: // accepted
-                        this.model.c.acceptedTasks = data;
+                        this.model.c.acceptedTasks = JSON.parse(data);
                         this.model.loadTasks(true, 2);
                         break;
                     default:
@@ -74,14 +74,6 @@ class VrijModel
         });
     }
     
-    storeTasks()
-    {
-        this.loadTasks(false, false, "offeredTasks",  2);
-        this.loadTasks(false, false, "acceptedTasks", 300);
-        
-        return true;
-    }
-
     // combines both tasks into AllTasks if both are set
     concatTasks()
     {
