@@ -20,6 +20,7 @@ class VrijController
         }
         else
         {
+            this.m.storeAllTasks();
             this.loadCurrentList();
         }
     }

@@ -76,8 +76,6 @@ class VrijView
                 html +=  "</tr>";
             }	
         } else { html += "<tr><td colspan=3>Geen taken gevonden</td></tr>"; }
-        console.log(Array.isArray(tasks));
-        console.log(tasks.length);
         html += "</tbody>";
 
         $(div).html(html);
@@ -88,7 +86,6 @@ class VrijView
         var html = "";
       
         var sup = task.supplier;
-        console.log(sup);
 
         $(".visibility").remove();
         // undo nulls
