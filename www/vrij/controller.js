@@ -76,7 +76,8 @@ class VrijController
             this.m.sendAcceptTask(id);
         } else 
         {
-            this.renderAcceptedTaskList();
+            this.currentList = "accepted";
+            this.reloadTasklist(false);
         }
 
     }
