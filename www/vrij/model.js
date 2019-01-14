@@ -5,16 +5,33 @@ class VrijModel
         this.url        = userConfig.api;
         this.token      = sessionStorage.getItem("token");
 
-        this.storeTasks();
-
         this.c          = controller;
         this.loginc     = loginc;
+    }
+
+    loadTasks(callback, step)
+    {
+        if(!callback)
+        {
+            this.requestTasklist(2)
+            console.log("request made..");
+        }
+        else if (callback && step==1)
+        {
+            this.requestTasklist(300);
+            console.log("Offered callback success");
+        }
+        else if (callback && step==2)
+        {
+            console.log("Accepted callback success, calling controller");
+            this.c.reloadTasklist(true);
+        }
     }
 
     /**
      * Saves tasks in session upon success
      */
-    requestTasks(status, item)
+    requestTasklist(status)
     {
         // get orders
         $.ajax({
@@ -27,7 +44,7 @@ class VrijModel
             "processData": false,
             "contentType": false,
             "mimeType": "multipart/form-data",
-            "data":{"item":item},
+            "data":{"status":status},
             "statusCode": {
                 401: function (response) { // token expired
                     this.model.loginc.handleLogout();
@@ -36,29 +53,25 @@ class VrijModel
             },
             success: function(data)
             {
-                if(data==undefined)
-                { 
-                    data = 0;
-                }
-                this.model.loadTasks(true, data, item, 0)
+                if(data==undefined) data = 0;
 
+                switch(status) {
+                    case 2:   // offered
+                        this.model.c.offeredTasks = data;
+                        this.model.loadTasks(true, 1);
+                        break;
+                    case 300: // accepted
+                        this.model.c.acceptedTasks = data;
+                        this.model.loadTasks(true, 2);
+                        break;
+                    default:
+                        return false;
+                }
             },
             error: function() {
 
             }
         });
-    }
-
-
-    loadTasks(callback, data, item, status) 
-    {
-        if(callback) {
-            sessionStorage.setItem(item, data);
-
-            this.concatTasks();
-        } else {
-            this.requestTasks(status, item);
-        }
     }
     
     storeTasks()
@@ -139,29 +152,5 @@ class VrijModel
             }
         }
         return task;
-    }
-
-    getOfferedTasks()
-    {
-        var tasks = this.getSessionData("offeredTasks");
-
-        return tasks;
-
-    }
-
-    getAcceptedTasks()
-    {
-        var tasks = this.getSessionData("acceptedTasks");
-
-        return tasks;
-
-    }
-
-    getAllTasks()
-    {
-        var tasks = this.getSessionData("allTasks");
-
-        return tasks;
-
     }
 }

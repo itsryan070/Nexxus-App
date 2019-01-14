@@ -9,5 +9,4 @@ if(!loginc.checkForToken())
 
 c = new VrijController(loginc);
 
-c.renderOfferedTaskList();
-
+c.reloadTasklist();

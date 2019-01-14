@@ -4,12 +4,46 @@ class VrijController
     {
         this.m = new VrijModel(this, loginc);
         this.v = new VrijView();
+
+        this.offeredTasks = [];
+        this.acceptedTasks = [];
+
+        this.currentList = "offered";
+    }
+
+    reloadTasklist(callback)
+    {
+        // request tasks
+        if(!callback) 
+        {
+            this.m.loadTasks(false, 0);
+        }
+        else
+        {
+            this.loadCurrentList();
+        }
+    }
+
+    loadCurrentList()
+    {
+        console.log("Loading current list..");
+        switch(this.currentList)
+        {
+            case "offered":
+                this.renderOfferedTaskList()
+
+                break;
+            case "accepted":
+                this.renderAcceptedTaskList()
+                break;
+            default:
+        }
     }
     
     /**
      * Renders main page with tasks from current location
      */
-    renderOfferedTaskList(callback)
+    renderOfferedTaskList()
     {
         this.v.showHeader("#header");
         this.v.showFooterOffered("#footer");
@@ -17,7 +51,7 @@ class VrijController
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
 
-        this.updateTasklist(false, 1);
+        this.v.showTasklist('tasklist', 'Aangeboden Taken', this.offeredTasks);
     }
     
     /**
@@ -31,38 +65,14 @@ class VrijController
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
 
-        this.updateTasklist(false, 2);
-    }
-
-    updateTasklist(callback, type)
-    {
-        if(!callback)
-        {
-            this.
-
-        }
-        else if(type != null)
-        {
-            switch(type) 
-            {
-                case 1: // offered
-                    this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
-                break;
-                case 2: // accepted
-                    this.v.showTasklist(
-                    this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
-                break;
-            }
-
-        }
-
+        this.v.showTasklist('tasklist', 'Geaccepteerde Taken', this.acceptedTasks);
     }
 
     postAcceptedTask(id, callback)
     {
         if(!callback)
         {
-            this.m.sendAcceptTask(id)
+            this.m.sendAcceptTask(id);
         } else 
         {
             this.renderAcceptedTaskList();
