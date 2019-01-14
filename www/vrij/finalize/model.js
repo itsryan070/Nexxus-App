@@ -13,7 +13,27 @@ class FinalizeModel
 
     setOrderStatusDone(id)
     {
+        $.ajax({
+            "async": true,
+            "crossDomain": true,
+            "model": this,
+            "url": this.url + "/purchaseorderstatus?bearer=" +this.token
+                    + "&purchaseOrderId=" + id
+                    + "&statusId=3",
+            "method": "PUT",
+            "headers": {},
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            success: function(data)
+            {
+                console.log(this.model);
+                this.model.c.submitForm(true);
+            },
+            error: function() {
 
+            }
+        });
     }
 
     submitFinalizeForm(status)
