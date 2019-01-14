@@ -80,6 +80,7 @@ class VrijView
 
         $(div).html(html);
     }
+
     showPopupTask(div, task)
     {
         var html = "";

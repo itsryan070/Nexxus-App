@@ -4,9 +4,6 @@ class VrijController
     {
         this.m = new VrijModel(this, loginc);
         this.v = new VrijView();
-
-        this.offeredTasks = this.m.getOfferedTasks();
-        this.acceptedTasks = this.m.getAcceptedTasks();
     }
     
     /**
@@ -14,21 +11,13 @@ class VrijController
      */
     renderOfferedTaskList(callback)
     {
-        var tasks = this.offeredTasks;
-
-        // if tasks haven't been defined, wait for them
-        if(tasks==null) 
-        {
-            var tasks = this.m.getOfferedTasks()
-        }
-
-        // gotten, print
         this.v.showHeader("#header");
         this.v.showFooterOffered("#footer");
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        this.v.showTasklist("#tasklist", "Aangeboden Taken", tasks);
+
+        this.updateTasklist(false, 1);
     }
     
     /**
@@ -41,8 +30,32 @@ class VrijController
 
         $("#content").html("");
         $("#content").append("<div id='tasklist'>");
-        var tasks = this.m.getAcceptedTasks();
-        this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
+
+        this.updateTasklist(false, 2);
+    }
+
+    updateTasklist(callback, type)
+    {
+        if(!callback)
+        {
+            this.
+
+        }
+        else if(type != null)
+        {
+            switch(type) 
+            {
+                case 1: // offered
+                    this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
+                break;
+                case 2: // accepted
+                    this.v.showTasklist(
+                    this.v.showTasklist("#tasklist", "Geaccepteerde Taken", tasks);
+                break;
+            }
+
+        }
+
     }
 
     postAcceptedTask(id, callback)
