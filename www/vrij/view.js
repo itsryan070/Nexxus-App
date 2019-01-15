@@ -80,12 +80,12 @@ class VrijView
 
         $(div).html(html);
     }
+
     showPopupTask(div, task)
     {
         var html = "";
       
         var sup = task.supplier;
-        console.log(sup);
 
         $(".visibility").remove();
         // undo nulls
