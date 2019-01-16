@@ -1,9 +1,11 @@
 class FinalizeModel
 {
-    constructor() 
+    constructor(controller) 
     {
         this.url        = userConfig.api;
         this.token      = sessionStorage.getItem("token");
+
+        this.c = controller;
     }
 
     getFinalItem()
@@ -18,7 +20,7 @@ class FinalizeModel
             "crossDomain": true,
             "model": this,
             "url": this.url + "/purchaseorderstatus?bearer=" +this.token
-                    + "&purchaseOrderId=" + id
+                    + "&purchaseOrderId=" + id 
                     + "&statusId=3",
             "method": "PUT",
             "headers": {},
@@ -31,12 +33,12 @@ class FinalizeModel
                 this.model.c.submitForm(true);
             },
             error: function() {
-
+              
             }
         });
     }
 
-    submitFinalizeForm(status)
+    /*submitFinalizeForm(status)
     {
 
         switch(status)
@@ -72,5 +74,5 @@ class FinalizeModel
             default:
                 break;
         }
-    }
+    }*/
 }
