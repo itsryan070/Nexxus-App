@@ -22,7 +22,7 @@ class VrijView
     showFooterAccepted(div)
     {
          $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>"
-            + '<a onClick="c.renderOfferedTaskList()" name="accepted-tasks"; class="ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all" data-role="button" role="button"><img src="include/css/images/icons-png/bullets-white.png"> Aangeboden Taken</a>');
+            + "<a onClick='c.renderOfferedTaskList()' name='accepted-tasks'; class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'><img src='include/css/images/icons-png/bullets-white.png'> Aangeboden Taken</a>");
     }
 
     showTasklist(div, title, tasks)
@@ -34,7 +34,7 @@ class VrijView
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
 
         /* table */
-        html += "<div  data-role='content' data-theme='a'>"
+        html += "<div data-role='content' data-theme='a'>"
               + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
               + "<tbody id='title'>"
               + "<tr>"
@@ -80,14 +80,14 @@ class VrijView
 
         $(div).html(html);
     }
+
     showPopupTask(div, task)
     {
         var html = "";
       
         var sup = task.supplier;
-        console.log(sup);
 
-        $( ".visibility").remove();
+        $(".visibility").remove();
         // undo nulls
         sup.city = this.checkNullValue(sup.city, "n/a");
         sup.street = this.checkNullValue(sup.street, "n/a");
@@ -114,7 +114,7 @@ class VrijView
                             +" <td id='straat'><b class='ui-table-cell-label' > Straat: </b></td><td class='ui-width'>" + sup.street + "</td>"
                         +"</tr>"
                         +"<tr> "
-                            +"<td id='datum'><b class='ui-table-cell-label' > Datum: </b></td><td class='ui-width'>" + this.parseTSDate(task.order_date) + "</td>"
+                            +"<td id='datum'><b class='ui-table-cell-label' > Uiterste Datum: </b></td><td class='ui-width'>" + this.parseTSDate(task.order_date) + "</td>"
                         +"</tr>"
                         + "<tr>" 
                             + "<td id='wat'><b class='ui-table-cell-label' > Hoeveelheid: </b> </td><td class='ui-width'>"+ totalproducts + "</td>"
@@ -196,9 +196,9 @@ class VrijView
     closePopup()
     {
         $(".ui-resize").animate({height:'70vh'});
-        $( ".visibility" ).remove();
-        $( '#reden-screen' ).remove();
-        $( '#reden-popup' ).remove();
+        $(".visibility" ).remove();
+        $("#reden-screen").remove();
+        $("#reden-popup").remove();
     }
     
     renderCancel()
