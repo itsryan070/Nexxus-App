@@ -1,0 +1,137 @@
+/* start van mijn css */
+
+.ui-radio .ui-btn.ui-radio-on:after {
+  background-image: none;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  border-width: 5px;
+  border-style: solid;
+}
+.ui-alt-icon.ui-btn.ui-radio-on:after,
+.ui-alt-icon .ui-btn.ui-radio-on:after {
+  background-color: #000;
+}
+.ui-width {
+  min-width: 50vw !important;
+}
+.ui-btn-login {
+  display: block;
+  width: 30% !important;
+  margin: 0;
+  padding: 10;
+  color: white;
+  background-color: #15007c;
+}
+.ui-footer .ui-btn-half {
+  display: block;
+  width: 44vw;
+  margin: 0;
+  margin-left: 1.1vw;
+  padding: 1vh;
+  float: left;
+  font-size: 17px;
+}
+.ui-header {
+  font-size: 20px;
+  padding: 0;
+  background-color: #006e2e;
+}
+.ui-title {
+  margin-bottom: 0%;
+  margin-top: 0;
+  margin-left: 38% !important;
+  width: 20vw;
+}
+.ui-header .ui-title,
+.ui-footer .ui-title {
+  padding: 1vw;
+}
+.ui-checkbox input,
+.ui-radio input {
+  left: 0.646em;
+}
+.ui-blue {
+  background-color: #15007c;
+}
+.ui-green {
+  background-color: #006e2e;
+}
+.ui-rad {
+  width: 25vw;
+  position: relative;
+  background-color: #15007c;
+}
+.ui-plus {
+  height: 40vw;
+  width: 40vw;
+  margin: 2vw;
+  float: left;
+}
+.ui-content {
+  padding-top: 0;
+  padding-left: 1em;
+}
+.ui-table tr:nth-child(even) {
+  background: #e6e6e6;
+}
+.ui-radio-pop {
+  color: black !important;
+  margin-top: 50vh;
+}
+.ui-center {
+  margin-left: 3vw;
+}
+.ui-popup-screen {
+  background-color: black;
+}
+.ui-table-reflow.ui-responsive td,
+.ui-table-reflow.ui-responsive th {
+  width: 30vw;
+  min-width: 25vw;
+  clear: none;
+}
+.ui-icon-delete:after {
+  background-image: url("images/icons-png/delete-white.png");
+}
+.ui-mobile,
+.ui-mobile body {
+  height: auto;
+}
+.ui-header,
+.ui-footer {
+  border-width: 0;
+}
+.ui-fixed-hidden {
+  position: fixed;
+}
+.ui-icon-search:after {
+  background-image: url("images/icons-png/search-black.png");
+}
+#searchcontainer {
+  width: 50vw;
+  float: right;
+  height: 1vh;
+}
+#head {
+  margin: 2vw;
+  margin-left: 8vw;
+}
+.ui-mobile label,
+div.ui-controlgroup-label {
+  font-size: 16px;
+}
+.ui-resize {
+  height: 70vh;
+}
+.visability {
+  padding: 0;
+  margin: 1em;
+}
+.ui-table-reflow.ui-responsive td .ui-table-cell-label,
+.ui-table-reflow.ui-responsive th .ui-table-cell-label {
+  display: block;
+}
+#body {
+  position: relative;
+}
