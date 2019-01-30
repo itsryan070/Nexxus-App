@@ -30,19 +30,6 @@
         <link rel="stylesheet" type="text/css" href="include/css/jquery.mobile.theme.css">
         <link rel="stylesheet" type="text/css" href="include/css/override.css">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <style>
-            .form
-            {
-                float: left;
-            }
-
-            .image-upload > input
-            {
-                float:left;
-                display: none;
-            }
-
-        </style>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
         <title>Nexxus for Mobile Devices</title>
@@ -51,52 +38,9 @@
         <div id="body" data-role="page" data-theme="a" tabindex="0" class="ui-page ui-page-theme-a ui-page-header-fixed ui-page-footer-fixed ui-page-active" style="padding-bottom: 37px; padding-top: 32px; min-height: 538px;">
             <div id="header">
             </div>
+
             <div id="content">
-                <div id="quantity-form" class="ui-resize ui-content ui-body-a" data-role="content" data-theme="a" role="main">
-                    <h3> Ophaal informatie </h3>
-                    <label> Noteer de hoeveelheid ontvangen fietsen. </label>
-                    <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset">
-                        <div class="ui-textinput ui-corner-all ui-shadow-inset 
-                            ui-textinput-text ui-body-inherit">
-                            <input id="itemQuantity" class="inputnum" type="number" value="1">
-                        </div>
-                    </div> 
-                    <label> Heeft u de fietsen afgeleverd op de afgesproken locatie? </label>
-                    <div class="ui-center">
-                        <a onclick="" id="btn-submit" class="ui-btn ui-options ui-rood"> 
-                            Nee  <img src="include/css/images/icons-png/delete-white.png">
-                        </a>
-                        <a onclick="c.renderPhotoForm()" id="btn-submit" class="ui-btn ui-options ui-green "> 
-                            Ja <img src="include/css/images/icons-png/check-white.png">
-                        </a>
-                    </div>
-                </div>
-
-                <div id="photo-form" class="visibility ui-content ui-body-a" data-role="content" data-theme="a" role="main" style="display: block;">
-                    <h3> Foto's </h3>
-                    <label>Klik op de vakjes om foto's te maken van de producten.</label>
-                    <table>
-                    <div id="photo-icons" class="ui-center">
-
-                    </div>
-                    </table>
-                    <div id="photo-submit" class="ui-center">
-                        <a id="btn-submit" class="ui-btn ui-options ui-green " role="button" name='submit' onClick='c.submitForm(false)'>Verstuur</a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="footer">
-                <div data-role="footer" class="ui-footer ui-bar-inherit 
-                  ui-footer-fixed slideup" data-position="fixed" role="contentinfo">
-                    <a onclick="c.goBack()" data-role="button" 
-                        class="ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all" role="button">
-                        <img src="include/css/images/icons-png/arrow-l-white.png"> 
-                        Terug
-                    </a>
-                </div>
-            </div>
-
+            </div>    
         </div>
 
         <script type="text/javascript" src="include/config.js"></script>
