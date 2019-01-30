@@ -33,10 +33,9 @@ class FinalizeModel
                 this.model.c.submitForm(true);
             },
             error: function() {
-
+              
             }
         });
-
     }
 
     /*submitFinalizeForm(status)
