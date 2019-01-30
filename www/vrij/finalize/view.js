@@ -75,16 +75,6 @@ class FinalizeView {
   }
 
   /*
-    //table head
-    form +=
-      "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>" +
-      "<tbody>" +
-      "<tr>" +
-      "<td id='ui-nummer'><b>#</b></td>" +
-      "<td><b>adress</b></td>" +
-      "<td><b>hoeveelheid</b></td>" +
-      "</tr>";
-
     // loading table content
     for (var x = 1; x < taken.length; x++) {
       form +=
@@ -99,15 +89,7 @@ class FinalizeView {
         taken[x][2] +
         "</td>" +
         "</tr>";
-    }
-
-
-
-    // table end
-    form += "</tbody>" + "</table>";
-
-    $("#content").html(form);
-  }*/
+    }*/
 
   //ben zijn code
   showQuantityForm() {
