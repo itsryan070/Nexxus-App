@@ -40,9 +40,17 @@ class VrijView
                  + "</tr>"
         }
 
+        html += "</tbody>";
+
+        // count rows for dropdown
+        var row_c = 0;
+
         /* table rows */
         if(Array.isArray(tasks) && tasks.length > 0)
         {
+            html += "<tr><td id='"+div.substr(1)+"-dropdown'></td></tr>";
+            html += "<tbody id='"+div.substr(1)+"'>";
+
             for(var i=0; i < tasks.length; i++) 
             {
                 // count products
@@ -56,17 +64,12 @@ class VrijView
 
                 var location = tasks[i]['location']['name'];
 
-                html += "<tr onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
+                html += "<tr class='"+div.substr(1)+"-bing' onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
                             + "data-priority='1' id='title"+i+"'>";
 
                 html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
 
-                if(totalproducts == 1) 
-                {
-                    html += "<td>" + totalproducts + " product</td>";
-                } else {
-                    html += "<td>" + totalproducts + " producten</td>";
-                }
+                html += "<td>" + totalproducts + (totalproducts==1 ? " product" : " producten") + "</td>";
 
                 html +=   "<td>" + location + "</td>"; 
 
@@ -76,6 +79,8 @@ class VrijView
         html += "</tbody></table>";
 
         $(div).html(html);
+
+        var bing = $(div+"-dropdown").html();
     }
 
     showPopupTask(div, task)
