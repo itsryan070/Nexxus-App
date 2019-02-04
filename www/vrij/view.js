@@ -18,23 +18,27 @@ class VrijView
          $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>");
     }
 
-    showTasklist(div, title, tasks)
+    showTasklist(div, title, tasks, header)
     {
         var html = "";
 
         /* body */
         html  += "<div class='ui-content' data-role='content' data-theme='a'>"
-                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
+               + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
 
         /* table */
         html += "<div data-role='content' data-theme='a'>"
               + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
-              + "<tbody id='title'>"
-              + "<tr>"
-              +   "<td><b>Datum</b></td>"
-              +   "<td><b>Hoeveelheid</b></td>"
-              +   "<td><b>Stad</b></td>"
-              + "</tr>"
+              + "<tbody id='title'>";
+
+        if(header) 
+        {
+           html += "<tr>"
+                 +   "<td><b>Datum</b></td>"
+                 +   "<td><b>Hoeveelheid</b></td>"
+                 +   "<td><b>Stad</b></td>"
+                 + "</tr>"
+        }
 
         /* table rows */
         if(Array.isArray(tasks) && tasks.length > 0)
@@ -69,7 +73,7 @@ class VrijView
                 html +=  "</tr>";
             }	
         } else { html += "<tr><td colspan=3>Geen taken gevonden</td></tr>"; }
-        html += "</tbody>";
+        html += "</tbody></table>";
 
         $(div).html(html);
     }
