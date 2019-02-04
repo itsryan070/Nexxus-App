@@ -23,7 +23,7 @@ class VrijView
         var html = "";
 
         /* body */
-        html  += "<div class='ui-resize ui-content' data-role='content' data-theme='a'>"
+        html  += "<div class='ui-content' data-role='content' data-theme='a'>"
                 + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
 
         /* table */
