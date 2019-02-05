@@ -15,7 +15,7 @@ class VrijView
     
     showFooter(div)
     {
-         $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-rood ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>");
+         $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-red ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>");
     }
 
     showTasklist(div, title, tasks, header)
@@ -25,6 +25,22 @@ class VrijView
         /* body */
         html  += "<div class='ui-content' data-role='content' data-theme='a'>"
                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
+
+        // unique elements 
+        switch(div)
+        {
+            case "#tasklist-accepteerde":
+                html += "<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-red ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>"
+
+                break;
+            case "#tasklist-aangeboden":
+
+                break;
+
+            default:
+        }
+
+        console.log(div);
 
         /* table */
         html += "<div data-role='content' data-theme='a'>"
@@ -111,7 +127,7 @@ class VrijView
         }
 
         html += "<div class='visibility ui-content ui-body-a' id='data' data-role='content' data-theme='a' role='main'>"
-          + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>"
+          + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
                +"<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Info</h3>"
                +" <table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
                     + "<tbody >"
@@ -142,7 +158,7 @@ class VrijView
         var keuze = "";
 
         keuze += "<br><div class='ui-center'>";
-        keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+        keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
         keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
 
         // customize buttons
@@ -150,12 +166,12 @@ class VrijView
         choice += "<br><div class='ui-center'>";
         if(task['status']['id']==2) 
         {
-            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
             choice += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
         } else
         if(task['status']['id']==300) 
         {
-            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
+            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
             choice += "<a onClick='c.sendToFinalForm(" + task['id'] + ")' id='btn-submit' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a>";
 
         }
@@ -178,7 +194,7 @@ class VrijView
                 + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
                     + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
                     + "<div role='main' class='ui-content'>"
-                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>"
+                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
                     + "<br>"
                     + "<h3 >Reden annulering</h3>"
                     + "<form>"
@@ -219,7 +235,7 @@ class VrijView
                 + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
                     + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
                     + "<div role='main' class='ui-content'>"
-                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-rood' ></a>"
+                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
                     + "<br>"
                     + "<h3 >Reden weigering</h3>"
                     + "<form>"

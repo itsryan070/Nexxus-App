@@ -42,7 +42,7 @@ class FinalizeView {
     //opties taak annuleren of afronden
     currentTask +=
       "<div class='ui-center'>" +
-      "<a onClick='' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-rood'>Annuleren  <img src='include/css/images/icons-png/delete-white.png'></a>" +
+      "<a onClick='' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Annuleren  <img src='include/css/images/icons-png/delete-white.png'></a>" +
       "<a onClick='' id='btn-submit' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
 
     $("#content").html(currentTask);
