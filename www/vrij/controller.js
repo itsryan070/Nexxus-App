@@ -30,7 +30,7 @@ class VrijController
         console.log("Loading list..");
         this.renderTaskList()
     }
-    
+
     /**
      * Renders main page with tasks from current location
      */
@@ -43,8 +43,9 @@ class VrijController
         $("#content").append("<div id='tasklist-accepteerde'>");
         $("#content").append("<div id='tasklist-aangeboden'>");
 
-        this.v.showTasklist('#tasklist-accepteerde', 'Geaccepteerde taken', this.offeredTasks, true);
+        this.v.showTasklist('#tasklist-accepteerde', 'Geaccepteerde taken', this.acceptedTasks, true);
         this.v.showTasklist('#tasklist-aangeboden',  'Aangeboden Taken',    this.offeredTasks, false);
+        this.dropdownSlide('#tasklist-aangeboden-rows');
     }
 
     postAcceptedTask(id, callback)
@@ -93,4 +94,9 @@ class VrijController
         this.renderAcceptedTaskList();
     }
 
+    dropdownSlide(div)
+    {
+        this.v.dropdownSlideToggle(div); 
+    } 
+    
 }

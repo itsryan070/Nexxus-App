@@ -28,7 +28,7 @@ class VrijView
 
         /* table */
         html += "<div data-role='content' data-theme='a'>"
-              + "<table id='table-offered-tasks' data-role='table' class='ui-responsive ui-table ui-table-reflow'>"
+              + "<table id='table-offered-tasks' data-role='table' data-mode='reflow' class='ui-responsive ui-table ui-table-reflow'>"
               + "<tbody id='title'>";
 
         if(header) 
@@ -45,14 +45,17 @@ class VrijView
         // count rows for dropdown
         var row_c = 0;
 
+        var div_id = div.substr(1);
+
         /* table rows */
         if(Array.isArray(tasks) && tasks.length > 0)
         {
-            html += "<tr><td id='"+div.substr(1)+"-dropdown'></td></tr>";
-            html += "<tbody id='"+div.substr(1)+"'>";
+            html += "<tr style='background-color:#ddd'><td onClick=\"c.dropdownSlide('"+div+"-rows')\" id='"+div_id+"-dropdown' colspan='3'></td></tr>";
+            html += "<tbody id='"+div_id+"-rows' style='display: none;'>";
 
             for(var i=0; i < tasks.length; i++) 
             {
+                row_c++;
                 // count products
                 var relations = tasks[i]['product_relations'];
                 var totalproducts = 0;
@@ -64,7 +67,7 @@ class VrijView
 
                 var location = tasks[i]['location']['name'];
 
-                html += "<tr class='"+div.substr(1)+"-bing' onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
+                html += "<tr class='"+div_id+"-bing' onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
                             + "data-priority='1' id='title"+i+"'>";
 
                 html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
@@ -80,7 +83,10 @@ class VrijView
 
         $(div).html(html);
 
-        var bing = $(div+"-dropdown").html();
+        // fill dropdown header
+        var ddtxt = "" + row_c + (row_c==1 ? " ophaaltaak" : " ophaaltaken") + " in huidige pool";
+        $(div+"-dropdown").html(ddtxt);
+
     }
 
     showPopupTask(div, task)
@@ -234,6 +240,11 @@ class VrijView
         + "</div>"
 
         $("#footer").after(popup);
+    }
+
+    dropdownSlideToggle(div)
+    {
+        $(div).slideToggle();
     }
 
     parseTSDate(ts)
