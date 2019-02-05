@@ -30,7 +30,7 @@ class VrijView
         switch(div)
         {
             case "#tasklist-accepteerde":
-                html += "<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>"
+                html += "<a id='btn-submit' onClick='#' class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>"
 
                 break;
             case "#tasklist-aangeboden":
