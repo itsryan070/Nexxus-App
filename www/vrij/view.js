@@ -50,7 +50,7 @@ class VrijView
         /* table rows */
         if(Array.isArray(tasks) && tasks.length > 0)
         {
-            html += "<tr style='background-color:#ddd'><td onClick=\"c.dropdownSlide('"+div+"-rows')\" id='"+div_id+"-dropdown' colspan='3'></td></tr>";
+            html += "<tr style='background-color:#ddd'><td onClick=\"c.dropdownSlide('"+div+"')\" id='"+div_id+"-dropdown' colspan='3'></td></tr>";
             html += "<tbody id='"+div_id+"-rows' style='display: none;'>";
 
             for(var i=0; i < tasks.length; i++) 
@@ -84,7 +84,7 @@ class VrijView
         $(div).html(html);
 
         // fill dropdown header
-        var ddtxt = "" + row_c + (row_c==1 ? " ophaaltaak" : " ophaaltaken") + " in huidige pool";
+        var ddtxt = "<span id='"+div_id+"-caret'>▼</span> " + row_c + (row_c==1 ? " ophaaltaak" : " ophaaltaken") + " in huidige pool";
         $(div+"-dropdown").html(ddtxt);
 
     }
@@ -244,7 +244,11 @@ class VrijView
 
     dropdownSlideToggle(div)
     {
-        $(div).slideToggle();
+        var rows = div+"-rows"; var caret = div+"-caret";
+
+        (($(caret).html()=="▼") ? $(caret).html("▲") : $(caret).html("▼"));
+
+        $(rows).slideToggle();
     }
 
     parseTSDate(ts)

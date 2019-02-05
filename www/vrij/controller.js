@@ -45,7 +45,7 @@ class VrijController
 
         this.v.showTasklist('#tasklist-accepteerde', 'Geaccepteerde taken', this.acceptedTasks, true);
         this.v.showTasklist('#tasklist-aangeboden',  'Aangeboden Taken',    this.offeredTasks, false);
-        this.dropdownSlide('#tasklist-aangeboden-rows');
+        this.dropdownSlide('#tasklist-aangeboden');
     }
 
     postAcceptedTask(id, callback)
