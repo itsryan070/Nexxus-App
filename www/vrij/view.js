@@ -30,7 +30,7 @@ class VrijView
         switch(div)
         {
             case "#tasklist-accepteerde":
-                html += "<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-red ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>"
+                html += "<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>"
 
                 break;
             case "#tasklist-aangeboden":
@@ -100,7 +100,7 @@ class VrijView
         $(div).html(html);
 
         // fill dropdown header
-        var ddtxt = "<span id='"+div_id+"-caret'>▼</span> " + row_c + (row_c==1 ? " ophaaltaak" : " ophaaltaken") + " in huidige pool";
+        var ddtxt = "<span id='"+div_id+"-caret'>▼</span>" + "<strong>" + row_c + (row_c==1 ? " ophaaltaak" : " ophaaltaken") + " in huidige pool" + "</strong>";
         $(div+"-dropdown").html(ddtxt);
 
     }

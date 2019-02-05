@@ -43,7 +43,7 @@ class VrijController
         $("#content").append("<div id='tasklist-accepteerde'>");
         $("#content").append("<div id='tasklist-aangeboden'>");
 
-        this.v.showTasklist('#tasklist-accepteerde', 'Geaccepteerde taken', this.acceptedTasks, true);
+        this.v.showTasklist('#tasklist-accepteerde', 'Geaccepteerde taken', this.acceptedTasks, false);
         this.v.showTasklist('#tasklist-aangeboden',  'Aangeboden Taken',    this.offeredTasks, false);
         this.dropdownSlide('#tasklist-aangeboden');
     }
