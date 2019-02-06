@@ -135,7 +135,24 @@ div.ui-controlgroup-label {
 #body {
   position: relative;
 }
+
 #ui-nummer {
   max-width: 30px;
   min-width: 30px;
+}
+
+.ui-red {
+  background-color: red;
+}
+
+.ui-green {
+  background-color: green;
+}
+
+#content {
+
+}
+
+.visibility {
+
 }
