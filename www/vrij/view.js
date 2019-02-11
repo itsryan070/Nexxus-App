@@ -34,7 +34,7 @@ class VrijView
 
                 break;
             case "#tasklist-aangeboden":
-
+                html += "<a id='btn-submit' onClick='' class='ui-btn-half ui-blue ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Accepteer Taken</a>"
                 break;
 
             default:
