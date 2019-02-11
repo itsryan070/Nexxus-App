@@ -212,6 +212,8 @@ class VrijView
         + "</div>";
         $("#footer").after(popup);
 
+        $("#infop").hide();
+        $("#info-popup").hide();
     }
 
     closePopup()
