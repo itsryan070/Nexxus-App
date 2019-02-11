@@ -66,7 +66,7 @@ class VrijView
         /* table rows */
         if(Array.isArray(tasks) && tasks.length > 0)
         {
-            html += "<tr style='background-color:#ddd'><td onClick=\"c.dropdownSlide('"+div+"')\" id='"+div_id+"-dropdown' colspan='3'></td></tr>";
+            html += "<tr style='background-color:#ddd'><td class='pooltitle' onClick=\"c.dropdownSlide('"+div+"')\" id='"+div_id+"-dropdown'></td></tr>";
             html += "<tbody id='"+div_id+"-rows' style='display: none;'>";
 
             for(var i=0; i < tasks.length; i++) 
