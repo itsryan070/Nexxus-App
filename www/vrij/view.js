@@ -21,27 +21,13 @@ class VrijView
     showTasklist(div, title, tasks, header)
     {
         var html = "";
+        var div_id = div.substr(1);
 
         /* body */
         html  += "<div class='ui-content' data-role='content' data-theme='a'>"
                + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
 
-        // unique elements 
-        switch(div)
-        {
-            case "#tasklist-accepteerde":
-                html += "<a id='btn-submit' onClick='c.sendToFinalForm(0)' class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>"
-
-                break;
-            case "#tasklist-aangeboden":
-                html += "<a id='btn-submit' onClick='' class='ui-btn-half ui-blue ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Accepteer Taken</a>"
-                break;
-
-            default:
-        }
-
-        console.log(div);
-
+        html  += "<div id='"+div_id+"-spec'></div>";
         /* table */
         html += "<div data-role='content' data-theme='a'>"
               + "<table id='table-offered-tasks' data-role='table' data-mode='reflow' class='ui-responsive ui-table ui-table-reflow'>"
@@ -60,8 +46,6 @@ class VrijView
 
         // count rows for dropdown
         var row_c = 0;
-
-        var div_id = div.substr(1);
 
         /* table rows */
         if(Array.isArray(tasks) && tasks.length > 0)
@@ -102,6 +86,20 @@ class VrijView
         // fill dropdown header
         var ddtxt = "<span id='"+div_id+"-caret'>▼</span>" + "<strong>" + row_c + (row_c==1 ? " ophaaltaak" : " ophaaltaken") + " in huidige pool" + "</strong>";
         $(div+"-dropdown").html(ddtxt);
+
+        // unique elements 
+        switch(div)
+        {
+            case "#tasklist-accepteerde":
+                $(div+"-spec").html("<a id='btn-submit' onClick='c.sendToFinalForm(0)' class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>");
+                break;
+            case "#tasklist-aangeboden":
+                $(div+"-spec").html("<a id='btn-submit' onClick='' class='ui-btn-half ui-blue ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Accepteer Taken</a>");
+                break;
+
+            default:
+        }
+
 
     }
 
