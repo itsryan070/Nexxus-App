@@ -36,6 +36,7 @@
   font-size: 20px;
   padding: 0;
   background-color: #006e2e;
+  height: 50px;
 }
 .ui-title {
   margin-bottom: 0%;
@@ -71,6 +72,7 @@
 .ui-content {
   padding-top: 0;
   padding-left: 1em;
+  overflow: hidden;
 }
 .ui-table tr:nth-child(even) {
   background: #e6e6e6;
@@ -78,9 +80,6 @@
 .ui-radio-pop {
   color: black !important;
   margin-top: 50vh;
-}
-.ui-center {
-  margin-left: 3vw;
 }
 .ui-popup-screen {
   background-color: black;
@@ -138,4 +137,84 @@ div.ui-controlgroup-label {
 #ui-nummer {
   max-width: 30px;
   min-width: 30px;
+}
+
+.ui-red {
+  background-color: red;
+}
+
+.ui-green {
+  background-color: green;
+}
+
+#wheel {
+  margin-left: 20vw;
+  margin-right: 20vw;
+  width: fit-content;
+}
+.previous {
+  color: #8c8c8c;
+  font-size: 3vw;
+
+  text-align: center;
+  width: 45vw;
+  margin-left: 25px;
+}
+.current {
+  font-size: 5vw;
+  font-weight: bold;
+  border-left: solid;
+  border-right: solid;
+  border-width: 1px;
+  text-align: center;
+  width: 60vw;
+}
+.next {
+  color: #8c8c8c;
+  font-size: 3vw;
+  text-align: center;
+  border-color: #8c8c8c;
+  width: 45vw;
+  margin-left: 25px;
+}
+.details {
+  margin: 0;
+  margin-left: 2vw;
+  margin-top: 1vh;
+}
+#info {
+  height: inherit;
+}
+@media screen and (min-width: 1200px) {
+  .previous {
+    font-size: 36px;
+    width: 55vw;
+  }
+  .current {
+    font-size: 50px;
+    width: 55vw;
+  }
+  .next {
+    font-size: 36px;
+    width: 55vw;
+  }
+  #info {
+    width: 30vw;
+    margin-left: 10vw;
+  }
+  .details {
+    margin-left: 10vw;
+  }
+  .ui-center {
+    margin-left: 15vw;
+  }
+}
+
+.visibility {
+}
+
+.pooltitle {
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: auto !important;
 }
