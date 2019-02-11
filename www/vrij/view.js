@@ -25,12 +25,12 @@ class VrijView
 
         /* body */
         html  += "<div class='ui-content' data-role='content' data-theme='a'>"
-               + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3>";
+               + "<div id='"+div_id+"-title'><h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>" + title + "</h3></div>";
 
         html  += "<div id='"+div_id+"-spec'></div>";
         /* table */
         html += "<div data-role='content' data-theme='a'>"
-              + "<table id='table-offered-tasks' data-role='table' data-mode='reflow' class='ui-responsive ui-table ui-table-reflow'>"
+              + "<table id='table-"+div_id+"' data-role='table' data-mode='reflow' class='ui-responsive ui-table ui-table-reflow'>"
               + "<tbody id='title'>";
 
         if(header) 
