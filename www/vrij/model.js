@@ -14,16 +14,16 @@ class VrijModel
         if(!callback)
         {
             this.requestTasklist(2)
-            console.log("Request made..");
+            //console.log("Request made..");
         }
         else if (callback && step==1)
         {
             this.requestTasklist(300);
-            console.log("Offered callback success");
+            //console.log("Offered callback success");
         }
         else if (callback && step==2)
         {
-            console.log("Accepted callback success");
+            //console.log("Accepted callback success");
             this.c.reloadTasklist(true);
         }
     }
@@ -143,6 +143,7 @@ class VrijModel
             success: function(data)
             {
                 this.model.c.postAcceptedTask(0, true);
+                console.log("Task #"+id+" accepted");
             },
             error: function() {
 
