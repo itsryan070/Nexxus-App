@@ -89,11 +89,6 @@ class VrijController
         this.v.renderRefuse()
     }
 
-    renderCancel()
-    {
-        this.v.renderCancel();
-    }
-
     renderAccept()
     {
         this.renderAcceptedTaskList();

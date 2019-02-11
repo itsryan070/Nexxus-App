@@ -227,39 +227,6 @@ class VrijView
       $("#info-popup").remove();
     }
     
-    renderCancel()
-    {
-        var popup = "";
-
-        popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
-                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
-                    + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
-                    + "<div role='main' class='ui-content'>"
-                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
-                    + "<br>"
-                    + "<h3 >Reden weigering</h3>"
-                    + "<form>"
-                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
-                        + "Ziek"
-                        +"<input data-cacheval='false' class=' mc-text-center' type='radio' name='radio-choice' id='radio-choice-1' value='choice-1'>"
-                        +"</label>"
-                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
-                        +"Tijdgebrek"
-                        +"<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-2' value='choice-2'>"
-                        +"</label>"
-                        +"<label class='ui-radio ui-radio-pop ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left'>"
-                        +"Overig"
-                        + "<input data-cacheval='false' type='radio' name='radio-choice' id='radio-choice-3' value='choice-3'>"
-                        +"</label>"
-                    +"</form>"
-                    + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
-                 + "</div>"
-            +"</div>"
-        + "</div>"
-
-        $("#footer").after(popup);
-    }
-
     dropdownSlideToggle(div)
     {
         var rows = div+"-rows"; var caret = div+"-caret";
