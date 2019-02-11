@@ -126,10 +126,11 @@ class VrijView
             totalproducts += relations[pr]['quantity'];
         }
 
-        html += "<div class='visibility ui-content ui-body-a' id='data' data-role='content' data-theme='a' role='main'>"
-          + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
-               +"<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'> Info</h3>"
-               +" <table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
+        html += "<div class='ui-popup-container pop in ui-popup-active' id='info-popup' style='max-width: 330px; top: 171px; left: 29px'>"
+                  + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='infop' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
+                  + "<a onclick='c.closeInfoPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
+                  + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>Info</h3>"
+                  + " <table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
                     + "<tbody >"
                         + "<tr>"  
                             + "<td id='stad' ><b class='ui-table-cell-label'> Stad: </b></td><td class='ui-width'>" + sup.city + "</td>"
@@ -155,12 +156,6 @@ class VrijView
                 +"</table> "
         +"</div>";
 
-        var keuze = "";
-
-        keuze += "<br><div class='ui-center'>";
-        keuze += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
-        keuze += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
-
         // customize buttons
         var choice = "";
         choice += "<br><div class='ui-center'>";
@@ -181,7 +176,7 @@ class VrijView
 
         $(".visibility").remove();
         $("#content").after(html);
-        $("#content").animate({height:'22vh'});
+        //$("#content").animate({height:'22vh'});
         $("#info").after(choice);
         this.switch = true;
     }
@@ -225,6 +220,11 @@ class VrijView
         $(".visibility" ).remove();
         $("#reden-screen").remove();
         $("#reden-popup").remove();
+    }
+
+    closeInfoPopup() 
+    {
+      $("#info-popup").remove();
     }
     
     renderCancel()

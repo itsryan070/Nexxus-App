@@ -79,6 +79,11 @@ class VrijController
         this.v.closePopup();
     }
 
+    closeInfoPopup() 
+    {
+        this.v.closeInfoPopup();
+    }
+
     renderRefuse()
     {
         this.v.renderRefuse()
