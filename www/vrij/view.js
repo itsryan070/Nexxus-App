@@ -83,7 +83,7 @@ class VrijView
 
                 var location = tasks[i]['location']['name'];
 
-                html += "<tr class='"+div_id+"-bing' onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
+                html += "<tr class='"+div_id+"' onClick='c.renderPopupTask(" + tasks[i]['id'] + ")'"
                             + "data-priority='1' id='title"+i+"'>";
 
                 html += "<td>" + this.parseTSDate(tasks[i]['order_date']) + "</td>";
