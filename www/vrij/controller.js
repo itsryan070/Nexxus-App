@@ -73,6 +73,11 @@ class VrijController
         sessionStorage.setItem("finalitem", id);
         window.open('vrij_finalize.html', '_self');
     }
+
+    renderAcceptBulkPopup()
+    {
+        this.v.renderAcceptPrompt();
+    }
   
     closingPopup() 
     {

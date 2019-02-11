@@ -94,7 +94,7 @@ class VrijView
                 $(div+"-spec").html("<a id='btn-submit' onClick='c.sendToFinalForm(0)' class='ui-btn-half ui-green ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Start Ophaal</a>");
                 break;
             case "#tasklist-aangeboden":
-                $(div+"-spec").html("<a id='btn-submit' onClick='' class='ui-btn-half ui-blue ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Accepteer Taken</a>");
+                $(div+"-spec").html("<a id='btn-submit' onClick='c.renderAcceptBulkPopup()' class='ui-btn-half ui-blue ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Accepteer Taken</a>");
                 break;
 
             default:
@@ -180,6 +180,27 @@ class VrijView
         this.switch = true;
     }
 
+    renderAcceptPrompt()
+    {
+        var popup = "";
+
+        popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
+                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
+                    + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
+                    + "<div role='main' class='ui-content'>"
+                    + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
+                    + "<br>"
+                    + "<h3>Accepteer je de aangeboden taken?</h3>"
+                    + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a onClick='' class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
+                 + "</div>"
+            +"</div>"
+        + "</div>";
+        $("#footer").after(popup);
+
+        $("#infop").hide();
+        $("#info-popup").hide();
+    }
+
     renderRefuse()
     {
         var popup = "";
@@ -235,7 +256,7 @@ class VrijView
 
         (($(caret).html()=="▼") ? $(caret).html("▲") : $(caret).html("▼"));
 
-        $(rows).slideToggle();
+        $(rows).toggle();
     }
 
     parseTSDate(ts)
