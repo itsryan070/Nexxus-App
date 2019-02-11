@@ -191,7 +191,7 @@ class VrijView
                     + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
                     + "<br>"
                     + "<h3>Accepteer je de aangeboden taken?</h3>"
-                    + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a onClick='' class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
+                    + "<div onclick='c.closingPopup()' class='ui-green mc-text-center'><a onClick='c.acceptAllTasks()' class='ui-btn ui-corner-all ui-shadow ui-btn-b mc-top-margin-1-5' data-disabled='false'>Bevestig</a></div>"
                  + "</div>"
             +"</div>"
         + "</div>";

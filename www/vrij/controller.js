@@ -7,8 +7,6 @@ class VrijController
 
         this.offeredTasks = [];
         this.acceptedTasks = [];
-
-        this.currentList = "offered";
     }
 
     reloadTasklist(callback)
@@ -55,10 +53,18 @@ class VrijController
             this.m.sendAcceptTask(id);
         } else 
         {
-            this.currentList = "accepted";
             this.reloadTasklist(false);
         }
 
+    }
+
+    acceptAllTasks()
+    {
+        for(var i=0; i<this.offeredTasks.length; i++)
+        {
+            console.log('Accepting ' + this.offeredTasks[i] + '...');
+            //this.postAcceptedTask(this.offeredTasks[i]['id']);
+        }
     }
 
     renderPopupTask(id)
