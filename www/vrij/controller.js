@@ -62,8 +62,8 @@ class VrijController
     {
         for(var i=0; i<this.offeredTasks.length; i++)
         {
-            console.log('Accepting ' + this.offeredTasks[i] + '...');
-            //this.postAcceptedTask(this.offeredTasks[i]['id']);
+            console.log('Accepting task #' + this.offeredTasks[i]['id'] + '...');
+            this.postAcceptedTask(this.offeredTasks[i]['id']);
         }
     }
 

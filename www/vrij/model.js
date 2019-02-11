@@ -143,6 +143,7 @@ class VrijModel
             success: function(data)
             {
                 this.model.c.postAcceptedTask(0, true);
+                console.log("Task #"+id+" accepted");
             },
             error: function() {
 
