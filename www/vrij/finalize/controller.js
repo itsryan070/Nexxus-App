@@ -13,9 +13,9 @@ class FinalizeController
     {
         indexc.v.showHeader("#header");
     
-        this.v.showQuantityForm();
-    
         var id = this.m.getFinalItem();
+
+        this.m.getAcceptedTasks();
     }
   
     renderPhotoForm() 
@@ -25,18 +25,14 @@ class FinalizeController
   
     submitForm(callback) 
     {
-        // fade out form, show loading
-    
-        // send photos to handle
-        //this.m.submitFinalizeForm();
-    
         if (!callback) 
         {
-          this.m.setOrderStatusDone(this.id);
-        } else {
-          alert("Ophaaldienst afgerond!");
-          this.goBack();
-      }
+            this.m.setOrderStatusDone(this.id);
+        } else 
+        {
+            alert("Ophaaldienst afgerond!");
+            this.goBack();
+        }
     }
   
     showTasks() 

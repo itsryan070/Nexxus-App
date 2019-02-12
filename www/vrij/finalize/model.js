@@ -8,8 +8,16 @@ class FinalizeModel
         this.c = controller;
     
         this.tasks = [];
+        this.acceptedTasks = JSON.parse(sessionStorage.getItem("acceptedTasks"));
+
         this.current = 1;
         this.createDummy();
+    }
+
+    getAcceptedTasks()
+    {
+        //console.log(this.acceptedTasks[1]);
+        var tasks = this.acceptedTasks;
     }
   
     getFinalItem() 
