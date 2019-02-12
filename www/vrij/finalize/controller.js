@@ -1,6 +1,6 @@
 class FinalizeController 
 {
-    constructor() 
+    constructor(indexc) 
     {
         this.m = new FinalizeModel(this);
         this.v = new FinalizeView();
