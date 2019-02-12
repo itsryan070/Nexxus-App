@@ -82,10 +82,12 @@ class FinalizeView
             $("#wheel").append("<p class='previous'>0. Geen taken voltooid</p>");
         }
         //loads current task
+        
+        console.log(tasks[current]);
         if (current > 1 || current < tasks.length) 
         {
             $("#wheel").append(
-                "<p class='current'>" + current + ". " + tasks[current][1] + "</p>"
+                "<p class='current'>" + current + ". " + tasks[current]['supplier']['name'] + "</p>"
             );
         }
     
@@ -94,16 +96,21 @@ class FinalizeView
         {
             $("#wheel").append(
                 "<p class='next'>"
-                  + (current + 1)
-                  + ". "
-                  + tasks[current + 1][1]
-                  + "</p>"
+                + (current + 1)
+                + ". "
+                + tasks[current + 1]['supplier']['name']
+                + "</p>"
             );
         } else {
             $("#wheel").append("<p class='next'> Je hebt al je taken voltooid</p>");
         }
     }
   
+    showQuantityForm() 
+    {
+        $("#quantity-form").show();
+        $("#photo-form").hide();
+    }
   
     showPhotoForm() 
     {

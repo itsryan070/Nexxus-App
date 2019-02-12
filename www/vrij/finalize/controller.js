@@ -12,15 +12,13 @@ class FinalizeController
     {
         console.log("Rendering final form...");
         indexc.v.showHeader("#header");
-    
-        var id = this.m.getFinalItem();
+        
+        // retrieve tasks
+        var tasks = this.m.acceptedTasks;
 
-        // Retrieve tasks
-        this.m.getAcceptedTasks();
-
-        // Render page
-        this.v.showWheel(1, this.m.getTasks());
-        this.v.showCurrentTask(1, this.m.getTasks().length - 1, this.m.getTasks());
+        // render page
+        this.v.showWheel(1, tasks);
+        this.v.showCurrentTask(1, tasks.length - 1, tasks);
     }
   
     renderPhotoForm() 

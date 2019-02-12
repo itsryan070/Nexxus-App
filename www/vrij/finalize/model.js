@@ -14,12 +14,6 @@ class FinalizeModel
         this.createDummy();
     }
 
-    getAcceptedTasks()
-    {
-        //console.log(this.acceptedTasks[1]);
-        var tasks = this.acceptedTasks;
-    }
-  
     getFinalItem() 
     {
         return sessionStorage.getItem("finalitem");
