@@ -8,7 +8,7 @@ class FinalizeController
         this.id = this.m.getFinalItem();
     }
   
-    renderFinalForm() 
+    renderFinalForm(i) 
     {
         console.log("Rendering final form...");
         indexc.v.showHeader("#header");
@@ -17,8 +17,8 @@ class FinalizeController
         var tasks = this.m.acceptedTasks;
 
         // render page
-        this.v.showWheel(1, tasks);
-        this.v.showCurrentTask(1, tasks.length - 1, tasks);
+        this.v.showWheel(i, tasks);
+        this.v.showCurrentTask(i, tasks.length - 1, tasks);
     }
   
     renderPhotoForm() 
