@@ -16,9 +16,8 @@ class FinalizeModel
 
     getAcceptedTasks()
     {
-        console.log(this.acceptedTasks[1]);
+        //console.log(this.acceptedTasks[1]);
         var tasks = this.acceptedTasks;
-        //this.acceptedTasks = this.c.indexc.getAcceptedTasks();
     }
   
     getFinalItem() 

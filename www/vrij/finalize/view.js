@@ -104,11 +104,6 @@ class FinalizeView
         }
     }
   
-    showQuantityForm() 
-    {
-        $("#quantity-form").show();
-        $("#photo-form").hide();
-    }
   
     showPhotoForm() 
     {

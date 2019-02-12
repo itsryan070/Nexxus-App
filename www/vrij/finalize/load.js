@@ -5,6 +5,6 @@ if(!loginc.checkForToken()) { loginc.redirectToLogin(); }
 
 indexc = new VrijController(loginc);
 
-c = new FinalizeController(indexc);
+c = new FinalizeController();
 
 c.renderFinalForm();

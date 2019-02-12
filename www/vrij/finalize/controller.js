@@ -1,10 +1,9 @@
 class FinalizeController 
 {
-    constructor(vrijcontroller) 
+    constructor() 
     {
         this.m = new FinalizeModel(this);
         this.v = new FinalizeView();
-        this.indexc = vrijcontroller;
     
         this.id = this.m.getFinalItem();
         this.showTasks();
@@ -13,8 +12,6 @@ class FinalizeController
     renderFinalForm() 
     {
         indexc.v.showHeader("#header");
-    
-        this.v.showQuantityForm();
     
         var id = this.m.getFinalItem();
 
