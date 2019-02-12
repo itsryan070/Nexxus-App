@@ -82,17 +82,19 @@ class FinalizeModel
     this.tasks[3][7] = "06876541";
   }
 
-  //returns the number of the current task
+  // returns the number of the current task
   getCurrentTask() 
   {
     return this.current;
   }
-  //returns an array with the details about the current task
+
+  // returns an array with the details about the current task
   getTasks() 
   {
     return this.tasks;
   }
-  //changes the current task to the next
+
+  // changes the current task to the next
   setNextTask() 
   {
     if (this.current < this.tasks.length - 1) 
