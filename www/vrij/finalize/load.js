@@ -7,4 +7,4 @@ indexc = new VrijController(loginc);
 
 c = new FinalizeController();
 
-c.renderFinalForm();
+c.renderFinalForm(0);

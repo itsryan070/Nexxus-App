@@ -10,4 +10,7 @@ if(!loginc.checkForToken())
 c = new VrijController(loginc);
 
 c.renderTaskList();
-c.reloadTasklist();
+
+// refresh the lists every 3 seconds
+c.reloadTasklist(false);
+window.setInterval(function () { c.reloadTasklist(false); }, 3000)

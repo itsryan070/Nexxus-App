@@ -7,58 +7,64 @@ class FinalizeView
 
     showCurrentTask(current, last, task) 
     {
+        var sup = task[current]['supplier'];
+        
+        sup.city = this.checkNullValue(sup.city, "n/a");
+        sup.street = this.checkNullValue(sup.street, "n/a");
+        sup.name = this.checkNullValue(sup.name, "n/a");
+        sup.phone = this.checkNullValue(sup.phone, "n/a");
+
         // title
-        var currentTask = "<h3 class='details' > Details: </h3>";
+        var currentTask = "<h3 class='details'> Details: </h3>";
     
         // details current task
         currentTask += "<table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
               + "<tbody>"
                 + "<tr>"
-                    + "<td id='stad' ><b > Postcode: </b></td><td class='ui-width'>"
-                    + task[current][2]
+                    + "<td id='stad' ><b > Stad: </b></td><td class='ui-width'>"
+                    + sup.city
                     + "</td>"
                 + "</tr>"
                 + "<tr>"
-                    + "<td id='straat'><b class='ui-table-cell-label' > Straat: </b></td>"
-                    + "<td class='ui-width'>" + task[current][1] + "</td>"
+                    + "<td id='straat'><b class='ui-table-cell-label'> Straat: </b></td>"
+                    + "<td class='ui-width'>" + sup.street + "</td>"
                 + "</tr>"
                 + "<tr>"
-                    + "<td id='datum'><b class='ui-table-cell-label' > Datum: </b></td>"
+                    + "<td id='datum'><b class='ui-table-cell-label'> Uiterste Datum: </b></td>"
                     + "<td class='ui-width'>"
-                    + task[current][3]
-                    + "</td>"
-                + "</tr>"
-                + "<tr>"
-                    + "<td id='wat'><b class='ui-table-cell-label' > Hoeveelheid: </b></td>"
-                    + "<td class='ui-width'>"
-                    + task[current][4]
+                    + this.parseTSDate(task[current]['order_date'])
                     + "</td>"
                 + "</tr>"
                 + "<tr><td id='tijd'><b class='ui-table-cell-label'> Tijd: </b></td>"
                     + "<td class='ui-width'>"
-                    + task[current][5]
+                    + this.parseTSTime(task[current]['order_date'])
                     + "</td>"
                 + "</tr>"
                 + "<tr>"
                     + "<td id='contact'><b class='ui-table-cell-label' > Contact: </b></td>"
                     + "<td class='ui-width'>"
-                    + task[current][6]
+                    + sup.name
                     + "</td>"
                 + "</tr>"
                 + "<tr>"
                     + "<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td>"
                     + "<td class='ui-width'>"
-                    + task[current][7]
+                    + sup.phone
                     + "</td>"
                 + "</tr>"
                 + "</tbody>"
           +  "</table> ";
     
-        //load options
+        // load options
         currentTask +=
           "<div class='ui-center'>" +
-          "<a onClick='c.renderAccept()' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Annuleren  <img src='include/css/images/icons-png/delete-white.png'></a>" +
-          "<a onClick='c.renderCancel()' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
+          "<a onClick='c.renderAccept()' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Annuleren  <img src='include/css/images/icons-png/delete-white.png'></a>"; 
+        if(current == task.length-1) {
+          currentTask += "<a onClick='c.goBack()' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
+        } else {
+          currentTask += "<a onClick='c.renderFinalForm("+(current + 1)+")' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
+
+        }
     
         $("#content").html(currentTask);
     }
@@ -67,41 +73,49 @@ class FinalizeView
     {
         $("#wheel").remove();
         $("#header").after("<div id='wheel'></div>");
-    
-        //shows finished tasks
-        if (current > 1) 
+
+        console.log(tasks);
+        console.log(tasks[current]);
+
+        var html = ""
+                    + "<p class='previous'>"
+                        + "<span id='previous-index'>0</span>.&nbsp;"
+                        + "<span id='previous-label'>Geen taken voltooid</span>"
+                    + "</p>"
+                    + "<p class='current'>"
+                        + "<span id='current-index'>1</span>.&nbsp;"
+                        + "<span id='current-label'></span>"
+                    + "</p>"
+                    + "<p class='next'>"
+                        + "<span id='next-index'>2</span>.&nbsp;"
+                        + "<span id='next-label'></span>"
+                    + "</p>"
+            $("#wheel").html(html);
+
+        console.log("current task: "+current);
+        console.log("task length: "+tasks.length);
+
+        if(current == 0)
         {
-            $("#wheel").append(
-              "<p class='previous'>" +
-                (current - 1) +
-                ". " +
-                tasks[current - 1][1] +
-                "</p>"
-          );
+            $("#previous-label").html("Geen taken voltooid");
         } else {
-            $("#wheel").append("<p class='previous'>0. Geen taken voltooid</p>");
+            $("#previous-index").html(current);
+            $("#previous-label").html(tasks[current-1]['supplier']['street']);
         }
-        //loads current task
-        if (current > 1 || current < tasks.length) 
+
+        if (current == tasks.length-1) 
         {
-            $("#wheel").append(
-              "<p class='current'>" + current + ". " + tasks[current][1] + "</p>"
-            );
+            $("#next-index").html(tasks.length+1);
+            $("#next-label").html("Einde rit");
         }
-    
-        //shows next task
-        if (current < tasks.length - 1) 
+        else 
         {
-            $("#wheel").append(
-              "<p class='next'>" +
-                (current + 1) +
-                ". " +
-                tasks[current + 1][1] +
-                "</p>"
-            );
-        } else {
-            $("#wheel").append("<p class='next'> Je hebt al je taken voltooid</p>");
+            $("#next-index").html(current + 2);
+            $("#next-label").html(tasks[current+1]['supplier']['street']);
         }
+
+        $("#current-index").html(current + 1);
+        $("#current-label").html(tasks[current]['supplier']['street']);
     }
   
     showQuantityForm() 
@@ -168,5 +182,25 @@ class FinalizeView
         } else {
           $("#file-input-img-" + i).attr("src", "include/img/crossmark.png");
         }
+    }
+
+    parseTSDate(ts)
+    {
+        return ts.substring(0,ts.indexOf('T'));
+    }
+
+    parseTSTime(ts)
+    {
+        return ts.substring(ts.indexOf('T')+1,ts.indexOf('+')-3);
+    }
+
+    checkNullValue(value, replacement)
+    {
+        if(typeof(value) == 'undefined')
+        {
+            value = replacement
+        }
+
+        return value
     }
 }

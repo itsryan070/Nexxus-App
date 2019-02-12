@@ -6,16 +6,19 @@ class FinalizeController
         this.v = new FinalizeView();
     
         this.id = this.m.getFinalItem();
-        this.showTasks();
     }
   
-    renderFinalForm() 
+    renderFinalForm(i) 
     {
+        console.log("Rendering final form...");
         indexc.v.showHeader("#header");
-    
-        this.v.showQuantityForm();
-    
-        var id = this.m.getFinalItem();
+        
+        // retrieve tasks
+        var tasks = this.m.acceptedTasks;
+
+        // render page
+        this.v.showWheel(i, tasks);
+        this.v.showCurrentTask(i, tasks.length - 1, tasks);
     }
   
     renderPhotoForm() 
@@ -25,24 +28,14 @@ class FinalizeController
   
     submitForm(callback) 
     {
-        // fade out form, show loading
-    
-        // send photos to handle
-        //this.m.submitFinalizeForm();
-    
         if (!callback) 
         {
-          this.m.setOrderStatusDone(this.id);
-        } else {
-          alert("Ophaaldienst afgerond!");
-          this.goBack();
-      }
-    }
-  
-    showTasks() 
-    {
-        this.v.showCurrentTask(1, this.m.getTasks().length - 1, this.m.getTasks());
-        this.v.showWheel(1, this.m.getTasks());
+            this.m.setOrderStatusDone(this.id);
+        } else 
+        {
+            alert("Ophaaldienst afgerond!");
+            this.goBack();
+        }
     }
   
     renderAccept() 
