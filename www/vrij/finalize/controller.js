@@ -1,9 +1,10 @@
 class FinalizeController 
 {
-    constructor(indexc) 
+    constructor(vrijcontroller) 
     {
         this.m = new FinalizeModel(this);
         this.v = new FinalizeView();
+        this.indexc = vrijcontroller;
     
         this.id = this.m.getFinalItem();
         this.showTasks();
@@ -16,6 +17,8 @@ class FinalizeController
         this.v.showQuantityForm();
     
         var id = this.m.getFinalItem();
+
+        this.m.getAcceptedTasks();
     }
   
     renderPhotoForm() 
@@ -25,18 +28,14 @@ class FinalizeController
   
     submitForm(callback) 
     {
-        // fade out form, show loading
-    
-        // send photos to handle
-        //this.m.submitFinalizeForm();
-    
         if (!callback) 
         {
-          this.m.setOrderStatusDone(this.id);
-        } else {
-          alert("Ophaaldienst afgerond!");
-          this.goBack();
-      }
+            this.m.setOrderStatusDone(this.id);
+        } else 
+        {
+            alert("Ophaaldienst afgerond!");
+            this.goBack();
+        }
     }
   
     showTasks() 
