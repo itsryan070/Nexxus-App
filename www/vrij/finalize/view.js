@@ -256,33 +256,35 @@ class FinalizeView
         }
     }
   
-    changePhotoIconToSolved(p, i) 
+    changePhotoIconToSolved(typeId, fotonr) 
     {
         // check if file is an image
         var allowed_types = ["image/jpg", "image/jpeg", "image/png", "image/bmp"];
 
-        if(p == 0)
+        if(typeId == 0)
         {
-            var img = $("#file-input-0" + i).prop("files");
+            var img = $("#file-input-0" + fotonr).prop("files");
             var imgtype = img[0]["type"];
 
             if (allowed_types.indexOf(imgtype) >= 0) 
             {
-            $("#file-input-img-0" + i).attr("src", "include/img/checkmark.png");
-            } else {
-            $("#file-input-img-0" + i).attr("src", "include/img/crossmark.png");
+                $("#file-input-img-0" + fotonr).attr("src", "include/img/checkmark.png");
+            } else 
+            {
+                $("#file-input-img-0" + fotonr).attr("src", "include/img/crossmark.png");
             }
             
         }else
         {
-            var img = $("#file-input-" + i).prop("files");
+            var img = $("#file-input-" + fotonr).prop("files");
             var imgtype = img[0]["type"];
 
             if (allowed_types.indexOf(imgtype) >= 0) 
             {
-            $("#file-input-img-" + i).attr("src", "include/img/checkmark.png");
-            } else {
-            $("#file-input-img-" + i).attr("src", "include/img/crossmark.png");
+                $("#file-input-img-" + fotonr).attr("src", "include/img/checkmark.png");
+            } else 
+            {
+                $("#file-input-img-" + fotonr).attr("src", "include/img/crossmark.png");
             }
         }
     }
