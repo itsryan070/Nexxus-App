@@ -19,6 +19,8 @@ class FinalizeController
         // render page
         this.v.showWheel(i, tasks);
         this.v.showCurrentTask(i, tasks.length - 1, tasks);
+
+        // if this isn't the first entry
         if(i>0)
         {
             this.v.showAfrondPopup(this.m.getTypes());
@@ -37,7 +39,6 @@ class FinalizeController
             this.m.setOrderStatusDone(this.id);
         } else 
         {
-            alert("Ophaaldienst afgerond!");
             this.closePopup();
         }
     }
