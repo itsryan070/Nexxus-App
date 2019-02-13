@@ -8,14 +8,15 @@ class VrijView
     showHeader(div)
     {
         $(div).html("<div data-role='header' data-position='fixed' role='banner' class='ui-header ui-bar-inherit ui-header-fixed slidedown'>"
-              + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>"
-              + "</div>"
+        + "<a onclick='loginc.handleLogout()' style='position:relative; float: right;margin:10px'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-uitloggen ui-btn-icon-notext ui-btn-right' ></a>"
+                        + "<h1 class='ui-title' role='heading' aria-level='1'>Nexxus</h1>"
+                    + "</div>"
         );
     }
     
     showFooter(div)
     {
-         $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-red ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>");
+        $(div).html("<a id='btn-submit' onClick='loginc.handleLogout()' class='ui-btn-half ui-red ui-link ui-btn ui-shadow ui-corner-all' data-role='button' role='button'>Uitloggen</a>");
     }
 
     showTasklist(div, title, tasks, header)
