@@ -19,11 +19,17 @@ class FinalizeController
         // render page
         this.v.showWheel(i, tasks);
         this.v.showCurrentTask(i, tasks.length - 1, tasks);
+
+        // if this isn't the first entry
+        if(i>0)
+        {
+            this.v.showAfrondPopup(this.m.getTypes());
+        }
     }
   
     renderPhotoForm() 
     {
-        this.v.showPhotoForm();
+        this.v.showPhotoForm(this.m.getTypes());
     }
   
     submitForm(callback) 
@@ -33,9 +39,13 @@ class FinalizeController
             this.m.setOrderStatusDone(this.id);
         } else 
         {
-            alert("Ophaaldienst afgerond!");
-            this.goBack();
+            this.closePopup();
         }
+    }
+
+    closePopup()
+    {
+        this.v.closePopup();
     }
   
     renderAccept() 
