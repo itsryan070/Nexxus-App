@@ -171,8 +171,6 @@ class VrijView
         }
         choice += "</div>";
 
-
-
         $(".visibility").remove();
         $("#content").after(html);
         //$("#content").animate({height:'22vh'});
