@@ -19,11 +19,12 @@ class FinalizeController
         // render page
         this.v.showWheel(i, tasks);
         this.v.showCurrentTask(i, tasks.length - 1, tasks);
+        if(i>0){this.v.showAfrondPopup(this.m.getTypes());}
     }
   
     renderPhotoForm() 
     {
-        this.v.showPhotoForm();
+        this.v.showPhotoForm(this.m.getTypes());
     }
   
     submitForm(callback) 
@@ -36,6 +37,11 @@ class FinalizeController
             alert("Ophaaldienst afgerond!");
             this.goBack();
         }
+    }
+
+    closePopup()
+    {
+        this.v.closePopup();
     }
   
     renderAccept() 

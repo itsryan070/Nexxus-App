@@ -219,3 +219,19 @@ div.ui-controlgroup-label {
   max-width: 100% !important;
   min-width: auto !important;
 }
+.photo-input{
+  visibility: hidden;
+  width: 40%;
+}
+.image-upload{
+  width: 40vw;
+  float: left;
+} 
+#afrondp{
+  height: 90vh;
+  position: absolute;
+  overflow: overlay;
+}
+.ui-body-a{
+  border-width: 0;
+}

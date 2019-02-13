@@ -6,12 +6,15 @@ class FinalizeModel
         this.token = sessionStorage.getItem("token");
     
         this.c = controller;
-    
+
         this.tasks = [];
+        this.productTypes = [];
+
         this.acceptedTasks = JSON.parse(sessionStorage.getItem("acceptedTasks"));
 
         this.current = 1;
         this.createDummy();
+        this.createDummyTypes();
     }
 
     getFinalItem() 
@@ -82,7 +85,30 @@ class FinalizeModel
         this.tasks[3][6] = "jan";
         this.tasks[3][7] = "06876541";
     }
-  
+    createDummyTypes()
+    {
+        for (var x = 0; x <= 2; x++) 
+        {
+            this.productTypes[x] = [x];
+            for (var y = 0; y <= 2; y++) 
+            {
+                this.productTypes[x][y] = 0;
+            }
+        }
+
+        this.productTypes[0][1] = "Computer";
+        this.productTypes[0][2] = "4";
+
+        this.productTypes[1][1] = "laptops";
+        this.productTypes[1][2] = "3";
+
+        this.productTypes[2][1] = "Monitors";
+        this.productTypes[2][2] = "4";
+    }
+    getTypes()
+    {
+        return this.productTypes;
+    }
     // returns the number of the current task
     getCurrentTask() 
     {
