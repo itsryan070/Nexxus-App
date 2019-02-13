@@ -219,7 +219,7 @@ class FinalizeView
                                 + "<h4>Foto #" + (i + 1) + "</h4>"
                                 + "<img id='file-input-img-" +  p  +  i + "' src='include/img/plus.png' class='ui-plus' max-width='40%' />"
                             + "</label>"
-                            + "<input style='display:none'id='file-input-" +  p  +  i + "' class='photo-input' type='file' onChange='c.v.changePhotoIconToSolved(" +  p  +  i + ")' />"
+                            + "<input style='display:none'id='file-input-" +  p  +  i + "' class='photo-input' type='file' onChange='c.v.changePhotoIconToSolved(" +  p  + ", " +  i +")' />"
                         + "</div>" 
                     + "</td>";
 
@@ -256,19 +256,36 @@ class FinalizeView
         }
     }
   
-    changePhotoIconToSolved(i) 
+    changePhotoIconToSolved(typeId, fotonr) 
     {
         // check if file is an image
         var allowed_types = ["image/jpg", "image/jpeg", "image/png", "image/bmp"];
-    
-        var img = $("#file-input-" + i).prop("files");
-        var imgtype = img[0]["type"];
-    
-        if (allowed_types.indexOf(imgtype) >= 0) 
+
+        if(typeId == 0)
         {
-          $("#file-input-img-" + i).attr("src", "include/img/checkmark.png");
-        } else {
-          $("#file-input-img-" + i).attr("src", "include/img/crossmark.png");
+            var img = $("#file-input-0" + fotonr).prop("files");
+            var imgtype = img[0]["type"];
+
+            if (allowed_types.indexOf(imgtype) >= 0) 
+            {
+                $("#file-input-img-0" + fotonr).attr("src", "include/img/checkmark.png");
+            } else 
+            {
+                $("#file-input-img-0" + fotonr).attr("src", "include/img/crossmark.png");
+            }
+            
+        }else
+        {
+            var img = $("#file-input-" + fotonr).prop("files");
+            var imgtype = img[0]["type"];
+
+            if (allowed_types.indexOf(imgtype) >= 0) 
+            {
+                $("#file-input-img-" + fotonr).attr("src", "include/img/checkmark.png");
+            } else 
+            {
+                $("#file-input-img-" + fotonr).attr("src", "include/img/crossmark.png");
+            }
         }
     }
 
