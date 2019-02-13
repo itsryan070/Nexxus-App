@@ -59,66 +59,69 @@ class FinalizeView
 
     showCurrentTask(current, last, task) 
     {
-        var sup = task[current]['supplier'];
+        if(current < task.length)
+        {
+            var sup = task[current]['supplier'];
+            
+            sup.city = this.checkNullValue(sup.city, "n/a");
+            sup.street = this.checkNullValue(sup.street, "n/a");
+            sup.name = this.checkNullValue(sup.name, "n/a");
+            sup.phone = this.checkNullValue(sup.phone, "n/a");
+
+            console.log(sup);
+
+            // title
+            var currentTask = "<h3 class='details'> Details: </h3>";
         
-        sup.city = this.checkNullValue(sup.city, "n/a");
-        sup.street = this.checkNullValue(sup.street, "n/a");
-        sup.name = this.checkNullValue(sup.name, "n/a");
-        sup.phone = this.checkNullValue(sup.phone, "n/a");
-
-        // title
-        var currentTask = "<h3 class='details'> Details: </h3>";
-    
-        // details current task
-        currentTask += "<table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
-              + "<tbody>"
-                + "<tr>"
-                    + "<td id='stad' ><b > Stad: </b></td><td class='ui-width'>"
-                    + sup.city
-                    + "</td>"
-                + "</tr>"
-                + "<tr>"
-                    + "<td id='straat'><b class='ui-table-cell-label'> Straat: </b></td>"
-                    + "<td class='ui-width'>" + sup.street + "</td>"
-                + "</tr>"
-                + "<tr>"
-                    + "<td id='datum'><b class='ui-table-cell-label'> Uiterste Datum: </b></td>"
-                    + "<td class='ui-width'>"
-                    + this.parseTSDate(task[current]['order_date'])
-                    + "</td>"
-                + "</tr>"
-                + "<tr><td id='tijd'><b class='ui-table-cell-label'> Tijd: </b></td>"
-                    + "<td class='ui-width'>"
-                    + this.parseTSTime(task[current]['order_date'])
-                    + "</td>"
-                + "</tr>"
-                + "<tr>"
-                    + "<td id='contact'><b class='ui-table-cell-label' > Contact: </b></td>"
-                    + "<td class='ui-width'>"
-                    + sup.name
-                    + "</td>"
-                + "</tr>"
-                + "<tr>"
-                    + "<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td>"
-                    + "<td class='ui-width'>"
-                    + sup.phone
-                    + "</td>"
-                + "</tr>"
-                + "</tbody>"
-          +  "</table> ";
-    
-        // load options
-        currentTask +=
-          "<div class='ui-center'>" +
-          "<a onClick='c.renderAccept()' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Annuleren  <img src='include/css/images/icons-png/delete-white.png'></a>"; 
-        if(current == task.length-1) {
-          currentTask += "<a onClick='c.goBack()' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
-        } else {
-          currentTask += "<a onClick='c.renderFinalForm("+(current + 1)+")' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
-
+            // details current task
+            currentTask += "<table id='info' data-role='table' class='ui-responsive table-stroke ui-table ui-table-reflow'>"
+                  + "<tbody>"
+                    + "<tr>"
+                        + "<td id='stad' ><b > Stad: </b></td><td class='ui-width'>"
+                        + sup.city
+                        + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                        + "<td id='straat'><b class='ui-table-cell-label'> Straat: </b></td>"
+                        + "<td class='ui-width'>" + sup.street + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                        + "<td id='datum'><b class='ui-table-cell-label'> Uiterste Datum: </b></td>"
+                        + "<td class='ui-width'>"
+                        + this.parseTSDate(task[current]['order_date'])
+                        + "</td>"
+                    + "</tr>"
+                    + "<tr><td id='tijd'><b class='ui-table-cell-label'> Tijd: </b></td>"
+                        + "<td class='ui-width'>"
+                        + this.parseTSTime(task[current]['order_date'])
+                        + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                        + "<td id='contact'><b class='ui-table-cell-label' > Contact: </b></td>"
+                        + "<td class='ui-width'>"
+                        + sup.name
+                        + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                        + "<td id='tel'><b class='ui-table-cell-label' > Telefoon: </b></td>"
+                        + "<td class='ui-width'>"
+                        + sup.phone
+                        + "</td>"
+                    + "</tr>"
+                    + "</tbody>"
+              +  "</table> ";
+        
+            // load options
+            currentTask += "<div id='finalize-buttons' class='ui-center'>" +
+                              "<a onClick='c.renderAccept()' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Annuleren  <img src='include/css/images/icons-png/delete-white.png'></a>"; 
+            currentTask += "<a onClick='c.renderFinalForm("+(current + 1)+")' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a></div>";
+        
+            $("#content").html(currentTask);
         }
-    
-        $("#content").html(currentTask);
+        else 
+        {
+            $("#finalize-buttons").html("<a onClick='c.goBack()' class='ui-btn ui-half ui-options ui-green'>Voltooi Ophaaldienst<img src='include/css/images/icons-png/check-white.png'></a></div>");
+        }
     }
   
     showWheel(current, tasks) 
@@ -147,27 +150,39 @@ class FinalizeView
         console.log("current task: "+current);
         console.log("task length: "+tasks.length);
 
-        if(current == 0)
+        if(current < tasks.length)
         {
-            $("#previous-label").html("Geen taken voltooid");
-        } else {
+            if(current == 0)
+            {
+                $("#previous-label").html("Geen taken voltooid");
+            } else {
+                $("#previous-index").html(current);
+                $("#previous-label").html(tasks[current-1]['supplier']['street']);
+            }
+
+            if (current == tasks.length-1) 
+            {
+                $("#next-index").html(tasks.length+1);
+                $("#next-label").html("Einde rit");
+            }
+            else 
+            {
+                $("#next-index").html(current + 2);
+                $("#next-label").html(tasks[current+1]['supplier']['street']);
+            }
+
+            $("#current-index").html(current + 1);
+            $("#current-label").html(tasks[current]['supplier']['street']);
+        }
+        else {
             $("#previous-index").html(current);
             $("#previous-label").html(tasks[current-1]['supplier']['street']);
-        }
-
-        if (current == tasks.length-1) 
-        {
-            $("#next-index").html(tasks.length+1);
-            $("#next-label").html("Einde rit");
-        }
-        else 
-        {
+            $("#current-index").html(current + 1);
+            $("#current-label").html("Einde rit");
             $("#next-index").html(current + 2);
-            $("#next-label").html(tasks[current+1]['supplier']['street']);
+            $("#next-label").html("");
         }
 
-        $("#current-index").html(current + 1);
-        $("#current-label").html(tasks[current]['supplier']['street']);
     }
   
     showQuantityForm() 
