@@ -237,3 +237,14 @@ div.ui-controlgroup-label {
 .ui-body-a{
   border-width: 0;
 }
+#tasklist-aangeboden{
+  height: 40vh;
+  position: absolute;
+  overflow: overlay;
+  width:100vw;
+}
+#tasklist-accepteren{
+  height: 40vh;
+  position: absolute;
+  overflow: overlay;
+}
