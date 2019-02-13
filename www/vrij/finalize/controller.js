@@ -19,7 +19,10 @@ class FinalizeController
         // render page
         this.v.showWheel(i, tasks);
         this.v.showCurrentTask(i, tasks.length - 1, tasks);
-        if(i>0){this.v.showAfrondPopup(this.m.getTypes());}
+        if(i>0)
+        {
+            this.v.showAfrondPopup(this.m.getTypes());
+        }
     }
   
     renderPhotoForm() 

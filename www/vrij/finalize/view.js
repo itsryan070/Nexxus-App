@@ -53,8 +53,8 @@ class FinalizeView
     }
     closePopup() 
     {
-      $("#afrondPop").remove();
-      $("#afrond-popup").remove();
+        $("#afrondPop").remove();
+        $("#afrond-popup").remove();
     }
 
     showCurrentTask(current, last, task) 
@@ -176,7 +176,8 @@ class FinalizeView
         $("#photo-form").hide();
     }
   
-    showPhotoForm(productTypes){
+    showPhotoForm(productTypes)
+    {
         $("#quantity-form").hide();
     
         // Getting amount out of the input 
@@ -191,6 +192,9 @@ class FinalizeView
 
         for(var p =0; p < productTypes.length; p++){
             html = "<h2 id='title"+ p +"'>" + productTypes[p][1]+ "</h2>";
+            
+            (quantity[p] > 999 ? quantity[p] = 999 : 0) 
+            
             for (var i = 0; i < quantity[p]; i++) 
             {
                 var imageOption = "" 
