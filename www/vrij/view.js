@@ -125,7 +125,7 @@ class VrijView
         }
 
         html += "<div class='ui-popup-screen ui-overlay-inherit in' id='infop'></div> "
-        + "<div class='ui-popup-container pop in ui-popup-active' id='info-popup' style='top: 171px; left: 29px'>"
+        + "<div class='ui-popup-container pop in ui-popup-active' id='info-popup' style='width:80vw; top: 171px; left: 10vw;'>"
                   + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='infop' data-dismissible='false' style=''>"
                   + "<a onclick='c.closeInfoPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
                   + "<h3 style='margin:0;margin-left:2vw; margin-top:1vh;'>Info</h3>"
@@ -155,26 +155,11 @@ class VrijView
                 +"</table> "
         +"</div>";
 
-        // customize buttons
-        var choice = "";
-        choice += "<br><div class='ui-center'>";
-        if(task['status']['id']==2) 
-        {
-            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
-            choice += "<a onClick='c.postAcceptedTask(" + task['id'] + ", false)' id='btn-submit' class='ui-btn ui-options ui-green'>Accepteren <img src='include/css/images/icons-png/check-white.png'></a>";
-        } else
-        if(task['status']['id']==300) 
-        {
-            choice += "<a onClick='c.renderRefuse()' href='#reden' data-rel='popup' data-transition='pop' data-position-to='window' id='btn-submit' class='ui-btn ui-options ui-red'>Weigeren  <img src='include/css/images/icons-png/delete-white.png'></a>"
-            choice += "<a onClick='c.sendToFinalForm(" + task['id'] + ")' id='btn-submit' class='ui-btn ui-options ui-green'>Afronden <img src='include/css/images/icons-png/check-white.png'></a>";
-
-        }
-        choice += "</div>";
+  
 
         $(".visibility").remove();
         $("#content").after(html);
         //$("#content").animate({height:'22vh'});
-        $("#info").after(choice);
         this.switch = true;
     }
 
@@ -183,7 +168,7 @@ class VrijView
         var popup = "";
 
         popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
-                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='max-width: 330px; top: 171px; left: 29px;'>"
+                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='width: 80vw; top: 171px; margin-left: 9vw;'>"
                     + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
                     + "<div role='main' class='ui-content'>"
                     + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
@@ -204,7 +189,7 @@ class VrijView
         var popup = "";
 
         popup += "<div class='ui-popup-screen ui-overlay-inherit in' id='reden-screen'></div> "
-                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='width: 80vw; top: 171px; margin-left: 9vw;'>"
+                + "<div class='ui-popup-container pop in ui-popup-activ' id='reden-popup' style='width: 80vw; top: 171px; left: 10vw;'>"
                     + "<div class='ui-popup ui-body-inherit ui-overlay-shadow ui-corner-all' data-role='popup' id='reden' data-dismissible='false' style='max-width:400px; min-width: 300px'>"
                     + "<div role='main' class='ui-content'>"
                     + "<a onclick='c.closingPopup()' style='position:relative; float: right;margin:0'  data-role='button'  class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right ui-red' ></a>"
