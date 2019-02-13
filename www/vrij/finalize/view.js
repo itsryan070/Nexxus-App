@@ -261,7 +261,7 @@ class FinalizeView
         // check if file is an image
         var allowed_types = ["image/jpg", "image/jpeg", "image/png", "image/bmp"];
 
-        if(p == 0 )
+        if(p == 0)
         {
             var img = $("#file-input-0" + i).prop("files");
             var imgtype = img[0]["type"];
@@ -284,7 +284,6 @@ class FinalizeView
             } else {
             $("#file-input-img-" + i).attr("src", "include/img/crossmark.png");
             }
-
         }
     }
 
