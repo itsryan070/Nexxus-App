@@ -38,7 +38,7 @@ class FinalizeController
         } else 
         {
             alert("Ophaaldienst afgerond!");
-            this.goBack();
+            this.closePopup();
         }
     }
 
